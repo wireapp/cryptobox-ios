@@ -7,9 +7,6 @@ TARGETS := armv7-apple-ios \
            aarch64-apple-ios \
            x86_64-apple-ios
 
-NOOP  :=
-SPACE := $(NOOP) $(NOOP)
-
 # pkg-config is invoked by libsodium-sys
 # cf. https://github.com/alexcrichton/pkg-config-rs/blob/master/src/lib.rs#L12
 export PKG_CONFIG_ALLOW_CROSS=1
