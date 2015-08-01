@@ -42,7 +42,7 @@ include mk/cryptobox-src.mk
 build/lib/libcryptobox.a: libsodium build/src/$(CRYPTOBOX)
 	cd build/src/$(CRYPTOBOX) && \
 	sed -i.bak s/crate\-type.*/crate\-type\ =\ \[\"staticlib\"\]/g Cargo.toml && \
-	$(foreach tgt,$(TARGETS),cargo rustc --lib --release --target=$(tgt) -- -L build/lib -l sodium;)
+	$(foreach tgt,$(TARGETS),cargo rustc --lib --release --target=$(tgt);)
 	mkdir -p build/lib
 	$(foreach tgt,$(TARGETS),cp build/src/$(CRYPTOBOX)/target/$(tgt)/release/libcryptobox.a build/lib/libcryptobox-$(tgt).a;)
 
