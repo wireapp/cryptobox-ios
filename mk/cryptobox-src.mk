@@ -1,8 +1,9 @@
 CRYPTOBOX_VERSION := master
 CRYPTOBOX         := cryptobox-$(CRYPTOBOX_VERSION)
 CRYPTOBOX_GIT_URL := git@github.com:romanb/cryptobox.git
+CRYPTOBOX_SRC     := build/src/$(CRYPTOBOX)
 
-build/src/$(CRYPTOBOX):
+$(CRYPTOBOX_SRC):
 	mkdir -p build/src
 	cd build/src && \
 	git clone $(CRYPTOBOX_GIT_URL) $(CRYPTOBOX) && \

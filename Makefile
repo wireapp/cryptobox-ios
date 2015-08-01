@@ -39,16 +39,16 @@ dist: dist-tar
 
 include mk/cryptobox-src.mk
 
-build/lib/libcryptobox.a: libsodium build/src/$(CRYPTOBOX)
-	cd build/src/$(CRYPTOBOX) && \
+build/lib/libcryptobox.a: libsodium $(CRYPTOBOX_SRC)
+	cd $(CRYPTOBOX_SRC) && \
 	sed -i.bak s/crate\-type.*/crate\-type\ =\ \[\"staticlib\"\]/g Cargo.toml && \
 	$(foreach tgt,$(TARGETS),cargo rustc --lib --release --target=$(tgt);)
 	mkdir -p build/lib
-	$(foreach tgt,$(TARGETS),cp build/src/$(CRYPTOBOX)/target/$(tgt)/release/libcryptobox.a build/lib/libcryptobox-$(tgt).a;)
+	$(foreach tgt,$(TARGETS),cp $(CRYPTOBOX_SRC)/target/$(tgt)/release/libcryptobox.a build/lib/libcryptobox-$(tgt).a;)
 
-build/include/cbox.h: build/src/$(CRYPTOBOX)
+build/include/cbox.h: $(CRYPTOBOX_SRC)
 	mkdir -p build/include
-	cp build/src/$(CRYPTOBOX)/cbox.h build/include/
+	cp $(CRYPTOBOX_SRC)/cbox.h build/include/
 
 cryptobox: build/lib/libcryptobox.a build/include/cbox.h
 
@@ -57,14 +57,17 @@ cryptobox: build/lib/libcryptobox.a build/include/cbox.h
 
 include mk/libsodium-src.mk
 
-build/lib/libsodium.a: build/src/$(LIBSODIUM)
-	cd build/src/$(LIBSODIUM) && dist-build/ios.sh
+build/lib/libsodium.a: $(LIBSODIUM_SRC)
+	cp mk/ios-full.sh $(LIBSODIUM_SRC)/dist-build && \
+		chmod +x $(LIBSODIUM_SRC)/dist-build/ios-full.sh && \
+		cd $(LIBSODIUM_SRC) && \
+		dist-build/ios-full.sh
 	mkdir -p build/lib
-	cp build/src/$(LIBSODIUM)/libsodium-ios/libsodium.a build/lib/libsodium.a
+	cp $(LIBSODIUM_SRC)/libsodium-ios/libsodium.a build/lib/libsodium.a
 
 build/include/sodium.h: build/lib/libsodium.a
 	mkdir -p build/include
-	cp build/src/$(LIBSODIUM)/libsodium-ios/include/sodium.h build/include/sodium.h
-	cp -r build/src/$(LIBSODIUM)/libsodium-ios/include/sodium build/include/sodium
+	cp $(LIBSODIUM_SRC)/libsodium-ios/include/sodium.h build/include/sodium.h
+	cp -r $(LIBSODIUM_SRC)/libsodium-ios/include/sodium build/include/sodium
 
 libsodium: build/lib/libsodium.a build/include/sodium.h
