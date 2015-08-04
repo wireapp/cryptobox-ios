@@ -8,6 +8,4 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Cryptobox : NSObject
-
-@end
+#import "NSError+Cryptobox.h"
