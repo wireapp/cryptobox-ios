@@ -1,5 +1,5 @@
 //
-//  Cryptobox.h
+//  CBSession.h
 //  Cryptobox
 //
 //  Created by Andreas Kompanez on 04.08.15.
@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "NSError+Cryptobox.h"
-#import "CBSession.h"
-#import "CBBox.h"
-#import "CBPreKey.h"
+
+
+@interface CBSession : NSObject
+
+@end
