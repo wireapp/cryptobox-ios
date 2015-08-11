@@ -14,13 +14,16 @@
 
 @interface CBPreKey : NSObject
 
-@property (nonatomic) NSData *content;
-
+@property (nonatomic, readonly, nonnull) NSData *content;
 
 @end
 
 @interface CBPreKey (Internal)
 
-- (instancetype)initWithCBoxVecRef:(CBoxVecRef)vec;
+- (nonnull instancetype)initWithCBoxVecRef:(nonnull CBoxVecRef)vec;
+
+- (nonnull uint8_t *)data;
+
+- (uint32_t)length;
 
 @end

@@ -25,7 +25,8 @@ typedef NS_ENUM(NSInteger, CBErrorCode) {
     CBErrorCodeOutdatedMessage,
     CBErrorCodeUTF8Error,
     CBErrorCodeNULError,
-    CBErrorCodeEncodeError
+    CBErrorCodeEncodeError,
+    CBErrorCodeIllegalState
 };
 
 FOUNDATION_EXPORT NSString *const CBErrorDomain;

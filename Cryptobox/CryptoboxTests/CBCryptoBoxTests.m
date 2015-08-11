@@ -30,23 +30,22 @@
     [super tearDown];
 }
 
-- (void)testThatCryptoBoxInitWithPathWorks
-{
-    char alice_tmp[] = "/tmp/cbox_test_aliceXXXXXX";
-    char * alice_dir = mkdtemp(alice_tmp);
-    assert(alice_dir != NULL);
-    NSString *filePath = [NSString stringWithUTF8String:alice_dir];
+static NSURL *CreateTemporaryDirectoryAndReturnURL() {
     NSError *error = nil;
-    CBCryptoBox *box = [CBCryptoBox cryptoBoxAtPath:filePath error:&error];
-    XCTAssertNil(error);
-    XCTAssertNotNil(box);
+    NSURL *directoryURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:[[NSProcessInfo processInfo] globallyUniqueString]] isDirectory:YES];
+    [[NSFileManager defaultManager] createDirectoryAtURL:directoryURL withIntermediateDirectories:YES attributes:nil error:&error];
+    
+    return directoryURL;
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+
+- (void)testThatCryptoBoxInitWithPathWorks
+{
+    NSURL *directory = CreateTemporaryDirectoryAndReturnURL();
+    NSError *error = nil;
+    CBCryptoBox *box = [CBCryptoBox cryptoBoxWithPathURL:directory error:&error];
+    XCTAssertNil(error);
+    XCTAssertNotNil(box);
 }
 
 @end

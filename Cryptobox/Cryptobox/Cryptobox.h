@@ -13,3 +13,4 @@
 #import "CBSession.h"
 #import "CBCryptoBox.h"
 #import "CBPreKey.h"
+#import "CBSessionMessage.h"

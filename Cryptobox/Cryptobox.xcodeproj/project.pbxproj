@@ -6,10 +6,27 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		BA7447EA1B7A2C35002D9941 /* UniversalLib */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = BA7447ED1B7A2C35002D9941 /* Build configuration list for PBXAggregateTarget "UniversalLib" */;
+			buildPhases = (
+				BA7447EE1B7A2C48002D9941 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = UniversalLib;
+			productName = UniversalLib;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		BA025F981B79F62A00139D15 /* CBCryptoBoxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA025F971B79F62A00139D15 /* CBCryptoBoxTests.m */; };
+		BA7448761B7A3143002D9941 /* CBTypes.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA025F921B79DAAE00139D15 /* CBTypes.h */; };
+		BA74487D1B7A7F75002D9941 /* CBSessionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = BA74487C1B7A7F75002D9941 /* CBSessionMessage.m */; };
+		BA74487E1B7A7FC4002D9941 /* CBSessionMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA74487B1B7A7F75002D9941 /* CBSessionMessage.h */; };
 		BA7EF9621B7109B600204A8E /* Cryptobox.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7EF9611B7109B600204A8E /* Cryptobox.h */; };
-		BA7EF96A1B7109B600204A8E /* libCryptobox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7EF95E1B7109B600204A8E /* libCryptobox.a */; };
+		BA7EF96A1B7109B600204A8E /* libCryptoboxiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7EF95E1B7109B600204A8E /* libCryptoboxiOS.a */; };
 		BA7EF9B51B710B7100204A8E /* libcryptobox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7EF9B31B710B7100204A8E /* libcryptobox.a */; };
 		BA7EF9B61B710B7100204A8E /* libsodium.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7EF9B41B710B7100204A8E /* libsodium.a */; };
 		BA7EF9B91B710BB000204A8E /* NSError+Cryptobox.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7EF9B81B710BB000204A8E /* NSError+Cryptobox.m */; };
@@ -39,6 +56,8 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				BA74487E1B7A7FC4002D9941 /* CBSessionMessage.h in CopyFiles */,
+				BA7448761B7A3143002D9941 /* CBTypes.h in CopyFiles */,
 				BA7EFA051B71279100204A8E /* CBCryptoBox.h in CopyFiles */,
 				BA7EFA041B71278C00204A8E /* CBPreKey.h in CopyFiles */,
 				BA7EFA031B71278500204A8E /* CBSession.h in CopyFiles */,
@@ -52,7 +71,10 @@
 /* Begin PBXFileReference section */
 		BA025F921B79DAAE00139D15 /* CBTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBTypes.h; sourceTree = "<group>"; };
 		BA025F971B79F62A00139D15 /* CBCryptoBoxTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBCryptoBoxTests.m; sourceTree = "<group>"; };
-		BA7EF95E1B7109B600204A8E /* libCryptobox.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCryptobox.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA74487A1B7A69D7002D9941 /* CBMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBMacros.h; sourceTree = "<group>"; };
+		BA74487B1B7A7F75002D9941 /* CBSessionMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBSessionMessage.h; sourceTree = "<group>"; };
+		BA74487C1B7A7F75002D9941 /* CBSessionMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBSessionMessage.m; sourceTree = "<group>"; };
+		BA7EF95E1B7109B600204A8E /* libCryptoboxiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCryptoboxiOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7EF9611B7109B600204A8E /* Cryptobox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cryptobox.h; sourceTree = "<group>"; };
 		BA7EF9691B7109B600204A8E /* CryptoboxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoboxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7EF96F1B7109B600204A8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -136,7 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA7EF96A1B7109B600204A8E /* libCryptobox.a in Frameworks */,
+				BA7EF96A1B7109B600204A8E /* libCryptoboxiOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,7 +178,7 @@
 		BA7EF95F1B7109B600204A8E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BA7EF95E1B7109B600204A8E /* libCryptobox.a */,
+				BA7EF95E1B7109B600204A8E /* libCryptoboxiOS.a */,
 				BA7EF9691B7109B600204A8E /* CryptoboxTests.xctest */,
 			);
 			name = Products;
@@ -168,13 +190,16 @@
 				BA7EF9611B7109B600204A8E /* Cryptobox.h */,
 				BA7EF9B71B710BB000204A8E /* NSError+Cryptobox.h */,
 				BA7EF9B81B710BB000204A8E /* NSError+Cryptobox.m */,
-				BA7EF9BA1B7112FD00204A8E /* CBSession.h */,
-				BA7EF9BB1B7112FD00204A8E /* CBSession.m */,
 				BA7EF9BD1B71132000204A8E /* CBCryptoBox.h */,
 				BA7EF9BE1B71132000204A8E /* CBCryptoBox.m */,
+				BA7EF9BA1B7112FD00204A8E /* CBSession.h */,
+				BA7EF9BB1B7112FD00204A8E /* CBSession.m */,
 				BA7EF9C01B71136600204A8E /* CBPreKey.h */,
 				BA7EF9C11B71136600204A8E /* CBPreKey.m */,
 				BA025F921B79DAAE00139D15 /* CBTypes.h */,
+				BA74487A1B7A69D7002D9941 /* CBMacros.h */,
+				BA74487B1B7A7F75002D9941 /* CBSessionMessage.h */,
+				BA74487C1B7A7F75002D9941 /* CBSessionMessage.m */,
 			);
 			path = Cryptobox;
 			sourceTree = "<group>";
@@ -296,9 +321,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BA7EF95D1B7109B600204A8E /* Cryptobox */ = {
+		BA7EF95D1B7109B600204A8E /* CryptoboxiOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BA7EF9721B7109B600204A8E /* Build configuration list for PBXNativeTarget "Cryptobox" */;
+			buildConfigurationList = BA7EF9721B7109B600204A8E /* Build configuration list for PBXNativeTarget "CryptoboxiOS" */;
 			buildPhases = (
 				BA7EF95A1B7109B600204A8E /* Sources */,
 				BA7EF95B1B7109B600204A8E /* Frameworks */,
@@ -308,9 +333,9 @@
 			);
 			dependencies = (
 			);
-			name = Cryptobox;
+			name = CryptoboxiOS;
 			productName = Cryptobox;
-			productReference = BA7EF95E1B7109B600204A8E /* libCryptobox.a */;
+			productReference = BA7EF95E1B7109B600204A8E /* libCryptoboxiOS.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		BA7EF9681B7109B600204A8E /* CryptoboxTests */ = {
@@ -340,6 +365,9 @@
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = Cryptobox;
 				TargetAttributes = {
+					BA7447EA1B7A2C35002D9941 = {
+						CreatedOnToolsVersion = 6.4;
+					};
 					BA7EF95D1B7109B600204A8E = {
 						CreatedOnToolsVersion = 6.4;
 					};
@@ -360,8 +388,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BA7EF95D1B7109B600204A8E /* Cryptobox */,
+				BA7EF95D1B7109B600204A8E /* CryptoboxiOS */,
 				BA7EF9681B7109B600204A8E /* CryptoboxTests */,
+				BA7447EA1B7A2C35002D9941 /* UniversalLib */,
 			);
 		};
 /* End PBXProject section */
@@ -376,6 +405,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BA7447EE1B7A2C48002D9941 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\nLIB_TARGET_NAME=CryptoboxiOS\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target ${LIB_TARGET_NAME} ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\nxcodebuild -target ${LIB_TARGET_NAME} -configuration ${CONFIGURATION} -sdk iphonesimulator -arch x86_64 -arch i386 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 2. Create universal binary file using lipo\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/lib${LIB_TARGET_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${LIB_TARGET_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${LIB_TARGET_NAME}.a\"\n\n# Last touch. copy the header files. Just for convenience\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/include\" \"${UNIVERSAL_OUTPUTFOLDER}/\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BA7EF95A1B7109B600204A8E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -384,6 +429,7 @@
 				BA7EF9BF1B71132000204A8E /* CBCryptoBox.m in Sources */,
 				BA7EF9B91B710BB000204A8E /* NSError+Cryptobox.m in Sources */,
 				BA7EF9C21B71136600204A8E /* CBPreKey.m in Sources */,
+				BA74487D1B7A7F75002D9941 /* CBSessionMessage.m in Sources */,
 				BA7EF9BC1B7112FD00204A8E /* CBSession.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,12 +447,28 @@
 /* Begin PBXTargetDependency section */
 		BA7EF96C1B7109B600204A8E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BA7EF95D1B7109B600204A8E /* Cryptobox */;
+			target = BA7EF95D1B7109B600204A8E /* CryptoboxiOS */;
 			targetProxy = BA7EF96B1B7109B600204A8E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		BA7447EB1B7A2C35002D9941 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BA7447EC1B7A2C35002D9941 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		BA7EF9701B7109B600204A8E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -492,7 +554,7 @@
 					"$(inherited)",
 					"/Users/azeta/Documents/Development/cryptobox-ios/dist/cryptobox-ios/lib",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -505,7 +567,6 @@
 					"$(inherited)",
 					"/Users/azeta/Documents/Development/cryptobox-ios/dist/cryptobox-ios/lib",
 				);
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -546,6 +607,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BA7447ED1B7A2C35002D9941 /* Build configuration list for PBXAggregateTarget "UniversalLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA7447EB1B7A2C35002D9941 /* Debug */,
+				BA7447EC1B7A2C35002D9941 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BA7EF9591B7109B600204A8E /* Build configuration list for PBXProject "Cryptobox" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -555,7 +625,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BA7EF9721B7109B600204A8E /* Build configuration list for PBXNativeTarget "Cryptobox" */ = {
+		BA7EF9721B7109B600204A8E /* Build configuration list for PBXNativeTarget "CryptoboxiOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BA7EF9731B7109B600204A8E /* Debug */,

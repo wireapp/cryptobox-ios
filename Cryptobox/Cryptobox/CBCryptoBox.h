@@ -11,21 +11,40 @@
 #import "CBTypes.h"
 @class CBSession;
 @class CBPreKey;
+@class CBSessionMessage;
 
 
 
 @interface CBCryptoBox : NSObject
 
-/// opens the crypto box at path
-+ (nullable instancetype)cryptoBoxAtPath:(nonnull NSString *)path error:(NSError *__nullable * __nullable)error;
+/// Opens the crypto box at the directory path
+/// @param path     directory url path
++ (nullable instancetype)cryptoBoxWithPathURL:(nonnull NSURL *)directory error:(NSError *__nullable * __nullable)error;
 
-/// Use cryptoBoxAtPath:error: method instead
+/// Don't use! Use cryptoBoxWithPathURL:error: method instead
 - (nonnull instancetype)init NS_UNAVAILABLE;
 
-- (nullable CBSession *)sessionWithId:(nonnull NSString *)sessionId preKey:(nonnull CBPreKey *)preKey;
+/// Initialise a @c CBSession using the @c preKey of a peer.
+/// This is the entry point for the initiator of a session, i.e. the side that wishes to send the first message.
+/// @param sessionId    The ID of the new session.
+/// @param prekey       The preKey of the peer.
+/// @param error        Error reference
+- (nullable CBSession *)sessionWithId:(nonnull NSString *)sessionId preKey:(nonnull CBPreKey *)preKey error:(NSError *__nullable * __nullable)error;
 
-// initSessionFromMessage
-//- (CBSession *)initSessionWithId:(NSString *)sessionId message:(CBPreKey *)preKey;
+/// Initialise a @c CBSession using a received encrypted message.
+/// This is the entry point for the recipient of an encrypted message.
+- (nullable CBSessionMessage *)sessionMessageWithId:(nonnull NSString *)sessionId message:(nonnull NSData *)message error:(NSError *__nullable * __nullable)error;
+
+- (nullable CBSession *)sessionById:(nonnull NSString *)sessionId error:(NSError *__nullable * __nullable)error;
+
+///
+- (BOOL)closeAllSessions:(NSError *__nullable * __nullable)error;
+
+/// Close the CryptoBox
+/// Note: After a box has been closed, any operations other than @c close are considered programmer error and result in @c NSError returns on other methods
+- (BOOL)close:(NSError *__nullable * __nullable)error;
+
+- (BOOL)isClosed;
 
 @end
 

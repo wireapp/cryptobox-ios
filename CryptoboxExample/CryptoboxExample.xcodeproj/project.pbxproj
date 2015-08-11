@@ -502,6 +502,7 @@
 					"$(inherited)",
 					"/Users/azeta/Documents/Development/cryptobox-ios/dist/cryptobox-ios/lib",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -516,6 +517,7 @@
 					"$(inherited)",
 					"/Users/azeta/Documents/Development/cryptobox-ios/dist/cryptobox-ios/lib",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

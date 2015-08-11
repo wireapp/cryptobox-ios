@@ -8,8 +8,116 @@
 
 #import "CBSession.h"
 
+#import "CBMacros.h"
+#import "CBPreKey.h"
 
+
+
+@interface CBSession () {
+    CBoxSessionRef _sessionBacking;
+}
+
+@end
 
 @implementation CBSession
+
+- (void)dealloc
+{
+    if (_sessionBacking != NULL) {
+        [self closeInternally];
+    }
+}
+
+- (BOOL)save:(NSError *__nullable * __nullable)error
+{
+    @synchronized(self) {
+        CBReturnWithErrorAndValueIfClosed([self isClosed], error, NO);
+        CBoxResult result = cbox_session_save(_sessionBacking);
+        CBAssertResultIsSuccess(result);
+        CBReturnWithErrorAndValueIfNotSuccess(result, error, NO);
+        return YES;
+    }
+}
+
+- (void)close
+{
+    @synchronized(self) {
+        if ([self isClosed]) {
+            return;
+        }
+        [self closeInternally];
+    }
+}
+
+- (BOOL)isClosed
+{
+    @synchronized(self) {
+        return (_sessionBacking == NULL);
+    }
+}
+
+- (nullable NSData *)encrypt:(nonnull NSData *)plain error:(NSError *__nullable * __nullable)error
+{
+    @synchronized(self) {
+        NSParameterAssert(plain);
+        
+        CBReturnWithErrorAndValueIfClosed([self isClosed], error, nil);
+        
+        CBoxVecRef cipher = NULL;
+        const uint8_t *bytes = (const uint8_t*)plain.bytes;
+        if (bytes == NULL) {
+            return nil;
+        }
+        CBoxResult result = cbox_encrypt(_sessionBacking, bytes, sizeof(bytes), &cipher);
+        CBAssertResultIsSuccess(result);
+        CBReturnWithErrorAndValueIfNotSuccess(result, error, nil);
+        CBPreKey *preKey = [[CBPreKey alloc] initWithCBoxVecRef:cipher];
+        
+        return [preKey content];
+    }
+}
+
+- (nullable NSData *)decrypt:(nonnull NSData *)cipher error:(NSError *__nullable * __nullable)error
+{
+    @synchronized(self) {
+        NSParameterAssert(cipher);
+        
+        CBReturnWithErrorAndValueIfClosed([self isClosed], error, nil);
+        const uint8_t *bytes = (const uint8_t*)cipher.bytes;
+        if (bytes == NULL) {
+            return nil;
+        }
+        CBoxVecRef plain = NULL;
+        CBoxResult result = cbox_decrypt(_sessionBacking, bytes, sizeof(bytes), &plain);
+        CBAssertResultIsSuccess(result);
+        CBReturnWithErrorAndValueIfNotSuccess(result, error, nil);
+        CBPreKey *preKey = [[CBPreKey alloc] initWithCBoxVecRef:plain];
+        
+        return [preKey content];
+    }
+}
+
+#pragma mark -
+
+- (void)closeInternally
+{
+    cbox_session_close(_sessionBacking);
+    _sessionBacking = NULL;
+}
+
+@end
+
+
+
+@implementation CBSession (Internal)
+
+- (nonnull instancetype)initWithCBoxSessionRef:(nonnull CBoxSessionRef)session
+{
+    self = [super init];
+    if (self) {
+        _sessionBacking = session;
+    }
+    return self;
+}
 
 @end
