@@ -1,0 +1,433 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BA7EF9D31B7123E000204A8E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7EF9D21B7123E000204A8E /* main.m */; };
+		BA7EF9D61B7123E000204A8E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7EF9D51B7123E000204A8E /* AppDelegate.m */; };
+		BA7EF9D91B7123E000204A8E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7EF9D81B7123E000204A8E /* ViewController.m */; };
+		BA7EF9DC1B7123E000204A8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA7EF9DA1B7123E000204A8E /* Main.storyboard */; };
+		BA7EF9DE1B7123E000204A8E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA7EF9DD1B7123E000204A8E /* Images.xcassets */; };
+		BA7EF9E11B7123E000204A8E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA7EF9DF1B7123E000204A8E /* LaunchScreen.xib */; };
+		BA7EF9ED1B7123E100204A8E /* CryptoboxExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7EF9EC1B7123E100204A8E /* CryptoboxExampleTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BA7EF9E71B7123E100204A8E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA7EF9C51B7123E000204A8E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA7EF9CC1B7123E000204A8E;
+			remoteInfo = CryptoboxExample;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BA7EF9CD1B7123E000204A8E /* CryptoboxExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoboxExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA7EF9D11B7123E000204A8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA7EF9D21B7123E000204A8E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BA7EF9D41B7123E000204A8E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BA7EF9D51B7123E000204A8E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BA7EF9D71B7123E000204A8E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		BA7EF9D81B7123E000204A8E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		BA7EF9DB1B7123E000204A8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BA7EF9DD1B7123E000204A8E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BA7EF9E01B7123E000204A8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		BA7EF9E61B7123E100204A8E /* CryptoboxExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoboxExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA7EF9EB1B7123E100204A8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA7EF9EC1B7123E100204A8E /* CryptoboxExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CryptoboxExampleTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BA7EF9CA1B7123E000204A8E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA7EF9E31B7123E100204A8E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BA7EF9C41B7123E000204A8E = {
+			isa = PBXGroup;
+			children = (
+				BA7EF9CF1B7123E000204A8E /* CryptoboxExample */,
+				BA7EF9E91B7123E100204A8E /* CryptoboxExampleTests */,
+				BA7EF9CE1B7123E000204A8E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BA7EF9CE1B7123E000204A8E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BA7EF9CD1B7123E000204A8E /* CryptoboxExample.app */,
+				BA7EF9E61B7123E100204A8E /* CryptoboxExampleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BA7EF9CF1B7123E000204A8E /* CryptoboxExample */ = {
+			isa = PBXGroup;
+			children = (
+				BA7EF9D41B7123E000204A8E /* AppDelegate.h */,
+				BA7EF9D51B7123E000204A8E /* AppDelegate.m */,
+				BA7EF9D71B7123E000204A8E /* ViewController.h */,
+				BA7EF9D81B7123E000204A8E /* ViewController.m */,
+				BA7EF9DA1B7123E000204A8E /* Main.storyboard */,
+				BA7EF9DD1B7123E000204A8E /* Images.xcassets */,
+				BA7EF9DF1B7123E000204A8E /* LaunchScreen.xib */,
+				BA7EF9D01B7123E000204A8E /* Supporting Files */,
+			);
+			path = CryptoboxExample;
+			sourceTree = "<group>";
+		};
+		BA7EF9D01B7123E000204A8E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BA7EF9D11B7123E000204A8E /* Info.plist */,
+				BA7EF9D21B7123E000204A8E /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BA7EF9E91B7123E100204A8E /* CryptoboxExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				BA7EF9EC1B7123E100204A8E /* CryptoboxExampleTests.m */,
+				BA7EF9EA1B7123E100204A8E /* Supporting Files */,
+			);
+			path = CryptoboxExampleTests;
+			sourceTree = "<group>";
+		};
+		BA7EF9EA1B7123E100204A8E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BA7EF9EB1B7123E100204A8E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BA7EF9CC1B7123E000204A8E /* CryptoboxExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA7EF9F01B7123E100204A8E /* Build configuration list for PBXNativeTarget "CryptoboxExample" */;
+			buildPhases = (
+				BA7EF9C91B7123E000204A8E /* Sources */,
+				BA7EF9CA1B7123E000204A8E /* Frameworks */,
+				BA7EF9CB1B7123E000204A8E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CryptoboxExample;
+			productName = CryptoboxExample;
+			productReference = BA7EF9CD1B7123E000204A8E /* CryptoboxExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BA7EF9E51B7123E100204A8E /* CryptoboxExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA7EF9F31B7123E100204A8E /* Build configuration list for PBXNativeTarget "CryptoboxExampleTests" */;
+			buildPhases = (
+				BA7EF9E21B7123E100204A8E /* Sources */,
+				BA7EF9E31B7123E100204A8E /* Frameworks */,
+				BA7EF9E41B7123E100204A8E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA7EF9E81B7123E100204A8E /* PBXTargetDependency */,
+			);
+			name = CryptoboxExampleTests;
+			productName = CryptoboxExampleTests;
+			productReference = BA7EF9E61B7123E100204A8E /* CryptoboxExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BA7EF9C51B7123E000204A8E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = Cryptobox;
+				TargetAttributes = {
+					BA7EF9CC1B7123E000204A8E = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					BA7EF9E51B7123E100204A8E = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = BA7EF9CC1B7123E000204A8E;
+					};
+				};
+			};
+			buildConfigurationList = BA7EF9C81B7123E000204A8E /* Build configuration list for PBXProject "CryptoboxExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BA7EF9C41B7123E000204A8E;
+			productRefGroup = BA7EF9CE1B7123E000204A8E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BA7EF9CC1B7123E000204A8E /* CryptoboxExample */,
+				BA7EF9E51B7123E100204A8E /* CryptoboxExampleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BA7EF9CB1B7123E000204A8E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA7EF9DC1B7123E000204A8E /* Main.storyboard in Resources */,
+				BA7EF9E11B7123E000204A8E /* LaunchScreen.xib in Resources */,
+				BA7EF9DE1B7123E000204A8E /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA7EF9E41B7123E100204A8E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BA7EF9C91B7123E000204A8E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA7EF9D91B7123E000204A8E /* ViewController.m in Sources */,
+				BA7EF9D61B7123E000204A8E /* AppDelegate.m in Sources */,
+				BA7EF9D31B7123E000204A8E /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA7EF9E21B7123E100204A8E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA7EF9ED1B7123E100204A8E /* CryptoboxExampleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BA7EF9E81B7123E100204A8E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BA7EF9CC1B7123E000204A8E /* CryptoboxExample */;
+			targetProxy = BA7EF9E71B7123E100204A8E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BA7EF9DA1B7123E000204A8E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BA7EF9DB1B7123E000204A8E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BA7EF9DF1B7123E000204A8E /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BA7EF9E01B7123E000204A8E /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BA7EF9EE1B7123E100204A8E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BA7EF9EF1B7123E100204A8E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BA7EF9F11B7123E100204A8E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CryptoboxExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BA7EF9F21B7123E100204A8E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CryptoboxExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		BA7EF9F41B7123E100204A8E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CryptoboxExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CryptoboxExample.app/CryptoboxExample";
+			};
+			name = Debug;
+		};
+		BA7EF9F51B7123E100204A8E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CryptoboxExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CryptoboxExample.app/CryptoboxExample";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BA7EF9C81B7123E000204A8E /* Build configuration list for PBXProject "CryptoboxExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA7EF9EE1B7123E100204A8E /* Debug */,
+				BA7EF9EF1B7123E100204A8E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA7EF9F01B7123E100204A8E /* Build configuration list for PBXNativeTarget "CryptoboxExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA7EF9F11B7123E100204A8E /* Debug */,
+				BA7EF9F21B7123E100204A8E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA7EF9F31B7123E100204A8E /* Build configuration list for PBXNativeTarget "CryptoboxExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA7EF9F41B7123E100204A8E /* Debug */,
+				BA7EF9F51B7123E100204A8E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BA7EF9C51B7123E000204A8E /* Project object */;
+}
