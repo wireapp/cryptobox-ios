@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "CBTypes.h"
 #import "NSError+Cryptobox.h"
 #import "CBSession.h"
-#import "CBBox.h"
+#import "CBCryptoBox.h"
 #import "CBPreKey.h"

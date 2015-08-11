@@ -8,8 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+#import "CBTypes.h"
+
 
 
 @interface CBPreKey : NSObject
+
+@property (nonatomic) NSData *content;
+
+
+@end
+
+@interface CBPreKey (Internal)
+
+- (instancetype)initWithCBoxVecRef:(CBoxVecRef)vec;
 
 @end

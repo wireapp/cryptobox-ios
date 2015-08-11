@@ -9,7 +9,25 @@
 #import "CBPreKey.h"
 
 
+@interface CBPreKey () {
+    CBoxVecRef _boxVec;
+}
+
+@end
 
 @implementation CBPreKey
+
+@end
+
+@implementation CBPreKey (Internal)
+
+- (instancetype)initWithCBoxVecRef:(CBoxVecRef)vec
+{
+    self = [super init];
+    if (self) {
+        _boxVec = vec;
+    }
+    return self;
+}
 
 @end
