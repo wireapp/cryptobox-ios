@@ -30,18 +30,9 @@
     [super tearDown];
 }
 
-static NSURL *CreateTemporaryDirectoryAndReturnURL() {
-    NSError *error = nil;
-    NSURL *directoryURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:[[NSProcessInfo processInfo] globallyUniqueString]] isDirectory:YES];
-    [[NSFileManager defaultManager] createDirectoryAtURL:directoryURL withIntermediateDirectories:YES attributes:nil error:&error];
-    
-    return directoryURL;
-}
-
-
 - (void)testThatCryptoBoxInitWithPathWorks
 {
-    NSURL *directory = CreateTemporaryDirectoryAndReturnURL();
+    NSURL *directory = CBCreateTemporaryDirectoryAndReturnURL()();
     NSError *error = nil;
     CBCryptoBox *box = [CBCryptoBox cryptoBoxWithPathURL:directory error:&error];
     XCTAssertNil(error);

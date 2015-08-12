@@ -15,6 +15,10 @@
 
 
 
+FOUNDATION_EXPORT NSURL *__nullable CBCreateTemporaryDirectoryAndReturnURL();
+
+
+
 @interface CBCryptoBox : NSObject
 
 /// Opens the crypto box at the directory path
