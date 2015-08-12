@@ -25,6 +25,10 @@
     CBCryptoBox *box = [CBCryptoBox cryptoBoxWithPathURL:directory error:&error];
     XCTAssertNil(error);
     XCTAssertNotNil(box);
+    
+    NSData *localFingerprint = [box localFingerprint:&error];
+    XCTAssertNil(error);
+    XCTAssertNotNil(localFingerprint);
 }
 
 @end

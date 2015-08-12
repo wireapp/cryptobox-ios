@@ -150,6 +150,17 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
     }
 }
 
+- (nullable NSData *)localFingerprint:(NSError *__nullable * __nullable)error
+{
+    @synchronized(self) {
+        CBReturnWithErrorAndValueIfClosed([self isClosed], error, nil);
+        CBoxVecRef vector = NULL;
+        cbox_fingerprint_local(_boxBacking, &vector);
+        CBPreKey *preKey = [[CBPreKey alloc] initWithCBoxVecRef:vector];
+        return [preKey content];
+    }
+}
+
 - (nullable NSArray *)generatePreKeys:(NSRange)range error:(NSError *__nullable * __nullable)error
 {
     if (range.location > CBMaxPreKeyID) {
