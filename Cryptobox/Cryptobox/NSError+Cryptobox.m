@@ -78,6 +78,15 @@ CBErrorCode CBErrorCodeFromCBoxResult(CBoxResult result)
     return [self cb_errorWithErrorCode:code userInfo:nil];
 }
 
++ (instancetype)cb_errorWithErrorCode:(CBErrorCode)code description:(NSString *)description
+{
+    if (description.length > 0) {
+        return [self cb_errorWithErrorCode:code userInfo:@{NSLocalizedDescriptionKey: description}];
+    } else {
+        return [self cb_errorWithErrorCode:code userInfo:nil];
+    }
+}
+
 + (instancetype)cb_errorWithErrorCode:(CBErrorCode)code userInfo:(NSDictionary *)dict
 {
     NSError *error = [NSError errorWithDomain:CBErrorDomain code:code userInfo:dict];

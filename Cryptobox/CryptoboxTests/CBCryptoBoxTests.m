@@ -32,7 +32,7 @@
 
 - (void)testThatCryptoBoxInitWithPathWorks
 {
-    NSURL *directory = CBCreateTemporaryDirectoryAndReturnURL()();
+    NSURL *directory = CBCreateTemporaryDirectoryAndReturnURL();
     NSError *error = nil;
     CBCryptoBox *box = [CBCryptoBox cryptoBoxWithPathURL:directory error:&error];
     XCTAssertNil(error);

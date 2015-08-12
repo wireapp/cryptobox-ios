@@ -26,7 +26,9 @@ typedef NS_ENUM(NSInteger, CBErrorCode) {
     CBErrorCodeUTF8Error,
     CBErrorCodeNULError,
     CBErrorCodeEncodeError,
-    CBErrorCodeIllegalState
+    /// ___ is closed already and gets called
+    CBErrorCodeIllegalState,
+    CBErrorCodeIllegalArgument
 };
 
 FOUNDATION_EXPORT NSString *const CBErrorDomain;
@@ -37,6 +39,8 @@ FOUNDATION_EXPORT CBErrorCode CBErrorCodeFromCBoxResult(CBoxResult result);
 @interface NSError (Cryptobox)
 
 + (instancetype)cb_errorWithErrorCode:(CBErrorCode)code;
+
++ (instancetype)cb_errorWithErrorCode:(CBErrorCode)code description:(NSString *)description;
 
 + (instancetype)cb_errorWithErrorCode:(CBErrorCode)code userInfo:(NSDictionary *)dict;
 
