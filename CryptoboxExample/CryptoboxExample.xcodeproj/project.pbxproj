@@ -103,8 +103,6 @@
 		BA02601B1B79FCB800139D15 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
 		BA02601C1B79FCB800139D15 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		BA02601D1B79FCB800139D15 /* sodium.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sodium.h; sourceTree = "<group>"; };
-		BA02601F1B79FCB800139D15 /* libcryptobox.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcryptobox.a; sourceTree = "<group>"; };
-		BA0260201B79FCB800139D15 /* libsodium.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libsodium.a; sourceTree = "<group>"; };
 		BA7583EF1B7B86F00048FD6A /* Cryptobox.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Cryptobox.xcodeproj; path = ../Cryptobox/Cryptobox.xcodeproj; sourceTree = "<group>"; };
 		BA7EF9CD1B7123E000204A8E /* CryptoboxExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoboxExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7EF9D11B7123E000204A8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -144,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				BA025FE61B79FCB800139D15 /* include */,
-				BA02601E1B79FCB800139D15 /* lib */,
 			);
 			name = "cryptobox-ios";
 			path = "../dist/cryptobox-ios";
@@ -217,15 +214,6 @@
 				BA02601C1B79FCB800139D15 /* version.h */,
 			);
 			path = sodium;
-			sourceTree = "<group>";
-		};
-		BA02601E1B79FCB800139D15 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				BA02601F1B79FCB800139D15 /* libcryptobox.a */,
-				BA0260201B79FCB800139D15 /* libsodium.a */,
-			);
-			path = lib;
 			sourceTree = "<group>";
 		};
 		BA7583F01B7B86F00048FD6A /* Products */ = {

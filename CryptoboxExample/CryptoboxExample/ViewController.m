@@ -10,6 +10,8 @@
 
 #import "cbox.h"
 
+#import "CryptoboxiOS/Cryptobox.h"
+
 
 @interface ViewController ()
 
@@ -29,20 +31,47 @@
     [super viewDidAppear:animated];
     
     [self executeBasicTests];
+    [self executeCryptoboxTests];
 }
 
-static NSURL *CreateTemporaryDirectoryAndReturnURL() {
+- (void)executeCryptoboxTests
+{
     NSError *error = nil;
-    NSURL *directoryURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:[[NSProcessInfo processInfo] globallyUniqueString]] isDirectory:YES];
-    [[NSFileManager defaultManager] createDirectoryAtURL:directoryURL withIntermediateDirectories:YES attributes:nil error:&error];
-
-    return directoryURL;
+    CBCryptoBox *aliceBox = [CBCryptoBox cryptoBoxWithPathURL:CBCreateTemporaryDirectoryAndReturnURL() error:&error];
+    NSAssert(error == nil, @"error");
+    NSAssert(aliceBox, @"alice box init failed");
+    
+    CBCryptoBox *bobBox = [CBCryptoBox cryptoBoxWithPathURL:CBCreateTemporaryDirectoryAndReturnURL() error:&error];
+    NSAssert(error == nil, @"error");
+    NSAssert(bobBox, @"bob box init failed");
+    
+    
+    NSArray *preKeys = [bobBox generatePreKeys:(NSRange){0, 1} error:&error];
+    NSAssert(error == nil, @"error");
+    NSAssert(preKeys.count == 1, @"failed at prekey generation");
+    
+    CBPreKey *bobPreKey = preKeys[0];
+    NSAssert([bobPreKey isKindOfClass:[CBPreKey class]], @"Wrong class for pre key");
+    
+    CBSession *alice = [bobBox sessionWithId:@"alice" preKey:bobPreKey error:&error];
+    NSAssert(error == nil, @"error");
+    NSAssert(alice, @"Failed at init alice session");
+    
+    
+    BOOL result = [alice save:&error];
+    NSAssert(error == nil, @"error");
+    NSAssert(result == YES, @"session save failed");
+    
+    NSData *helloBobMessageData = [@"Hello Bob" dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *cipherData = [alice encrypt:helloBobMessageData error:&error];
+    
+    // TODO: finish this
 }
 
 - (void)executeBasicTests
 {
-    NSURL *urlA = CreateTemporaryDirectoryAndReturnURL();
-    NSURL *urlB = CreateTemporaryDirectoryAndReturnURL();
+    NSURL *urlA = CBCreateTemporaryDirectoryAndReturnURL();
+    NSURL *urlB = CBCreateTemporaryDirectoryAndReturnURL();
 
     NSAssert(urlA != nil, @"");
     NSAssert(urlB != nil, @"");
