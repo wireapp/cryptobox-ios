@@ -21,14 +21,14 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		5445F57A1B7B4D9900F14F36 /* libcryptobox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7EF9B31B710B7100204A8E /* libcryptobox.a */; };
+		5445F57B1B7B4D9B00F14F36 /* libsodium.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7EF9B41B710B7100204A8E /* libsodium.a */; };
 		BA025F981B79F62A00139D15 /* CBCryptoBoxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA025F971B79F62A00139D15 /* CBCryptoBoxTests.m */; };
 		BA7448761B7A3143002D9941 /* CBTypes.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA025F921B79DAAE00139D15 /* CBTypes.h */; };
 		BA74487D1B7A7F75002D9941 /* CBSessionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = BA74487C1B7A7F75002D9941 /* CBSessionMessage.m */; };
 		BA74487E1B7A7FC4002D9941 /* CBSessionMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA74487B1B7A7F75002D9941 /* CBSessionMessage.h */; };
 		BA7EF9621B7109B600204A8E /* Cryptobox.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7EF9611B7109B600204A8E /* Cryptobox.h */; };
 		BA7EF96A1B7109B600204A8E /* libCryptoboxiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7EF95E1B7109B600204A8E /* libCryptoboxiOS.a */; };
-		BA7EF9B51B710B7100204A8E /* libcryptobox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7EF9B31B710B7100204A8E /* libcryptobox.a */; };
-		BA7EF9B61B710B7100204A8E /* libsodium.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7EF9B41B710B7100204A8E /* libsodium.a */; };
 		BA7EF9B91B710BB000204A8E /* NSError+Cryptobox.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7EF9B81B710BB000204A8E /* NSError+Cryptobox.m */; };
 		BA7EF9BC1B7112FD00204A8E /* CBSession.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7EF9BB1B7112FD00204A8E /* CBSession.m */; };
 		BA7EF9BF1B71132000204A8E /* CBCryptoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7EF9BE1B71132000204A8E /* CBCryptoBox.m */; };
@@ -149,8 +149,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA7EF9B61B710B7100204A8E /* libsodium.a in Frameworks */,
-				BA7EF9B51B710B7100204A8E /* libcryptobox.a in Frameworks */,
+				5445F57A1B7B4D9900F14F36 /* libcryptobox.a in Frameworks */,
+				5445F57B1B7B4D9B00F14F36 /* libsodium.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,7 +417,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\nLIB_TARGET_NAME=CryptoboxiOS\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target ${LIB_TARGET_NAME} ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\nxcodebuild -target ${LIB_TARGET_NAME} -configuration ${CONFIGURATION} -sdk iphonesimulator -arch x86_64 -arch i386 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 2. Create universal binary file using lipo\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/lib${LIB_TARGET_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${LIB_TARGET_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${LIB_TARGET_NAME}.a\"\n\n# Last touch. copy the header files. Just for convenience\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/include\" \"${UNIVERSAL_OUTPUTFOLDER}/\"";
+			shellScript = "# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\nLIB_TARGET_NAME=CryptoboxiOS\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target ${LIB_TARGET_NAME} ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos -arch armv7 -arch armv7s -arch arm64 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\nxcodebuild -target ${LIB_TARGET_NAME} -configuration ${CONFIGURATION} -sdk iphonesimulator -arch x86_64 -arch i386 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 2. Create universal binary file using lipo\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/lib${LIB_TARGET_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${LIB_TARGET_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${LIB_TARGET_NAME}.a\"\n\n# Last touch. copy the header files. Just for convenience\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/include\" \"${UNIVERSAL_OUTPUTFOLDER}/\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -552,7 +552,7 @@
 			buildSettings = {
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/azeta/Documents/Development/cryptobox-ios/dist/cryptobox-ios/lib",
+					"${SRCROOT}/../dist/cryptobox-ios/lib",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -565,7 +565,7 @@
 			buildSettings = {
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/azeta/Documents/Development/cryptobox-ios/dist/cryptobox-ios/lib",
+					"${SRCROOT}/../dist/cryptobox-ios/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
