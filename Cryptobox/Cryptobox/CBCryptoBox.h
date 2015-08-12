@@ -17,6 +17,8 @@
 
 FOUNDATION_EXPORT NSURL *__nullable CBCreateTemporaryDirectoryAndReturnURL();
 
+FOUNDATION_EXPORT const NSUInteger CBMaxPreKeyID;
+
 
 
 @interface CBCryptoBox : NSObject
@@ -40,6 +42,10 @@ FOUNDATION_EXPORT NSURL *__nullable CBCreateTemporaryDirectoryAndReturnURL();
 - (nullable CBSessionMessage *)sessionMessageWithId:(nonnull NSString *)sessionId message:(nonnull NSData *)message error:(NSError *__nullable * __nullable)error;
 
 - (nullable CBSession *)sessionById:(nonnull NSString *)sessionId error:(NSError *__nullable * __nullable)error;
+
+/// NSRange.location = start
+/// NSRange.length = number
+- (nullable NSArray *)generatePreKeys:(NSRange)range error:(NSError *__nullable * __nullable)error;
 
 ///
 - (BOOL)closeAllSessions:(NSError *__nullable * __nullable)error;

@@ -28,6 +28,8 @@ NSURL *__nullable CBCreateTemporaryDirectoryAndReturnURL()
     return directoryURL;
 }
 
+const NSUInteger CBMaxPreKeyID = 0xFFFE;
+
 
 
 @interface CBCryptoBox () {
@@ -145,6 +147,38 @@ NSURL *__nullable CBCreateTemporaryDirectoryAndReturnURL()
         }
         
         return session;
+    }
+}
+
+- (nullable NSArray *)generatePreKeys:(NSRange)range error:(NSError *__nullable * __nullable)error
+{
+    if (range.location > CBMaxPreKeyID) {
+        if (error != NULL) {
+            *error = [NSError cb_errorWithErrorCode:CBErrorCodeIllegalArgument description:[NSString stringWithFormat:@"location must be >= 0 and <= %lu", (unsigned long)CBMaxPreKeyID]];
+            return nil;
+        }
+    }
+    if (range.length < 1 || range.length > CBMaxPreKeyID) {
+        if (error != NULL) {
+            *error = [NSError cb_errorWithErrorCode:CBErrorCodeIllegalArgument description:[NSString stringWithFormat:@"length must be >= 1 and <=  %lu", (unsigned long)CBMaxPreKeyID]];
+            return nil;
+        }
+    }
+    @synchronized(self) {
+        CBReturnWithErrorAndValueIfClosed([self isClosed], error, nil);
+        
+        NSMutableArray *newKeys = [NSMutableArray arrayWithCapacity:range.length];
+        for (NSUInteger i = 0; i < range.length; ++i) {
+            uint16_t newId = (range.location + i) % 0xFFFF;
+            CBoxVecRef preKeyBacking = NULL;
+            CBoxResult result = cbox_new_prekey(_boxBacking, newId, &preKeyBacking);
+            CBAssertResultIsSuccess(result);
+            CBReturnWithErrorAndValueIfNotSuccess(result, error, nil);
+            CBPreKey *preKey = [[CBPreKey alloc] initWithCBoxVecRef:preKeyBacking];
+            [newKeys addObject:preKey];
+        }
+        
+        return newKeys;
     }
 }
 

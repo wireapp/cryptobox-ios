@@ -27,6 +27,7 @@
 		BA7448761B7A3143002D9941 /* CBTypes.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA025F921B79DAAE00139D15 /* CBTypes.h */; };
 		BA74487D1B7A7F75002D9941 /* CBSessionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = BA74487C1B7A7F75002D9941 /* CBSessionMessage.m */; };
 		BA74487E1B7A7FC4002D9941 /* CBSessionMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA74487B1B7A7F75002D9941 /* CBSessionMessage.h */; };
+		BA7583EE1B7B82030048FD6A /* CBCryptoBoxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7583ED1B7B82030048FD6A /* CBCryptoBoxTests.m */; };
 		BA7EF9621B7109B600204A8E /* Cryptobox.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7EF9611B7109B600204A8E /* Cryptobox.h */; };
 		BA7EF96A1B7109B600204A8E /* libCryptoboxiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7EF95E1B7109B600204A8E /* libCryptoboxiOS.a */; };
 		BA7EF9B91B710BB000204A8E /* NSError+Cryptobox.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7EF9B81B710BB000204A8E /* NSError+Cryptobox.m */; };
@@ -74,6 +75,7 @@
 		BA74487A1B7A69D7002D9941 /* CBMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBMacros.h; sourceTree = "<group>"; };
 		BA74487B1B7A7F75002D9941 /* CBSessionMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBSessionMessage.h; sourceTree = "<group>"; };
 		BA74487C1B7A7F75002D9941 /* CBSessionMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBSessionMessage.m; sourceTree = "<group>"; };
+		BA7583ED1B7B82030048FD6A /* CBCryptoBoxTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBCryptoBoxTests.m; sourceTree = "<group>"; };
 		BA7EF95E1B7109B600204A8E /* libCryptoboxiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCryptoboxiOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7EF9611B7109B600204A8E /* Cryptobox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cryptobox.h; sourceTree = "<group>"; };
 		BA7EF9691B7109B600204A8E /* CryptoboxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoboxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,6 +211,7 @@
 			children = (
 				BA7EF96E1B7109B600204A8E /* Supporting Files */,
 				BA025F971B79F62A00139D15 /* CBCryptoBoxInitTest.m */,
+				BA7583ED1B7B82030048FD6A /* CBCryptoBoxTests.m */,
 			);
 			path = CryptoboxTests;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA025F981B79F62A00139D15 /* CBCryptoBoxInitTest.m in Sources */,
+				BA7583EE1B7B82030048FD6A /* CBCryptoBoxTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

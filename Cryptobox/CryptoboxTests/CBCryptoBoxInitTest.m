@@ -11,6 +11,7 @@
 
 #import "Cryptobox.h"
 
+/// Very simple box init test
 @interface CBCryptoBoxInitTest : XCTestCase
 
 @end
