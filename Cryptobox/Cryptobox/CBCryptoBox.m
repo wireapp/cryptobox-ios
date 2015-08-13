@@ -132,9 +132,9 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
 
 - (nullable CBSession *)sessionById:(nonnull NSString *)sessionId error:(NSError *__nullable * __nullable)error
 {
+    NSParameterAssert(sessionId);
+    
     @synchronized(self) {
-        NSParameterAssert(sessionId);
-        
         CBReturnWithErrorAndValueIfClosed([self isClosed], error, nil);
         CBSession *session = [self.sessions objectForKey:sessionId];
         if (! session) {
@@ -147,6 +147,24 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
         }
         
         return session;
+    }
+}
+
+- (BOOL)deleteSessionWithId:(NSString *)sessionId error:(NSError *__nullable * __nullable)error
+{
+    NSParameterAssert(sessionId);
+    @synchronized(self) {
+        CBReturnWithErrorAndValueIfClosed([self isClosed], error, nil);
+        CBSession *session = [self.sessions objectForKey:sessionId];
+        if (session) {
+            [session close];
+            [self.sessions removeObjectForKey:sessionId];
+        }
+        CBoxResult result = cbox_session_delete(_boxBacking, [sessionId UTF8String]);
+        CBAssertResultIsSuccess(result);
+        CBReturnWithErrorAndValueIfNotSuccess(result, error, NO);
+        
+        return YES;
     }
 }
 
@@ -223,13 +241,13 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
         if ([self isClosed]) {
             return YES;
         }
-
+        BOOL success = YES;
         if (! [self closeAllSessions:error]) {
-            return NO;
+            success = NO;
         }
         [self closeInternally];
         
-        return YES;
+        return success;
     }
 }
 
