@@ -10,6 +10,7 @@
 
 #import "CBMacros.h"
 #import "CBPreKey.h"
+#import "CBVector.h"
 
 
 
@@ -71,9 +72,8 @@
         CBoxResult result = cbox_encrypt(_sessionBacking, bytes, sizeof(bytes), &cipher);
         CBAssertResultIsSuccess(result);
         CBReturnWithErrorAndValueIfNotSuccess(result, error, nil);
-        CBPreKey *preKey = [[CBPreKey alloc] initWithCBoxVecRef:cipher];
-        
-        return [preKey content];
+        CBVector *vector = [[CBVector alloc] initWithCBoxVecRef:cipher];
+        return vector.data;
     }
 }
 
@@ -91,9 +91,9 @@
         CBoxResult result = cbox_decrypt(_sessionBacking, bytes, sizeof(bytes), &plain);
         CBAssertResultIsSuccess(result);
         CBReturnWithErrorAndValueIfNotSuccess(result, error, nil);
-        CBPreKey *preKey = [[CBPreKey alloc] initWithCBoxVecRef:plain];
+        CBVector *vector = [[CBVector alloc] initWithCBoxVecRef:plain];
         
-        return [preKey content];
+        return vector.data;
     }
 }
 

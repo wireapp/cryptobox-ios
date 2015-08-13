@@ -12,5 +12,6 @@
 #import "NSError+Cryptobox.h"
 #import "CBSession.h"
 #import "CBCryptoBox.h"
+#import "CBVector.h"
 #import "CBPreKey.h"
 #import "CBSessionMessage.h"

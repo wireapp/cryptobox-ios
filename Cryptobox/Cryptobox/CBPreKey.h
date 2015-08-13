@@ -9,23 +9,18 @@
 #import <Foundation/Foundation.h>
 
 #import "CBTypes.h"
+#import "CBVector.h"
 
 
 
-@interface CBPreKey : NSObject
-
-@property (nonatomic, readonly, nonnull) NSData *content;
+@interface CBPreKey : CBVector
 
 @end
 
+
+
 @interface CBPreKey (Internal)
 
-- (nonnull instancetype)initWithCBoxVecRef:(nonnull CBoxVecRef)vec;
-
 + (nullable instancetype)preKeyWithId:(uint16_t)identifier boxRef:(nonnull CBoxRef)boxRef error:(NSError *__nullable * __nullable)error;
-
-- (nonnull uint8_t *)data;
-
-- (uint32_t)length;
 
 @end

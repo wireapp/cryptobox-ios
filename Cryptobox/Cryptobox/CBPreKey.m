@@ -10,25 +10,30 @@
 
 #import "NSError+Cryptobox.h"
 #import "CBMacros.h"
+#import "CBVector.h"
 
 
 
-@interface CBPreKey () {
-    CBoxVecRef _boxVec;
-}
+@interface CBPreKey ()
 
-@property (nonatomic, readwrite) NSData *content;
+@property (nonatomic) CBVector *vector;
 
 @end
 
 @implementation CBPreKey
 
-- (void)dealloc
+- (instancetype)initWithVector:(CBVector *)vector
 {
-    if (_boxVec != NULL) {
-        cbox_vec_free(_boxVec);
-        _boxVec = NULL;
+    self = [super init];
+    if (self) {
+        self.vector = vector;
     }
+    return self;
+}
+
+- (NSData * __nullable)content
+{
+    return self.vector.data;
 }
 
 @end
@@ -36,19 +41,6 @@
 
 
 @implementation CBPreKey (Internal)
-
-- (nonnull instancetype)initWithCBoxVecRef:(nonnull CBoxVecRef)vec
-{
-    self = [super init];
-    if (self) {
-        _boxVec = vec;
-        uint32_t length = cbox_vec_len(_boxVec);
-        uint8_t *data = cbox_vec_data(_boxVec);
-        NSData *content = [NSData dataWithBytes:data length:length];
-        self.content = content;
-    }
-    return self;
-}
 
 + (nullable instancetype)preKeyWithId:(uint16_t)identifier boxRef:(nonnull CBoxRef)boxRef error:(NSError *__nullable * __nullable)error
 {
@@ -61,22 +53,12 @@
         return nil;
     }
     
-    CBoxVecRef preKeyBacking = NULL;
-    CBoxResult result = cbox_new_prekey(boxRef, identifier, &preKeyBacking);
+    CBoxVecRef vectorBacking = NULL;
+    CBoxResult result = cbox_new_prekey(boxRef, identifier, &vectorBacking);
     CBAssertResultIsSuccess(result);
     CBReturnWithErrorAndValueIfNotSuccess(result, error, nil);
-    CBPreKey *preKey = [[CBPreKey alloc] initWithCBoxVecRef:preKeyBacking];
-    return preKey;
-}
-
-- (nonnull uint8_t *)data
-{
-    return cbox_vec_data(_boxVec);
-}
-
-- (uint32_t)length
-{
-    return cbox_vec_len(_boxVec);
+    CBVector *vector = [[CBVector alloc] initWithCBoxVecRef:vectorBacking];
+    return [[CBPreKey alloc] initWithVector:vector];
 }
 
 @end

@@ -28,6 +28,7 @@
 		BA74487D1B7A7F75002D9941 /* CBSessionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = BA74487C1B7A7F75002D9941 /* CBSessionMessage.m */; };
 		BA74487E1B7A7FC4002D9941 /* CBSessionMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA74487B1B7A7F75002D9941 /* CBSessionMessage.h */; };
 		BA7583EE1B7B82030048FD6A /* CBCryptoBoxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7583ED1B7B82030048FD6A /* CBCryptoBoxTests.m */; };
+		BA7584071B7CFB120048FD6A /* CBVector.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7584061B7CFB120048FD6A /* CBVector.m */; };
 		BA7EF9621B7109B600204A8E /* Cryptobox.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7EF9611B7109B600204A8E /* Cryptobox.h */; };
 		BA7EF96A1B7109B600204A8E /* libCryptoboxiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7EF95E1B7109B600204A8E /* libCryptoboxiOS.a */; };
 		BA7EF9B91B710BB000204A8E /* NSError+Cryptobox.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7EF9B81B710BB000204A8E /* NSError+Cryptobox.m */; };
@@ -76,6 +77,8 @@
 		BA74487B1B7A7F75002D9941 /* CBSessionMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBSessionMessage.h; sourceTree = "<group>"; };
 		BA74487C1B7A7F75002D9941 /* CBSessionMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBSessionMessage.m; sourceTree = "<group>"; };
 		BA7583ED1B7B82030048FD6A /* CBCryptoBoxTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBCryptoBoxTests.m; sourceTree = "<group>"; };
+		BA7584051B7CFB120048FD6A /* CBVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBVector.h; sourceTree = "<group>"; };
+		BA7584061B7CFB120048FD6A /* CBVector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBVector.m; sourceTree = "<group>"; };
 		BA7EF95E1B7109B600204A8E /* libCryptoboxiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCryptoboxiOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7EF9611B7109B600204A8E /* Cryptobox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cryptobox.h; sourceTree = "<group>"; };
 		BA7EF9691B7109B600204A8E /* CryptoboxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoboxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,15 +193,17 @@
 			isa = PBXGroup;
 			children = (
 				BA7EF9611B7109B600204A8E /* Cryptobox.h */,
+				BA025F921B79DAAE00139D15 /* CBTypes.h */,
 				BA7EF9B71B710BB000204A8E /* NSError+Cryptobox.h */,
 				BA7EF9B81B710BB000204A8E /* NSError+Cryptobox.m */,
 				BA7EF9BD1B71132000204A8E /* CBCryptoBox.h */,
 				BA7EF9BE1B71132000204A8E /* CBCryptoBox.m */,
 				BA7EF9BA1B7112FD00204A8E /* CBSession.h */,
 				BA7EF9BB1B7112FD00204A8E /* CBSession.m */,
+				BA7584051B7CFB120048FD6A /* CBVector.h */,
+				BA7584061B7CFB120048FD6A /* CBVector.m */,
 				BA7EF9C01B71136600204A8E /* CBPreKey.h */,
 				BA7EF9C11B71136600204A8E /* CBPreKey.m */,
-				BA025F921B79DAAE00139D15 /* CBTypes.h */,
 				BA74487A1B7A69D7002D9941 /* CBMacros.h */,
 				BA74487B1B7A7F75002D9941 /* CBSessionMessage.h */,
 				BA74487C1B7A7F75002D9941 /* CBSessionMessage.m */,
@@ -430,6 +435,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA7EF9BF1B71132000204A8E /* CBCryptoBox.m in Sources */,
+				BA7584071B7CFB120048FD6A /* CBVector.m in Sources */,
 				BA7EF9B91B710BB000204A8E /* NSError+Cryptobox.m in Sources */,
 				BA7EF9C21B71136600204A8E /* CBPreKey.m in Sources */,
 				BA74487D1B7A7F75002D9941 /* CBSessionMessage.m in Sources */,
