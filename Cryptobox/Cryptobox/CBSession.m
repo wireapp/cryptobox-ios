@@ -8,6 +8,8 @@
 
 #import "CBSession.h"
 
+#import "cbox.h"
+#import "CBTypes.h"
 #import "CBMacros.h"
 #import "CBPreKey.h"
 #import "CBVector.h"
@@ -94,6 +96,18 @@
         CBVector *vector = [[CBVector alloc] initWithCBoxVecRef:plain];
         
         return vector.data;
+    }
+}
+
+- (nullable NSData *)remoteFingerprint
+{
+    @synchronized(self) {
+        if ([self isClosed]) {
+            return nil;
+        }
+        CBoxVecRef vectorBacking = NULL;
+        cbox_fingerprint_remote(_sessionBacking, &vectorBacking);
+        return [CBVector vectorWithCBoxVecRef:vectorBacking].data;
     }
 }
 
