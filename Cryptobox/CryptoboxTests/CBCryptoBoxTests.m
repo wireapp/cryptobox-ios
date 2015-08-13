@@ -88,4 +88,12 @@
     XCTAssertEqual(error.code, CBErrorCodeIllegalArgument);
 }
 
+- (void)testThatLastPreKeyReturnsPreKey
+{
+    NSError *error = nil;
+    CBPreKey *preKey = [self.box lastPreKey:&error];
+    XCTAssertNil(error);
+    XCTAssertNotNil(preKey);
+}
+
 @end

@@ -161,6 +161,16 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
     }
 }
 
+- (nullable CBPreKey *)lastPreKey:(NSError *__nullable * __nullable)error
+{
+    @synchronized(self) {
+        CBReturnWithErrorAndValueIfClosed([self isClosed], error, nil);
+        CBPreKey *preKey = [CBPreKey preKeyWithId:CBOX_LAST_PREKEY_ID boxRef:_boxBacking error:error];
+        
+        return preKey;
+    }
+}
+
 - (nullable NSArray *)generatePreKeys:(NSRange)range error:(NSError *__nullable * __nullable)error
 {
     if (range.location > CBMaxPreKeyID) {
@@ -181,11 +191,11 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
         NSMutableArray *newKeys = [NSMutableArray arrayWithCapacity:range.length];
         for (NSUInteger i = 0; i < range.length; ++i) {
             uint16_t newId = (range.location + i) % 0xFFFF;
-            CBoxVecRef preKeyBacking = NULL;
-            CBoxResult result = cbox_new_prekey(_boxBacking, newId, &preKeyBacking);
-            CBAssertResultIsSuccess(result);
-            CBReturnWithErrorAndValueIfNotSuccess(result, error, nil);
-            CBPreKey *preKey = [[CBPreKey alloc] initWithCBoxVecRef:preKeyBacking];
+            
+            CBPreKey *preKey = [CBPreKey preKeyWithId:newId boxRef:_boxBacking error:error];
+            if (*error != NULL || preKey == nil) {
+                return nil;
+            }
             [newKeys addObject:preKey];
         }
         

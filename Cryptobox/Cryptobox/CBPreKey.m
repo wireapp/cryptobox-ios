@@ -8,6 +8,10 @@
 
 #import "CBPreKey.h"
 
+#import "NSError+Cryptobox.h"
+#import "CBMacros.h"
+
+
 
 @interface CBPreKey () {
     CBoxVecRef _boxVec;
@@ -44,6 +48,25 @@
         self.content = content;
     }
     return self;
+}
+
++ (nullable instancetype)preKeyWithId:(uint16_t)identifier boxRef:(nonnull CBoxRef)boxRef error:(NSError *__nullable * __nullable)error
+{
+    NSParameterAssert(boxRef);
+    
+    if (! boxRef) {
+        if (error != NULL) {
+            *error = [NSError cb_errorWithErrorCode:CBErrorCodeIllegalArgument description:@"boxRef is not set"];
+        }
+        return nil;
+    }
+    
+    CBoxVecRef preKeyBacking = NULL;
+    CBoxResult result = cbox_new_prekey(boxRef, identifier, &preKeyBacking);
+    CBAssertResultIsSuccess(result);
+    CBReturnWithErrorAndValueIfNotSuccess(result, error, nil);
+    CBPreKey *preKey = [[CBPreKey alloc] initWithCBoxVecRef:preKeyBacking];
+    return preKey;
 }
 
 - (nonnull uint8_t *)data

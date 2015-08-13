@@ -45,6 +45,8 @@ FOUNDATION_EXPORT const NSUInteger CBMaxPreKeyID;
 
 - (nullable NSData *)localFingerprint:(NSError *__nullable * __nullable)error;
 
+- (nullable CBPreKey *)lastPreKey:(NSError *__nullable * __nullable)error;
+
 /// NSRange.location = start
 /// NSRange.length = number
 - (nullable NSArray *)generatePreKeys:(NSRange)range error:(NSError *__nullable * __nullable)error;

@@ -22,6 +22,8 @@
 
 - (nonnull instancetype)initWithCBoxVecRef:(nonnull CBoxVecRef)vec;
 
++ (nullable instancetype)preKeyWithId:(uint16_t)identifier boxRef:(nonnull CBoxRef)boxRef error:(NSError *__nullable * __nullable)error;
+
 - (nonnull uint8_t *)data;
 
 - (uint32_t)length;
