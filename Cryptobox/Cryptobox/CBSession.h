@@ -29,7 +29,6 @@
 
 - (BOOL)isClosed;
 
-
 @end
 
 

@@ -10,26 +10,28 @@
 
 
 
-#define CBReturnWithErrorValueAndActionIfClosed(closed, error, action) \
+#define CBReturnWithErrorIfClosed(closed, error) \
     do { \
         if (closed) { \
-            if (error != NULL) { \
-                *error = [NSError cb_errorWithErrorCode:CBErrorCodeIllegalState]; \
-            } \
-            action; \
+            CBErrorWithCBErrorCode(CBErrorCodeIllegalState, error); \
+            return; \
         } \
     } while (0)
 
-#define CBReturnWithErrorAndValueIfClosed(closed, error, value) \
-    CBReturnWithErrorValueAndActionIfClosed(closed, error, return (value))
-
-#define CBReturnWithErrorAndValueIfNotSuccess(result, error, value) \
+#define CBReturnWithErrorIfNotSuccess(result, error) \
     do { \
         if (result != CBOX_SUCCESS) { \
             CBErrorWithCBoxResult(result, error); \
-            return (value); \
+            return; \
         } \
     } while (0);
+
+#define CBErrorWithCBErrorCode(code, error) \
+    do { \
+        if (error != NULL) { \
+            *error = [NSError cb_errorWithErrorCode:code]; \
+        } \
+    } while (0)
 
 #define CBErrorWithCBoxResult(result, error) \
     do { \

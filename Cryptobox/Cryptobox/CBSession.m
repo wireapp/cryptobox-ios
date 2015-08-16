@@ -20,6 +20,8 @@
     CBoxSessionRef _sessionBacking;
 }
 
+@property (nonatomic) dispatch_queue_t sessionQueue;
+
 @end
 
 @implementation CBSession
@@ -33,82 +35,103 @@
 
 - (BOOL)save:(NSError *__nullable * __nullable)error
 {
-    @synchronized(self) {
-        CBReturnWithErrorAndValueIfClosed([self isClosed], error, NO);
+    __block BOOL success = NO;
+    dispatch_sync(self.sessionQueue, ^{
+        CBReturnWithErrorIfClosed([self isClosedInternally], error);
+        
         CBoxResult result = cbox_session_save(_sessionBacking);
         CBAssertResultIsSuccess(result);
-        CBReturnWithErrorAndValueIfNotSuccess(result, error, NO);
-        return YES;
-    }
+        CBReturnWithErrorIfNotSuccess(result, error);
+        
+        success = YES;
+    });
+
+    return success;
 }
 
 - (void)close
 {
-    @synchronized(self) {
-        if ([self isClosed]) {
+    dispatch_sync(self.sessionQueue, ^{
+        if ([self isClosedInternally]) {
             return;
         }
         [self closeInternally];
-    }
+    });
 }
 
 - (BOOL)isClosed
 {
-    @synchronized(self) {
-        return (_sessionBacking == NULL);
-    }
+    __block BOOL closed;
+    dispatch_sync(self.sessionQueue, ^{
+        closed = [self isClosedInternally];
+    });
+    return closed;
 }
 
 - (nullable NSData *)encrypt:(nonnull NSData *)plain error:(NSError *__nullable * __nullable)error
 {
-    @synchronized(self) {
+    __block NSData *data = nil;
+    dispatch_sync(self.sessionQueue, ^{
         NSParameterAssert(plain);
         
-        CBReturnWithErrorAndValueIfClosed([self isClosed], error, nil);
+        CBReturnWithErrorIfClosed([self isClosedInternally], error);
         
         CBoxVecRef cipher = NULL;
         const uint8_t *bytes = (const uint8_t*)plain.bytes;
         if (bytes == NULL) {
-            return nil;
+            CBErrorWithCBErrorCode(CBErrorCodeIllegalArgument, error);
+            return;
         }
+        
         CBoxResult result = cbox_encrypt(_sessionBacking, bytes, sizeof(bytes), &cipher);
         CBAssertResultIsSuccess(result);
-        CBReturnWithErrorAndValueIfNotSuccess(result, error, nil);
+        CBReturnWithErrorIfNotSuccess(result, error);
+
         CBVector *vector = [[CBVector alloc] initWithCBoxVecRef:cipher];
-        return vector.data;
-    }
+        data = vector.data;
+    });
+    
+    return data;
 }
 
 - (nullable NSData *)decrypt:(nonnull NSData *)cipher error:(NSError *__nullable * __nullable)error
 {
-    @synchronized(self) {
+    __block NSData *data = nil;
+    dispatch_sync(self.sessionQueue, ^{
         NSParameterAssert(cipher);
         
-        CBReturnWithErrorAndValueIfClosed([self isClosed], error, nil);
+        CBReturnWithErrorIfClosed([self isClosedInternally], error);
+        
         const uint8_t *bytes = (const uint8_t*)cipher.bytes;
         if (bytes == NULL) {
-            return nil;
+            CBErrorWithCBErrorCode(CBErrorCodeIllegalArgument, error);
+            return;
         }
         CBoxVecRef plain = NULL;
         CBoxResult result = cbox_decrypt(_sessionBacking, bytes, sizeof(bytes), &plain);
         CBAssertResultIsSuccess(result);
-        CBReturnWithErrorAndValueIfNotSuccess(result, error, nil);
+        CBReturnWithErrorIfNotSuccess(result, error);
+        
         CBVector *vector = [[CBVector alloc] initWithCBoxVecRef:plain];
         
-        return vector.data;
-    }
+        data = vector.data;
+
+    });
+    return data;
 }
 
 - (nullable NSData *)remoteFingerprint
 {
-    @synchronized(self) {
-        if ([self isClosed]) {
-            return nil;
+    __block NSData *fingerprint = nil;
+    dispatch_sync(self.sessionQueue, ^{
+        if ([self isClosedInternally]) {
+            return;
         }
         CBoxVecRef vectorBacking = NULL;
         cbox_fingerprint_remote(_sessionBacking, &vectorBacking);
-        return [CBVector vectorWithCBoxVecRef:vectorBacking].data;
-    }
+        fingerprint = [CBVector vectorWithCBoxVecRef:vectorBacking].data;
+    });
+    return fingerprint;
 }
 
 #pragma mark -
@@ -117,6 +140,11 @@
 {
     cbox_session_close(_sessionBacking);
     _sessionBacking = NULL;
+}
+
+- (BOOL)isClosedInternally
+{
+    return (_sessionBacking == NULL);
 }
 
 @end
@@ -130,6 +158,8 @@
     self = [super init];
     if (self) {
         _sessionBacking = session;
+        // TODO: Can we use here DISPATCH_QUEUE_CONCURRENT check
+        self.sessionQueue = dispatch_queue_create("org.pkaboo.cryptobox.sessionQueue", DISPATCH_QUEUE_SERIAL);
     }
     return self;
 }

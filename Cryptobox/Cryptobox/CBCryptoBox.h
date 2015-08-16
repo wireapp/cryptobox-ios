@@ -35,11 +35,11 @@ FOUNDATION_EXPORT const NSUInteger CBMaxPreKeyID;
 /// @param sessionId    The ID of the new session.
 /// @param prekey       The preKey of the peer.
 /// @param error        Error reference
-- (nullable CBSession *)sessionWithId:(nonnull NSString *)sessionId preKey:(nonnull CBPreKey *)preKey error:(NSError *__nullable * __nullable)error;
+- (nullable CBSession *)sessionWithId:(nonnull NSString *)sessionId fromPreKey:(nonnull CBPreKey *)preKey error:(NSError *__nullable * __nullable)error;
 
 /// Initialise a @c CBSession using a received encrypted message.
 /// This is the entry point for the recipient of an encrypted message.
-- (nullable CBSessionMessage *)sessionMessageWithId:(nonnull NSString *)sessionId message:(nonnull NSData *)message error:(NSError *__nullable * __nullable)error;
+- (nullable CBSessionMessage *)sessionMessageWithId:(nonnull NSString *)sessionId fromMessage:(nonnull NSData *)message error:(NSError *__nullable * __nullable)error;
 
 /// Get an existing session by @c sessionId
 - (nullable CBSession *)sessionById:(nonnull NSString *)sessionId error:(NSError *__nullable * __nullable)error;

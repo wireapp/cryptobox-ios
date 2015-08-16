@@ -14,27 +14,7 @@
 
 
 
-@interface CBPreKey ()
-
-@property (nonatomic) CBVector *vector;
-
-@end
-
 @implementation CBPreKey
-
-- (instancetype)initWithVector:(CBVector *)vector
-{
-    self = [super init];
-    if (self) {
-        self.vector = vector;
-    }
-    return self;
-}
-
-- (NSData * __nullable)content
-{
-    return self.vector.data;
-}
 
 @end
 
@@ -56,9 +36,13 @@
     CBoxVecRef vectorBacking = NULL;
     CBoxResult result = cbox_new_prekey(boxRef, identifier, &vectorBacking);
     CBAssertResultIsSuccess(result);
-    CBReturnWithErrorAndValueIfNotSuccess(result, error, nil);
-    CBVector *vector = [[CBVector alloc] initWithCBoxVecRef:vectorBacking];
-    return [[CBPreKey alloc] initWithVector:vector];
+    if (result != CBOX_SUCCESS) {
+        CBErrorWithCBoxResult(result, error);
+        return nil;
+    }
+
+    CBPreKey *key = [[CBPreKey alloc] initWithCBoxVecRef:vectorBacking];
+    return key;
 }
 
 @end
