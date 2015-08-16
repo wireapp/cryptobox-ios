@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import "CBTestCase.h"
 
 #import "Cryptobox.h"
 
 
-@interface CBBasicCryptoTest : XCTestCase
+@interface CBBasicCryptoTest : CBTestCase
 
 @property (nonatomic) CBCryptoBox *aliceBox;
 @property (nonatomic) CBCryptoBox *bobBox;
@@ -51,10 +52,10 @@
     
     // Encrypt a message from bob
     NSData *plainData = [@"Hello Bob!" dataUsingEncoding:NSUTF8StringEncoding];
-    NSData *helloBobData = [aliceSession encrypt:plainData error:&error];
+    NSData *cipherData = [aliceSession encrypt:plainData error:&error];
     XCTAssertNil(error);
-    XCTAssertNotNil(helloBobData);
-    XCTAssertNotEqual(plainData, helloBobData);
+    XCTAssertNotNil(cipherData);
+    XCTAssertNotEqual(plainData, cipherData);
     
     
     
@@ -62,7 +63,7 @@
     //
     return;
     CBSession *bobSession = nil;
-    CBSessionMessage *sessionMessage = [self.bobBox sessionMessageWithId:@"bob" fromMessage:helloBobData error:&error];
+    CBSessionMessage *sessionMessage = [self.bobBox sessionMessageWithId:@"bob" fromMessage:cipherData error:&error];
     XCTAssertNil(error);
     XCTAssertNotNil(sessionMessage);
     XCTAssertNotNil(sessionMessage.session);
@@ -89,19 +90,8 @@
 
 - (void)createBoxes
 {
-    self.aliceBox = [self createBoxCheckAsserts];
-    self.bobBox = [self createBoxCheckAsserts];
-}
-
-- (CBCryptoBox *)createBoxCheckAsserts
-{
-    NSURL *url = CBCreateTemporaryDirectoryAndReturnURL();
-    NSError *error = nil;
-    CBCryptoBox *box = [CBCryptoBox cryptoBoxWithPathURL:url error:&error];
-    XCTAssertNil(error, @"");
-    XCTAssertNotNil(box, @"Failed to create alice box");
-    
-    return box;
+    self.aliceBox = [self createBoxAndCheckAsserts];
+    self.bobBox = [self createBoxAndCheckAsserts];
 }
 
 @end

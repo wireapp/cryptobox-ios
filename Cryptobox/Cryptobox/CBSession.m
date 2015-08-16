@@ -116,7 +116,6 @@
         CBVector *vector = [[CBVector alloc] initWithCBoxVecRef:plain];
         
         data = vector.data;
-
     });
     return data;
 }

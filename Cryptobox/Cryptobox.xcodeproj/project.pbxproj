@@ -40,6 +40,8 @@
 		BA7EFA041B71278C00204A8E /* CBPreKey.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7EF9C01B71136600204A8E /* CBPreKey.h */; };
 		BA7EFA051B71279100204A8E /* CBCryptoBox.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7EF9BD1B71132000204A8E /* CBCryptoBox.h */; };
 		BADF92111B80C35300766380 /* CBBasicCryptoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BADF92101B80C35300766380 /* CBBasicCryptoTest.m */; };
+		BADF92211B80DD9200766380 /* CBLastPreKeyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BADF92201B80DD9200766380 /* CBLastPreKeyTest.m */; };
+		BADF92241B80DDEB00766380 /* CBTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = BADF92231B80DDEB00766380 /* CBTestCase.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +155,9 @@
 		BADF92171B80D7E400766380 /* CBPreKey+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBPreKey+Internal.h"; sourceTree = "<group>"; };
 		BADF921A1B80D83500766380 /* CBSession+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBSession+Internal.h"; sourceTree = "<group>"; };
 		BADF921D1B80D89400766380 /* CBCryptoBox+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBCryptoBox+Internal.h"; sourceTree = "<group>"; };
+		BADF92201B80DD9200766380 /* CBLastPreKeyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBLastPreKeyTest.m; sourceTree = "<group>"; };
+		BADF92221B80DDEB00766380 /* CBTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTestCase.h; sourceTree = "<group>"; };
+		BADF92231B80DDEB00766380 /* CBTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTestCase.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +233,9 @@
 				BA025F971B79F62A00139D15 /* CBCryptoBoxInitTest.m */,
 				BA7583ED1B7B82030048FD6A /* CBCryptoBoxTests.m */,
 				BADF92101B80C35300766380 /* CBBasicCryptoTest.m */,
+				BADF92201B80DD9200766380 /* CBLastPreKeyTest.m */,
+				BADF92221B80DDEB00766380 /* CBTestCase.h */,
+				BADF92231B80DDEB00766380 /* CBTestCase.m */,
 			);
 			path = CryptoboxTests;
 			sourceTree = "<group>";
@@ -460,6 +468,8 @@
 			files = (
 				BA025F981B79F62A00139D15 /* CBCryptoBoxInitTest.m in Sources */,
 				BADF92111B80C35300766380 /* CBBasicCryptoTest.m in Sources */,
+				BADF92241B80DDEB00766380 /* CBTestCase.m in Sources */,
+				BADF92211B80DD9200766380 /* CBLastPreKeyTest.m in Sources */,
 				BA7583EE1B7B82030048FD6A /* CBCryptoBoxTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
