@@ -39,6 +39,7 @@
 		BA7EFA031B71278500204A8E /* CBSession.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7EF9BA1B7112FD00204A8E /* CBSession.h */; };
 		BA7EFA041B71278C00204A8E /* CBPreKey.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7EF9C01B71136600204A8E /* CBPreKey.h */; };
 		BA7EFA051B71279100204A8E /* CBCryptoBox.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7EF9BD1B71132000204A8E /* CBCryptoBox.h */; };
+		BA7F62F21B8128960058B8BE /* CBVector.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7584051B7CFB120048FD6A /* CBVector.h */; };
 		BADF92111B80C35300766380 /* CBBasicCryptoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BADF92101B80C35300766380 /* CBBasicCryptoTest.m */; };
 		BADF92211B80DD9200766380 /* CBLastPreKeyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BADF92201B80DD9200766380 /* CBLastPreKeyTest.m */; };
 		BADF92241B80DDEB00766380 /* CBTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = BADF92231B80DDEB00766380 /* CBTestCase.m */; };
@@ -62,6 +63,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				BA7F62F21B8128960058B8BE /* CBVector.h in CopyFiles */,
 				BA74487E1B7A7FC4002D9941 /* CBSessionMessage.h in CopyFiles */,
 				BA7448761B7A3143002D9941 /* CBTypes.h in CopyFiles */,
 				BA7EFA051B71279100204A8E /* CBCryptoBox.h in CopyFiles */,
