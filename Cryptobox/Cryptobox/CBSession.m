@@ -84,7 +84,7 @@
             return;
         }
         
-        CBoxResult result = cbox_encrypt(_sessionBacking, bytes, sizeof(bytes), &cipher);
+        CBoxResult result = cbox_encrypt(_sessionBacking, bytes, (uint32_t)plain.length, &cipher);
         CBAssertResultIsSuccess(result);
         CBReturnWithErrorIfNotSuccess(result, error);
 
@@ -109,7 +109,7 @@
             return;
         }
         CBoxVecRef plain = NULL;
-        CBoxResult result = cbox_decrypt(_sessionBacking, bytes, sizeof(bytes), &plain);
+        CBoxResult result = cbox_decrypt(_sessionBacking, bytes, (uint32_t)cipher.length, &plain);
         CBAssertResultIsSuccess(result);
         CBReturnWithErrorIfNotSuccess(result, error);
         

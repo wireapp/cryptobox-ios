@@ -8,12 +8,18 @@
 
 #import <XCTest/XCTest.h>
 
-@class CBCryptoBox;
+#import "CBCryptoBox.h"
+@class CBPreKey;
 
 
 
 @interface CBTestCase : XCTestCase
 
 - (CBCryptoBox *)createBoxAndCheckAsserts;
+
+- (NSArray *)generatePreKeysAndCheckAssertsWithRange:(NSRange)range box:(CBCryptoBox *)box;
+
+- (CBPreKey *)generatePreKeyAndCheckAssertsWithLocation:(NSUInteger)location box:(CBCryptoBox *)box;
+
 
 @end

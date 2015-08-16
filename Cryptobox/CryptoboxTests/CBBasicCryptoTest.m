@@ -22,25 +22,12 @@
 
 @implementation CBBasicCryptoTest
 
-- (void)setUp
-{
-    [super setUp];
-    
-    
-}
-
-- (void)tearDown
-{
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
-
 - (void)testThatBasicTestCanRun
 {
-    [self createBoxes];
+    self.aliceBox = [self createBoxAndCheckAsserts];
+    self.bobBox = [self createBoxAndCheckAsserts];
     
-    CBPreKey *bobPreKey = [self generateSinglePreKeyAndCheckAsserts:self.bobBox];
-    
+    CBPreKey *bobPreKey = [self generatePreKeyAndCheckAssertsWithLocation:1 box:self.bobBox];
     
     NSError *error = nil;
     CBSession *aliceSession = [self.aliceBox sessionWithId:@"alice" fromPreKey:bobPreKey error:&error];
@@ -51,47 +38,56 @@
     XCTAssertNil(error, @"Error is not nil");
     
     // Encrypt a message from bob
-    NSData *plainData = [@"Hello Bob!" dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *const plain = @"Hello Bob!";
+    NSData *plainData = [plain dataUsingEncoding:NSUTF8StringEncoding];
     NSData *cipherData = [aliceSession encrypt:plainData error:&error];
     XCTAssertNil(error);
     XCTAssertNotNil(cipherData);
     XCTAssertNotEqual(plainData, cipherData);
     
-    
-    
-    
-    //
-    return;
     CBSession *bobSession = nil;
-    CBSessionMessage *sessionMessage = [self.bobBox sessionMessageWithId:@"bob" fromMessage:cipherData error:&error];
+    CBSessionMessage *bobSessionMessage = [self.bobBox sessionMessageWithId:@"bob" fromMessage:cipherData error:&error];
     XCTAssertNil(error);
-    XCTAssertNotNil(sessionMessage);
-    XCTAssertNotNil(sessionMessage.session);
-    XCTAssertNotNil(sessionMessage.message);
+    XCTAssertNotNil(bobSessionMessage);
+    XCTAssertNotNil(bobSessionMessage.session);
+    XCTAssertNotNil(bobSessionMessage.data);
     
-    bobSession = sessionMessage.session;
+    bobSession = bobSessionMessage.session;
 
     [bobSession save:&error];
     XCTAssertNil(error);
-}
-
-- (CBPreKey *)generateSinglePreKeyAndCheckAsserts:(CBCryptoBox *)box
-{
-    NSError *error = nil;
-    CBPreKey *preKey = nil;
-    NSArray *keys = [self.bobBox generatePreKeys:(NSRange){1, 1} error:&error];
-    XCTAssertNotNil(keys, @"Failed to generate keys");
-    XCTAssert(keys.count == 1, @"Wrong amount of keys generated");
-    preKey = keys[0];
-    XCTAssertNotNil(preKey, @"");
     
-    return preKey;
-}
+    NSString *decrypted = [[NSString alloc] initWithData:bobSessionMessage.data encoding:NSUTF8StringEncoding];
+    XCTAssertTrue([plain isEqualToString:decrypted]);
 
-- (void)createBoxes
-{
-    self.aliceBox = [self createBoxAndCheckAsserts];
-    self.bobBox = [self createBoxAndCheckAsserts];
+    // Compare fingerprints
+    NSData *localFingerprint = [self.aliceBox localFingerprint:&error];
+    XCTAssertNil(error);
+    NSData *remoteFingerprint = [bobSession remoteFingerprint];
+    XCTAssertNotNil(localFingerprint);
+    XCTAssertNotNil(remoteFingerprint);
+    XCTAssertEqualObjects(localFingerprint, remoteFingerprint);
+
+    localFingerprint = nil;
+    remoteFingerprint = nil;
+    
+    localFingerprint = [self.bobBox localFingerprint:&error];
+    XCTAssertNil(error);
+    remoteFingerprint = [aliceSession remoteFingerprint];
+    XCTAssertNotNil(localFingerprint);
+    XCTAssertNotNil(remoteFingerprint);
+    XCTAssertEqualObjects(localFingerprint, remoteFingerprint);
+    
+    [aliceSession close];
+    [bobSession close];
+    
+    aliceSession = [self.aliceBox sessionById:@"alice" error:&error];
+    XCTAssertNil(error);
+    XCTAssertNotNil(aliceSession);
+    
+    bobSession = [self.bobBox sessionById:@"bob" error:&error];
+    XCTAssertNil(error);
+    XCTAssertNotNil(bobSession);
 }
 
 @end

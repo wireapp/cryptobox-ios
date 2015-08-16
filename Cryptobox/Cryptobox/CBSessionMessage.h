@@ -15,8 +15,8 @@
 @interface CBSessionMessage : NSObject
 
 @property (nonatomic, readonly, nonnull) CBSession *session;
-@property (nonatomic, readonly, nullable) NSData *message;
+@property (nonatomic, readonly, nullable) NSData *data;
 
-- (nonnull instancetype)initWithSession:(nonnull CBSession *)session message:(nullable NSData *)message;
+- (nonnull instancetype)initWithSession:(nonnull CBSession *)session data:(nullable NSData *)data;
 
 @end

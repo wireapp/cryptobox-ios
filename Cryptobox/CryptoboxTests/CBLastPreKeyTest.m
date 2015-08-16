@@ -15,55 +15,56 @@
 
 @interface CBLastPreKeyTest : CBTestCase
 
-@property (nonatomic) CBCryptoBox *aliceBox;
-@property (nonatomic) CBCryptoBox *bobBox;
-
 @end
 
 @implementation CBLastPreKeyTest
 
-- (void)setUp
-{
-    [super setUp];
-    
-    self.aliceBox = [self createBoxAndCheckAsserts];
-    self.bobBox = [self createBoxAndCheckAsserts];
-}
-
-- (void)tearDown
-{
-    [super tearDown];
-    
-    self.aliceBox = nil;
-    self.bobBox = nil;
-}
-
 - (void)testThatLastPrekeyTestCanRun
 {
+    CBCryptoBox *aliceBox = [self createBoxAndCheckAsserts];
+    CBCryptoBox *bobBox = [self createBoxAndCheckAsserts];
+
     NSError *error = nil;
-    CBPreKey *bobLastPreKey = [self.bobBox lastPreKey:&error];
+    CBPreKey *bobLastPreKey = [bobBox lastPreKey:&error];
     XCTAssertNotNil(bobLastPreKey);
     XCTAssertNil(error);
     
-    CBSession *aliceSession = [self.aliceBox sessionWithId:@"alice" fromPreKey:bobLastPreKey error:&error];
+    CBSession *aliceSession = [aliceBox sessionWithId:@"alice" fromPreKey:bobLastPreKey error:&error];
     XCTAssertNotNil(aliceSession);
     XCTAssertNil(error);
     
-    NSData *plainData = [@"Hello Bob!" dataUsingEncoding:NSUTF8StringEncoding];
+    const NSString *plain = @"Hello Bob!";
+    NSData *plainData = [plain dataUsingEncoding:NSUTF8StringEncoding];
     NSData *cipherData = [aliceSession encrypt:plainData error:&error];
     XCTAssertNil(error);
     XCTAssertNotNil(cipherData);
     
                                
     CBSession *bobSession = nil;
-    CBSessionMessage *bobSessionMessage = [self.bobBox sessionMessageWithId:@"bob" fromMessage:cipherData error:&error];
+    CBSessionMessage *bobSessionMessage = [bobBox sessionMessageWithId:@"bob" fromMessage:cipherData error:&error];
     XCTAssertNil(error);
     XCTAssertNotNil(bobSessionMessage);
     XCTAssertNotNil(bobSessionMessage.session);
-    XCTAssertNotNil(bobSessionMessage.message);
+    XCTAssertNotNil(bobSessionMessage.data);
 
+    bobSession = bobSessionMessage.session;
+    NSString *decrypted = [[NSString alloc] initWithData:bobSessionMessage.data encoding:NSUTF8StringEncoding];
+    XCTAssertTrue([plain isEqualToString:decrypted]);
     
-                               
+    [bobSession save:&error];
+    XCTAssertNil(error);
+    [bobSession close];
+    bobSession = nil;
+    decrypted = nil;
+    
+    // Bob's last prekey is not removed
+    bobSessionMessage = [bobBox sessionMessageWithId:@"bob" fromMessage:cipherData error:&error];
+    XCTAssertNil(error);
+    XCTAssertNotNil(bobSessionMessage);
+    decrypted = [[NSString alloc] initWithData:bobSessionMessage.data encoding:NSUTF8StringEncoding];
+    XCTAssertTrue([plain isEqualToString:decrypted]);
+    
+    NSLog(@"%s test_last_prekey finished", __PRETTY_FUNCTION__);
 }
 
 @end

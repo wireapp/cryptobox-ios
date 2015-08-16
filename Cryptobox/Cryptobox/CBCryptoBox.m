@@ -122,18 +122,23 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
         CBReturnWithErrorIfClosed([self isClosedInternally], error);
 
         CBSession *session = [self.sessions objectForKey:sessionId];
+        if ([session isClosed]) {
+            [self.sessions removeObjectForKey:sessionId];
+            session = nil;
+        }
         if (session) {
             NSData *plain = [session decrypt:message error:error];
-            if (error) {
+            if (! plain) {
                 return;
             }
-            sessionMessage = [[CBSessionMessage alloc] initWithSession:session message:plain];
+            sessionMessage = [[CBSessionMessage alloc] initWithSession:session data:plain];
         } else {
             CBoxSessionRef sessionBacking = NULL;
             CBoxVecRef plain = NULL;
             const uint8_t *bytes = (const uint8_t*)message.bytes;
-            CBoxResult result = cbox_session_init_from_message(_boxBacking, [sessionId UTF8String], bytes, sizeof(bytes), &sessionBacking, &plain);
+            CBoxResult result = cbox_session_init_from_message(_boxBacking, [sessionId UTF8String], bytes, (uint32_t)message.length, &sessionBacking, &plain);
             CBAssertResultIsSuccess(result);
+
             CBReturnWithErrorIfNotSuccess(result, error);
 
             // Fetch the plain data
@@ -150,7 +155,7 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
             CBSession *session = [[CBSession alloc] initWithCBoxSessionRef:sessionBacking];
             [self.sessions setObject:session forKey:sessionId];
             
-            sessionMessage = [[CBSessionMessage alloc] initWithSession:session message:vector.data];
+            sessionMessage = [[CBSessionMessage alloc] initWithSession:session data:vector.data];
         }
     });
     
@@ -166,6 +171,10 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
         CBReturnWithErrorIfClosed([self isClosedInternally], error);
         
         session = [self.sessions objectForKey:sessionId];
+        if ([session isClosed]) {
+            [self.sessions removeObjectForKey:sessionId];
+            session = nil;
+        }
         if (! session) {
             CBoxSessionRef sessionBacking = NULL;
             CBoxResult result = cbox_session_get(_boxBacking, [sessionId UTF8String], &sessionBacking);

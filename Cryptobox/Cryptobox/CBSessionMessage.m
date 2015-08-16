@@ -11,18 +11,18 @@
 @interface CBSessionMessage ()
 
 @property (nonatomic, readwrite, nonnull) CBSession *session;
-@property (nonatomic, readwrite, nullable) NSData *message;
+@property (nonatomic, readwrite, nullable) NSData *data;
 
 @end
 
 @implementation CBSessionMessage
 
-- (nonnull instancetype)initWithSession:(CBSession *)session message:(NSData *)message
+- (nonnull instancetype)initWithSession:(nonnull CBSession *)session data:(nullable NSData *)data;
 {
     self = [super init];
     if (self) {
         self.session = session;
-        self.message = message;
+        self.data = data;
     }
     return self;
 }

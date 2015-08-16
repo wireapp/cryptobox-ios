@@ -42,6 +42,7 @@
 		BADF92111B80C35300766380 /* CBBasicCryptoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BADF92101B80C35300766380 /* CBBasicCryptoTest.m */; };
 		BADF92211B80DD9200766380 /* CBLastPreKeyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BADF92201B80DD9200766380 /* CBLastPreKeyTest.m */; };
 		BADF92241B80DDEB00766380 /* CBTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = BADF92231B80DDEB00766380 /* CBTestCase.m */; };
+		BADF92261B80F00700766380 /* CBPreKeyRemovalTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BADF92251B80F00700766380 /* CBPreKeyRemovalTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,6 +159,7 @@
 		BADF92201B80DD9200766380 /* CBLastPreKeyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBLastPreKeyTest.m; sourceTree = "<group>"; };
 		BADF92221B80DDEB00766380 /* CBTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTestCase.h; sourceTree = "<group>"; };
 		BADF92231B80DDEB00766380 /* CBTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTestCase.m; sourceTree = "<group>"; };
+		BADF92251B80F00700766380 /* CBPreKeyRemovalTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBPreKeyRemovalTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,12 +232,13 @@
 			isa = PBXGroup;
 			children = (
 				BA7EF96E1B7109B600204A8E /* Supporting Files */,
+				BADF92221B80DDEB00766380 /* CBTestCase.h */,
+				BADF92231B80DDEB00766380 /* CBTestCase.m */,
 				BA025F971B79F62A00139D15 /* CBCryptoBoxInitTest.m */,
 				BA7583ED1B7B82030048FD6A /* CBCryptoBoxTests.m */,
 				BADF92101B80C35300766380 /* CBBasicCryptoTest.m */,
 				BADF92201B80DD9200766380 /* CBLastPreKeyTest.m */,
-				BADF92221B80DDEB00766380 /* CBTestCase.h */,
-				BADF92231B80DDEB00766380 /* CBTestCase.m */,
+				BADF92251B80F00700766380 /* CBPreKeyRemovalTest.m */,
 			);
 			path = CryptoboxTests;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA025F981B79F62A00139D15 /* CBCryptoBoxInitTest.m in Sources */,
+				BADF92261B80F00700766380 /* CBPreKeyRemovalTest.m in Sources */,
 				BADF92111B80C35300766380 /* CBBasicCryptoTest.m in Sources */,
 				BADF92241B80DDEB00766380 /* CBTestCase.m in Sources */,
 				BADF92211B80DD9200766380 /* CBLastPreKeyTest.m in Sources */,
@@ -610,10 +614,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = CryptoboxTests/Info.plist;
