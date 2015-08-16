@@ -39,6 +39,7 @@
 		BA7EFA031B71278500204A8E /* CBSession.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7EF9BA1B7112FD00204A8E /* CBSession.h */; };
 		BA7EFA041B71278C00204A8E /* CBPreKey.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7EF9C01B71136600204A8E /* CBPreKey.h */; };
 		BA7EFA051B71279100204A8E /* CBCryptoBox.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7EF9BD1B71132000204A8E /* CBCryptoBox.h */; };
+		BADF92111B80C35300766380 /* CBBasicCryptoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BADF92101B80C35300766380 /* CBBasicCryptoTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +148,11 @@
 		BA7EF9BE1B71132000204A8E /* CBCryptoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBCryptoBox.m; sourceTree = "<group>"; };
 		BA7EF9C01B71136600204A8E /* CBPreKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBPreKey.h; sourceTree = "<group>"; };
 		BA7EF9C11B71136600204A8E /* CBPreKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBPreKey.m; sourceTree = "<group>"; };
+		BADF92101B80C35300766380 /* CBBasicCryptoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBBasicCryptoTest.m; sourceTree = "<group>"; };
+		BADF92141B80D6F600766380 /* CBVector+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBVector+Internal.h"; sourceTree = "<group>"; };
+		BADF92171B80D7E400766380 /* CBPreKey+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBPreKey+Internal.h"; sourceTree = "<group>"; };
+		BADF921A1B80D83500766380 /* CBSession+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBSession+Internal.h"; sourceTree = "<group>"; };
+		BADF921D1B80D89400766380 /* CBCryptoBox+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBCryptoBox+Internal.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,12 +205,16 @@
 				BA7EF9B81B710BB000204A8E /* NSError+Cryptobox.m */,
 				BA7EF9BD1B71132000204A8E /* CBCryptoBox.h */,
 				BA7EF9BE1B71132000204A8E /* CBCryptoBox.m */,
+				BADF921D1B80D89400766380 /* CBCryptoBox+Internal.h */,
 				BA7EF9BA1B7112FD00204A8E /* CBSession.h */,
 				BA7EF9BB1B7112FD00204A8E /* CBSession.m */,
+				BADF921A1B80D83500766380 /* CBSession+Internal.h */,
 				BA7584051B7CFB120048FD6A /* CBVector.h */,
 				BA7584061B7CFB120048FD6A /* CBVector.m */,
+				BADF92141B80D6F600766380 /* CBVector+Internal.h */,
 				BA7EF9C01B71136600204A8E /* CBPreKey.h */,
 				BA7EF9C11B71136600204A8E /* CBPreKey.m */,
+				BADF92171B80D7E400766380 /* CBPreKey+Internal.h */,
 				BA74487B1B7A7F75002D9941 /* CBSessionMessage.h */,
 				BA74487C1B7A7F75002D9941 /* CBSessionMessage.m */,
 			);
@@ -217,6 +227,7 @@
 				BA7EF96E1B7109B600204A8E /* Supporting Files */,
 				BA025F971B79F62A00139D15 /* CBCryptoBoxInitTest.m */,
 				BA7583ED1B7B82030048FD6A /* CBCryptoBoxTests.m */,
+				BADF92101B80C35300766380 /* CBBasicCryptoTest.m */,
 			);
 			path = CryptoboxTests;
 			sourceTree = "<group>";
@@ -448,6 +459,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA025F981B79F62A00139D15 /* CBCryptoBoxInitTest.m in Sources */,
+				BADF92111B80C35300766380 /* CBBasicCryptoTest.m in Sources */,
 				BA7583EE1B7B82030048FD6A /* CBCryptoBoxTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

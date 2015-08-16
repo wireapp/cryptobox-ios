@@ -31,9 +31,3 @@
 
 @end
 
-
-@interface CBSession (Internal)
-
-- (nonnull instancetype)initWithCBoxSessionRef:(nonnull CBoxSessionRef)session;
-
-@end

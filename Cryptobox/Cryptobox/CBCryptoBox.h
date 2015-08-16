@@ -68,11 +68,3 @@ FOUNDATION_EXPORT const NSUInteger CBMaxPreKeyID;
 - (BOOL)isClosed;
 
 @end
-
-
-
-@interface CBCryptoBox (Internal)
-
-- (nonnull instancetype)initWithCBoxRef:(nonnull CBoxRef)box;
-
-@end

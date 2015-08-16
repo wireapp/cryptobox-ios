@@ -8,13 +8,16 @@
 
 #import "CBCryptoBox.h"
 
-#import "CBSession.h"
-#import "CBVector.h"
+#import "CBSession+Internal.h"
+#import "CBVector+Internal.h"
 #import "CBPreKey.h"
 #import "NSError+Cryptobox.h"
 #import "cbox.h"
 #import "CBMacros.h"
 #import "CBSessionMessage.h"
+#import "CBPreKey+Internal.h"
+#import "CBCryptoBox+Internal.h"
+
 
 
 NSURL *__nullable CBCreateTemporaryDirectoryAndReturnURL()

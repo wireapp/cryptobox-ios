@@ -12,7 +12,8 @@
 #import "CBTypes.h"
 #import "CBMacros.h"
 #import "CBPreKey.h"
-#import "CBVector.h"
+#import "CBVector+Internal.h"
+#import "CBSession+Internal.h"
 
 
 

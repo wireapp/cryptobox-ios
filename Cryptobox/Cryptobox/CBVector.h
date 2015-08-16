@@ -21,13 +21,3 @@
 
 
 
-@interface CBVector (Internal)
-
-- (nonnull instancetype)initWithCBoxVecRef:(nonnull CBoxVecRef)vector;
-+ (nonnull instancetype)vectorWithCBoxVecRef:(nonnull CBoxVecRef)vector;
-
-- (nonnull uint8_t *)dataArray;
-
-- (uint32_t)length;
-
-@end

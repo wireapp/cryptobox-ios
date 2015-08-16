@@ -8,6 +8,7 @@
 
 #import "CBVector.h"
 
+#import "CBVector+Internal.h"
 #import "cbox.h"
 
 

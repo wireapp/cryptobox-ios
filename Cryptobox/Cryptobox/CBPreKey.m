@@ -10,7 +10,8 @@
 
 #import "NSError+Cryptobox.h"
 #import "CBMacros.h"
-#import "CBVector.h"
+#import "CBVector+Internal.h"
+#import "CBPreKey+Internal.h"
 
 
 
