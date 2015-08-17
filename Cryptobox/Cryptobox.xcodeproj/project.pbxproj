@@ -456,7 +456,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "DIRECTORY=\"${PROJECT_DIR}/../build\"\nif [ ! -d \"$DIRECTORY\" ]; then\n    echo \"Missing dependencies: ${DIRECTORY} folder doesn't exist. Please run 'python Scripts/fetch-lib-from-github.py -lv <VERSION>'\"\n    exit 1\nelse\n    echo \"Check for dependencies: OK\"\nfi";
+			shellScript = "DIRECTORY=\"${PROJECT_DIR}/../build\"\nif [ ! -d \"$DIRECTORY\" ]; then\n    echo \"Missing dependencies: ${DIRECTORY} folder doesn't exist. Please run 'make cryptobox-<VERSION>'\"\n    exit 1\nelse\n    echo \"Check for dependencies: OK\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
