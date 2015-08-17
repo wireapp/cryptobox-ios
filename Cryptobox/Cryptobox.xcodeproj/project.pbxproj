@@ -271,7 +271,7 @@
 			);
 			name = include;
 			path = ../build/include;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		BA7F62F71B81FE1A0058B8BE /* sodium */ = {
 			isa = PBXGroup;
@@ -340,7 +340,7 @@
 			);
 			name = lib;
 			path = ../build/lib;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -349,6 +349,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BA7EF9721B7109B600204A8E /* Build configuration list for PBXNativeTarget "CryptoboxiOS" */;
 			buildPhases = (
+				BA7F63351B82143D0058B8BE /* Check for dependencies  */,
 				BA7EF95A1B7109B600204A8E /* Sources */,
 				BA7EF95B1B7109B600204A8E /* Frameworks */,
 				BA7EF95C1B7109B600204A8E /* CopyFiles */,
@@ -442,6 +443,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\nLIB_TARGET_NAME=CryptoboxiOS\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target ${LIB_TARGET_NAME} ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos -arch armv7 -arch armv7s -arch arm64 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\nxcodebuild -target ${LIB_TARGET_NAME} -configuration ${CONFIGURATION} -sdk iphonesimulator -arch x86_64 -arch i386 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 2. Create universal binary file using lipo\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/lib${LIB_TARGET_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${LIB_TARGET_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${LIB_TARGET_NAME}.a\"\n\n# Last touch. copy the header files. Just for convenience\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/include\" \"${UNIVERSAL_OUTPUTFOLDER}/\"";
+		};
+		BA7F63351B82143D0058B8BE /* Check for dependencies  */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check for dependencies ";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "DIRECTORY=\"${PROJECT_DIR}/../build\"\nif [ ! -d \"$DIRECTORY\" ]; then\n    echo \"Missing dependencies: ${DIRECTORY} folder doesn't exist. Please run 'python Scripts/fetch-lib-from-github.py -lv <VERSION>'\"\n    exit 1\nelse\n    echo \"Check for dependencies: OK\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
