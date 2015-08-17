@@ -57,7 +57,7 @@ cryptobox-%:
 	mkdir -p build
 	cd build && \
 	wget -O cryptobox-ios-$*.tar.gz https://github.com/romanb/cryptobox-ios/releases/download/v$*/cryptobox-ios-$*.tar.gz && \
-	tar -xzf cryptobox-ios-$*.tar.gz &&
+	tar -xzf cryptobox-ios-$*.tar.gz && \
 	rm cryptobox-ios-$*.tar.gz
 
 #############################################################################
