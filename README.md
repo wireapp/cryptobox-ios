@@ -29,6 +29,6 @@ For instructions on how to build such a cross-compiler, refer to the [Rust Wiki]
 
 ## Building iOS project
 ### Prerequisites
-`libcryptobox.a`, `libcryptobox.a` plus all the required headers should be located under the `${PROJECT_DIR}/build/` directory. To archieve this you either can build the `libcryptobox` on your own (See [Building libcryptobox](/sdasdasda)) or download and unpack the released binary via the `fetch-lib-from-github.py` script located under `Scripts` folder. 
+`libcryptobox.a`, `libcryptobox.a` plus all the required headers should be located under the `${PROJECT_DIR}/build/` directory. To archieve this you either can build the `libcryptobox` on your own (See [Building libcryptobox](#building-libcryptobox)) or download and unpack the released binary via the `fetch-lib-from-github.py` script located under `Scripts` folder. 
 
 
