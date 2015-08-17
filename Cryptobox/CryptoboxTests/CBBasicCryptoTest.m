@@ -78,8 +78,8 @@
     XCTAssertNotNil(remoteFingerprint);
     XCTAssertEqualObjects(localFingerprint, remoteFingerprint);
     
-    [aliceSession close];
-    [bobSession close];
+    [self.aliceBox closeSession:aliceSession];
+    [self.bobBox closeSession:bobSession];
     
     aliceSession = [self.aliceBox sessionById:@"alice" error:&error];
     XCTAssertNil(error);

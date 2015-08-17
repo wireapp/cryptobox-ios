@@ -21,6 +21,7 @@
     CBoxSessionRef _sessionBacking;
 }
 
+@property (nonatomic, readwrite, copy) NSString *sessionId;
 @property (nonatomic) dispatch_queue_t sessionQueue;
 
 @end
@@ -48,16 +49,6 @@
     });
 
     return success;
-}
-
-- (void)close
-{
-    dispatch_sync(self.sessionQueue, ^{
-        if ([self isClosedInternally]) {
-            return;
-        }
-        [self closeInternally];
-    });
 }
 
 - (BOOL)isClosed
@@ -153,15 +144,26 @@
 
 @implementation CBSession (Internal)
 
-- (nonnull instancetype)initWithCBoxSessionRef:(nonnull CBoxSessionRef)session
+- (nonnull instancetype)initWithCBoxSessionRef:(nonnull CBoxSessionRef)session sessionId:(NSString *)sId
 {
     self = [super init];
     if (self) {
         _sessionBacking = session;
         // TODO: Can we use here DISPATCH_QUEUE_CONCURRENT check
         self.sessionQueue = dispatch_queue_create("org.pkaboo.cryptobox.sessionQueue", DISPATCH_QUEUE_SERIAL);
+        self.sessionId = sId;
     }
     return self;
+}
+
+- (void)close
+{
+    dispatch_sync(self.sessionQueue, ^{
+        if ([self isClosedInternally]) {
+            return;
+        }
+        [self closeInternally];
+    });
 }
 
 @end

@@ -12,6 +12,8 @@
 
 @interface CBSession (Internal)
 
-- (nonnull instancetype)initWithCBoxSessionRef:(nonnull CBoxSessionRef)session;
+- (nonnull instancetype)initWithCBoxSessionRef:(nonnull CBoxSessionRef)session sessionId:(nonnull NSString *)sid;
+
+- (void)close;
 
 @end

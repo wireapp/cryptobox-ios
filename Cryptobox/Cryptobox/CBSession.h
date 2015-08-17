@@ -14,6 +14,8 @@
 
 @interface CBSession : NSObject
 
+@property (nonatomic, readonly, copy, nonnull) NSString *sessionId;
+
 - (BOOL)save:(NSError *__nullable * __nullable)error;
 
 /// Encrypt a byte array containing plaintext.
@@ -24,8 +26,6 @@
 
 /// Get the remote fingerprint as a hex-encoded byte array
 - (nullable NSData *)remoteFingerprint;
-
-- (void)close;
 
 - (BOOL)isClosed;
 

@@ -105,7 +105,7 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
         CBAssertResultIsSuccess(result);
         CBReturnWithErrorIfNotSuccess(result, error);
         
-        session = [[CBSession alloc] initWithCBoxSessionRef:sessionBacking];
+        session = [[CBSession alloc] initWithCBoxSessionRef:sessionBacking sessionId:sessionId];
         [self.sessions setObject:session forKey:sessionId];
     });
     
@@ -122,10 +122,7 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
         CBReturnWithErrorIfClosed([self isClosedInternally], error);
 
         CBSession *session = [self.sessions objectForKey:sessionId];
-        if ([session isClosed]) {
-            [self.sessions removeObjectForKey:sessionId];
-            session = nil;
-        }
+        NSAssert(! [session isClosed], @"Session is closed");
         if (session) {
             NSData *plain = [session decrypt:message error:error];
             if (! plain) {
@@ -152,7 +149,7 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
             }
             
             // Create the new session
-            CBSession *session = [[CBSession alloc] initWithCBoxSessionRef:sessionBacking];
+            CBSession *session = [[CBSession alloc] initWithCBoxSessionRef:sessionBacking sessionId:sessionId];
             [self.sessions setObject:session forKey:sessionId];
             
             sessionMessage = [[CBSessionMessage alloc] initWithSession:session data:vector.data];
@@ -171,17 +168,14 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
         CBReturnWithErrorIfClosed([self isClosedInternally], error);
         
         session = [self.sessions objectForKey:sessionId];
-        if ([session isClosed]) {
-            [self.sessions removeObjectForKey:sessionId];
-            session = nil;
-        }
+        NSAssert(! [session isClosed], @"Session is closed");
         if (! session) {
             CBoxSessionRef sessionBacking = NULL;
             CBoxResult result = cbox_session_get(_boxBacking, [sessionId UTF8String], &sessionBacking);
             CBAssertResultIsSuccess(result);
             CBReturnWithErrorIfNotSuccess(result, error);
             
-            session = [[CBSession alloc] initWithCBoxSessionRef:sessionBacking];
+            session = [[CBSession alloc] initWithCBoxSessionRef:sessionBacking sessionId:sessionId];
             [self.sessions setObject:session forKey:sessionId];
         }
     });
@@ -274,6 +268,17 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
     });
     
     return keys;
+}
+
+- (void)closeSession:(nonnull CBSession *)session
+{
+    dispatch_sync(self.cryptoBoxQueue, ^{
+        if ([self isClosedInternally]) {
+            return;
+        }
+        [self.sessions removeObjectForKey:session.sessionId];
+        [session close];
+    });
 }
 
 - (BOOL)closeAllSessions:(NSError *__nullable * __nullable)error;

@@ -53,7 +53,7 @@
     
     [bobSession save:&error];
     XCTAssertNil(error);
-    [bobSession close];
+    [bobBox closeSession:bobSession];
     bobSession = nil;
     decrypted = nil;
     

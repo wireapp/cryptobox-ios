@@ -49,7 +49,7 @@
     
     // Pretend something happened before Bob could save his session and he retries.
     // The prekey should not be removed (yet).
-    [bobSession close];
+    [bobBox closeSession:bobSession];    
     bobSessionMessage = nil;
     
     bobSessionMessage = [bobBox sessionMessageWithId:@"bob" fromMessage:cipher error:&error];
@@ -63,7 +63,7 @@
     XCTAssertNil(error);
     
     // Now the prekey should be gone
-    [bobSession close];
+    [bobBox closeSession:bobSession];
 
     // TODO: Figure out how to handle NSAssert's and the exception handler call
 //    bobSessionMessage = [bobBox sessionMessageWithId:@"bob" fromMessage:cipher error:&error];

@@ -57,6 +57,8 @@ FOUNDATION_EXPORT const NSUInteger CBMaxPreKeyID;
 /// NSRange.length = number
 - (nullable NSArray *)generatePreKeys:(NSRange)range error:(NSError *__nullable * __nullable)error;
 
+- (void)closeSession:(nonnull CBSession *)session;
+
 /// Close all open sessions
 - (BOOL)closeAllSessions:(NSError *__nullable * __nullable)error;
 
