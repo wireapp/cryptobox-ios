@@ -10,13 +10,16 @@
 
 
 
+FOUNDATION_EXPORT NSURL *__nullable CBCreateTemporaryDirectoryAndReturnURL();
+
+
+
 @interface CBTestCase : XCTestCase
 
-- (CBCryptoBox *)createBoxAndCheckAsserts;
+- (nullable CBCryptoBox *)createBoxAndCheckAsserts;
 
-- (NSArray *)generatePreKeysAndCheckAssertsWithRange:(NSRange)range box:(CBCryptoBox *)box;
+- (nullable NSArray *)generatePreKeysAndCheckAssertsWithRange:(NSRange)range box:(nonnull CBCryptoBox *)box;
 
-- (CBPreKey *)generatePreKeyAndCheckAssertsWithLocation:(NSUInteger)location box:(CBCryptoBox *)box;
-
+- (nullable CBPreKey *)generatePreKeyAndCheckAssertsWithLocation:(NSUInteger)location box:(nonnull  CBCryptoBox *)box;
 
 @end

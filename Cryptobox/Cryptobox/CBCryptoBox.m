@@ -17,18 +17,6 @@
 
 
 
-NSURL *__nullable CBCreateTemporaryDirectoryAndReturnURL()
-{
-    NSError *error = nil;
-    NSURL *directoryURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:[[NSProcessInfo processInfo] globallyUniqueString]] isDirectory:YES];
-    [[NSFileManager defaultManager] createDirectoryAtURL:directoryURL withIntermediateDirectories:YES attributes:nil error:&error];
-    if (error) {
-        return nil;
-    }
-    
-    return directoryURL;
-}
-
 static dispatch_queue_t CBOpeningQueue(void)
 {
     static dispatch_queue_t openingQueue;

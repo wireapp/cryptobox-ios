@@ -7,8 +7,9 @@
 #import <XCTest/XCTest.h>
 
 #import "Cryptobox.h"
+#import "CBTestCase.h"
 
-@interface CBCryptoBoxTests : XCTestCase
+@interface CBCryptoBoxTests : CBTestCase
 
 @property (nonatomic) CBCryptoBox *box;
 

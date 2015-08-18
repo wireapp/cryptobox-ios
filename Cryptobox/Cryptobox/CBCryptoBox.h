@@ -12,8 +12,6 @@
 
 
 
-FOUNDATION_EXPORT NSURL *__nullable CBCreateTemporaryDirectoryAndReturnURL();
-
 FOUNDATION_EXPORT const NSUInteger CBMaxPreKeyID;
 
 
