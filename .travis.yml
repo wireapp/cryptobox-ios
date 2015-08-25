@@ -1,4 +1,4 @@
 language: objective-c
 before_install:
     - make cryptobox-0.1.0
-script: xctool -workspace Cryptobox/Cryptobox.xcodeproj -scheme CryptoboxiOS test
+script: xctool -project Cryptobox/Cryptobox.xcodeproj -scheme CryptoboxiOS -sdk iphonesimulator test
