@@ -7,11 +7,10 @@
 
 
 
-#define CBReturnWithErrorIfClosed(closed, error) \
+#define CBThrowIllegalStageExceptionIfClosed(closed) \
     do { \
         if (closed) { \
-            CBErrorWithCBErrorCode(CBErrorCodeIllegalState, error); \
-            return; \
+            @throw [NSException exceptionWithName:CBCodeIllegalStateException reason:@"reference closed" userInfo:nil]; \
         } \
     } while (0)
 

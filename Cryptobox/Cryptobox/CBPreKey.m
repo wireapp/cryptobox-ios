@@ -25,10 +25,7 @@
     NSParameterAssert(boxRef);
     
     if (! boxRef) {
-        if (error != NULL) {
-            *error = [NSError cb_errorWithErrorCode:CBErrorCodeIllegalArgument description:@"boxRef is not set"];
-        }
-        return nil;
+        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"boxRef is not set" userInfo:nil];
     }
     
     CBoxVecRef vectorBacking = NULL;

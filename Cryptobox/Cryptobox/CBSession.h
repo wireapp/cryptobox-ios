@@ -13,12 +13,17 @@
 
 @property (nonatomic, readonly, copy, nonnull) NSString *sessionId;
 
+/// @throws CBCodeIllegalStateException in case @c CBCryptoBox is closed already
 - (BOOL)save:(NSError *__nullable * __nullable)error;
 
 /// Encrypt a byte array containing plaintext.
+/// @throws NSInvalidArgumentException  in case @c plain is nil
+/// @throws CBCodeIllegalStateException in case @c CBCryptoBox is closed already
 - (nullable NSData *)encrypt:(nonnull NSData *)plain error:(NSError *__nullable * __nullable)error;
 
 /// Decrypt a byte array containing plaintext.
+/// @throws NSInvalidArgumentException  in case @c cipher is nil
+/// @throws CBCodeIllegalStateException in case @c CBCryptoBox is closed already
 - (nullable NSData *)decrypt:(nonnull NSData *)cipher error:(NSError *__nullable * __nullable)error;
 
 /// Get the remote fingerprint as a hex-encoded byte array

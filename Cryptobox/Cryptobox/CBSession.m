@@ -36,7 +36,7 @@
 {
     __block BOOL success = NO;
     dispatch_sync(self.sessionQueue, ^{
-        CBReturnWithErrorIfClosed([self isClosedInternally], error);
+        CBThrowIllegalStageExceptionIfClosed([self isClosedInternally]);
         
         CBoxResult result = cbox_session_save(_sessionBacking);
         CBAssertResultIsSuccess(result);
@@ -63,13 +63,12 @@
     dispatch_sync(self.sessionQueue, ^{
         NSParameterAssert(plain);
         
-        CBReturnWithErrorIfClosed([self isClosedInternally], error);
+        CBThrowIllegalStageExceptionIfClosed([self isClosedInternally]);
         
         CBoxVecRef cipher = NULL;
         const uint8_t *bytes = (const uint8_t*)plain.bytes;
         if (bytes == NULL) {
-            CBErrorWithCBErrorCode(CBErrorCodeIllegalArgument, error);
-            return;
+            @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"plain not set" userInfo:nil];
         }
         
         CBoxResult result = cbox_encrypt(_sessionBacking, bytes, (uint32_t)plain.length, &cipher);
@@ -89,12 +88,11 @@
     dispatch_sync(self.sessionQueue, ^{
         NSParameterAssert(cipher);
         
-        CBReturnWithErrorIfClosed([self isClosedInternally], error);
+        CBThrowIllegalStageExceptionIfClosed([self isClosedInternally]);
         
         const uint8_t *bytes = (const uint8_t*)cipher.bytes;
         if (bytes == NULL) {
-            CBErrorWithCBErrorCode(CBErrorCodeIllegalArgument, error);
-            return;
+            @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"cipher not set" userInfo:nil];
         }
         CBoxVecRef plain = NULL;
         CBoxResult result = cbox_decrypt(_sessionBacking, bytes, (uint32_t)cipher.length, &plain);

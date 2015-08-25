@@ -44,10 +44,13 @@
 {
     NSRange range = (NSRange){0, CBMaxPreKeyID + 1};
     NSError *error = nil;
-    NSArray *preKeys = [self.box generatePreKeys:range error:&error];
+    @try {
+        NSArray *preKeys = [self.box generatePreKeys:range error:&error];
 #pragma unused(preKeys)
-    XCTAssertNotNil(error);
-    XCTAssertEqual(error.code, CBErrorCodeIllegalArgument);
+    }
+    @catch (NSException *exception) {
+        XCTAssertEqual(exception.name, NSInvalidArgumentException);
+    }
 }
 
 - (void)testThatPreKeysGenerationErrorHandlingChecksLocation
@@ -62,10 +65,13 @@
     
     // Shouldn't pass
     range = (NSRange){CBMaxPreKeyID + 1, 1};
-    preKeys = [self.box generatePreKeys:range error:&error];
+    @try {
+        preKeys = [self.box generatePreKeys:range error:&error];
 #pragma unused(preKeys)
-    XCTAssertNotNil(error);
-    XCTAssertEqual(error.code, CBErrorCodeIllegalArgument);
+    }
+    @catch (NSException *exception) {
+        XCTAssertEqual(exception.name, NSInvalidArgumentException);
+    }
 }
 
 - (void)testThatPreKeysGenerationErrorHandlingChecksLength
@@ -73,17 +79,25 @@
     // Invalid input, no keys to generate
     NSRange range = (NSRange){0, 0};
     NSError *error = nil;
-    NSArray *preKeys = [self.box generatePreKeys:range error:&error];
-    #pragma unused(preKeys)
-    XCTAssertNotNil(error);
-    XCTAssertEqual(error.code, CBErrorCodeIllegalArgument);
+    NSArray *preKeys = nil;
+    @try {
+        preKeys = [self.box generatePreKeys:range error:&error];
+#pragma unused(preKeys)
+    }
+    @catch (NSException *exception) {
+        XCTAssertEqual(exception.name, NSInvalidArgumentException);
+    }
     
     // Out of max bounds
     range = (NSRange){0, CBMaxPreKeyID + 1};
-    preKeys = [self.box generatePreKeys:range error:&error];
+    @try {
+        preKeys = [self.box generatePreKeys:range error:&error];
 #pragma unused(preKeys)
-    XCTAssertNotNil(error);
-    XCTAssertEqual(error.code, CBErrorCodeIllegalArgument);
+
+    }
+    @catch (NSException *exception) {
+        XCTAssertEqual(exception.name, NSInvalidArgumentException);
+    }
 }
 
 - (void)testThatLastPreKeyReturnsPreKey

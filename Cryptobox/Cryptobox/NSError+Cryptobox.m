@@ -8,6 +8,7 @@
 
 
 NSString *const CBErrorDomain = @"CryptoboxErrorDomain";
+NSString *const CBCodeIllegalStateException = @"CryptoboxCodeIllegalStateException";
 
 CBErrorCode CBErrorCodeFromCBoxResult(CBoxResult result)
 {

@@ -23,13 +23,11 @@ typedef NS_ENUM(NSInteger, CBErrorCode) {
     CBErrorCodeUTF8Error,
     CBErrorCodeNULError,
     CBErrorCodeEncodeError,
-    /// ___ is closed already and gets called
-    CBErrorCodeIllegalState,
-    CBErrorCodeIllegalArgument
 };
 
 FOUNDATION_EXPORT NSString *const CBErrorDomain;
 FOUNDATION_EXPORT CBErrorCode CBErrorCodeFromCBoxResult(CBoxResult result);
+FOUNDATION_EXPORT NSString *const CBCodeIllegalStateException;
 
 
 

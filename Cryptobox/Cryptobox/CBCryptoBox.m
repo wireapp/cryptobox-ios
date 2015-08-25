@@ -77,7 +77,7 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
         NSParameterAssert(sessionId);
         NSParameterAssert(preKey);
         
-        CBReturnWithErrorIfClosed([self isClosedInternally], error);
+        CBThrowIllegalStageExceptionIfClosed([self isClosedInternally]);
         
         session = [self.sessions objectForKey:sessionId];
         if (session) {
@@ -104,7 +104,7 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
         NSParameterAssert(sessionId);
         NSParameterAssert(message);
         
-        CBReturnWithErrorIfClosed([self isClosedInternally], error);
+        CBThrowIllegalStageExceptionIfClosed([self isClosedInternally]);
 
         CBSession *session = [self.sessions objectForKey:sessionId];
         NSAssert(! [session isClosed], @"Session is closed");
@@ -150,7 +150,7 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
     dispatch_sync(self.cryptoBoxQueue, ^{
         NSParameterAssert(sessionId);
         
-        CBReturnWithErrorIfClosed([self isClosedInternally], error);
+        CBThrowIllegalStageExceptionIfClosed([self isClosedInternally]);
         
         session = [self.sessions objectForKey:sessionId];
         NSAssert(! [session isClosed], @"Session is closed");
@@ -174,7 +174,7 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
     dispatch_sync(self.cryptoBoxQueue, ^{
         NSParameterAssert(sessionId);
         
-        CBReturnWithErrorIfClosed([self isClosedInternally], error);
+        CBThrowIllegalStageExceptionIfClosed([self isClosedInternally]);
         
         CBSession *session = [self.sessions objectForKey:sessionId];
         if (session) {
@@ -196,7 +196,7 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
 {
     __block NSData *data = nil;
     dispatch_sync(self.cryptoBoxQueue, ^{
-        CBReturnWithErrorIfClosed([self isClosedInternally], error);
+        CBThrowIllegalStageExceptionIfClosed([self isClosedInternally]);
         
         CBoxVecRef vectorBacking = NULL;
         cbox_fingerprint_local(_boxBacking, &vectorBacking);
@@ -211,7 +211,7 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
 {
     __block CBPreKey *key = nil;
     dispatch_sync(self.cryptoBoxQueue, ^{
-        CBReturnWithErrorIfClosed([self isClosedInternally], error);
+        CBThrowIllegalStageExceptionIfClosed([self isClosedInternally]);
         
         key = [CBPreKey preKeyWithId:CBOX_LAST_PREKEY_ID boxRef:_boxBacking error:error];
     });
@@ -222,21 +222,15 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
 - (nullable NSArray *)generatePreKeys:(NSRange)range error:(NSError *__nullable * __nullable)error
 {
     if (range.location > CBMaxPreKeyID) {
-        if (error != NULL) {
-            *error = [NSError cb_errorWithErrorCode:CBErrorCodeIllegalArgument description:[NSString stringWithFormat:@"location must be >= 0 and <= %lu", (unsigned long)CBMaxPreKeyID]];
-            return nil;
-        }
+        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:[NSString stringWithFormat:@"location must be >= 0 and <= %lu", (unsigned long)CBMaxPreKeyID] userInfo:nil];
     }
     if (range.length < 1 || range.length > CBMaxPreKeyID) {
-        if (error != NULL) {
-            *error = [NSError cb_errorWithErrorCode:CBErrorCodeIllegalArgument description:[NSString stringWithFormat:@"length must be >= 1 and <=  %lu", (unsigned long)CBMaxPreKeyID]];
-            return nil;
-        }
+        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:[NSString stringWithFormat:@"length must be >= 1 and <=  %lu", (unsigned long)CBMaxPreKeyID] userInfo:nil];
     }
     
     __block NSArray *keys = nil;
     dispatch_sync(self.cryptoBoxQueue, ^{
-        CBReturnWithErrorIfClosed([self isClosedInternally], error);
+        CBThrowIllegalStageExceptionIfClosed([self isClosedInternally]);
         
         NSMutableArray *newKeys = [NSMutableArray arrayWithCapacity:range.length];
         for (NSUInteger i = 0; i < range.length; ++i) {
@@ -270,7 +264,7 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
 {
     __block BOOL success = NO;
     dispatch_sync(self.cryptoBoxQueue, ^{
-        CBReturnWithErrorIfClosed([self isClosedInternally], error);
+        CBThrowIllegalStageExceptionIfClosed([self isClosedInternally]);
         
         for (CBSession *session in self.sessions) {
             [session close];
