@@ -1,4 +1,4 @@
-# Cryptobox for iOS
+# Cryptobox for iOS [![Build Status](https://travis-ci.org/romanb/cryptobox-ios.svg?branch=master)](https://travis-ci.org/romanb/cryptobox-ios)
 
 This project provides for cross-compilation of [cryptobox](https://github.com/romanb/cryptobox) for iOS, currently only in the form of static libraries. It may also provide higher-level Objective-C bindings to the C interface in the future, as well as dynamic libraries.
 
