@@ -44,13 +44,8 @@
 {
     NSRange range = (NSRange){0, CBMaxPreKeyID + 1};
     NSError *error = nil;
-    @try {
-        NSArray *preKeys = [self.box generatePreKeys:range error:&error];
-#pragma unused(preKeys)
-    }
-    @catch (NSException *exception) {
-        XCTAssertEqual(exception.name, NSInvalidArgumentException);
-    }
+    
+    XCTAssertThrowsSpecificNamed([self.box generatePreKeys:range error:&error], NSException, NSInvalidArgumentException, @"Should throw an invalid argument exception");
 }
 
 - (void)testThatPreKeysGenerationErrorHandlingChecksLocation
@@ -65,13 +60,7 @@
     
     // Shouldn't pass
     range = (NSRange){CBMaxPreKeyID + 1, 1};
-    @try {
-        preKeys = [self.box generatePreKeys:range error:&error];
-#pragma unused(preKeys)
-    }
-    @catch (NSException *exception) {
-        XCTAssertEqual(exception.name, NSInvalidArgumentException);
-    }
+    XCTAssertThrowsSpecificNamed([self.box generatePreKeys:range error:&error], NSException, NSInvalidArgumentException, @"Should throw an invalid argument exception");
 }
 
 - (void)testThatPreKeysGenerationErrorHandlingChecksLength
@@ -79,25 +68,12 @@
     // Invalid input, no keys to generate
     NSRange range = (NSRange){0, 0};
     NSError *error = nil;
-    NSArray *preKeys = nil;
-    @try {
-        preKeys = [self.box generatePreKeys:range error:&error];
-#pragma unused(preKeys)
-    }
-    @catch (NSException *exception) {
-        XCTAssertEqual(exception.name, NSInvalidArgumentException);
-    }
+    
+    XCTAssertThrowsSpecificNamed([self.box generatePreKeys:range error:&error], NSException, NSInvalidArgumentException, @"Should throw an invalid argument exception");
     
     // Out of max bounds
     range = (NSRange){0, CBMaxPreKeyID + 1};
-    @try {
-        preKeys = [self.box generatePreKeys:range error:&error];
-#pragma unused(preKeys)
-
-    }
-    @catch (NSException *exception) {
-        XCTAssertEqual(exception.name, NSInvalidArgumentException);
-    }
+    XCTAssertThrowsSpecificNamed([self.box generatePreKeys:range error:&error], NSException, NSInvalidArgumentException, @"Should throw an invalid argument exception");
 }
 
 - (void)testThatLastPreKeyReturnsPreKey
