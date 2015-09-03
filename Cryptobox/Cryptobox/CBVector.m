@@ -39,7 +39,7 @@
     self = [super init];
     if (self) {
         _vectorBacking = vector;
-        uint32_t length = cbox_vec_len(vector);
+        size_t length = cbox_vec_len(vector);
         uint8_t *data = cbox_vec_data(vector);
         self.data = [NSData dataWithBytes:data length:length];
     }
@@ -56,7 +56,7 @@
     return cbox_vec_data(_vectorBacking);
 }
 
-- (uint32_t)length
+- (size_t)length
 {
     return cbox_vec_len(_vectorBacking);
 }
