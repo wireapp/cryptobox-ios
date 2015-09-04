@@ -4,6 +4,9 @@
 
 .DS_Store
 
+# Lib dist folder
+Cryptobox/dist
+
 ## Build generated
 build/
 DerivedData
