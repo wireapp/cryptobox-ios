@@ -31,4 +31,5 @@ For instructions on how to build such a cross-compiler, refer to the [Rust Wiki]
 ### Prerequisites
 `libcryptobox.a`, `libcryptobox.a` plus all the required headers should be located under the `${PROJECT_DIR}/build/` directory. To archieve this you either can build the `libcryptobox` on your own (See [Building libcryptobox](#building-libcryptobox)) or download and unpack the released binary via the `make cryptobox-<VERSION>` call.
 
-
+### Building the static library
+Open the `Cryptobox/Cryptobox.xcodeproj`, switch to `UniversalLib` Schema and build. The compressed library (including all the needed headers) will get copied to the `${PROJECT_DIR}/dist/` folder.
