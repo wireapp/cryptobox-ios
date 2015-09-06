@@ -46,3 +46,4 @@ xcuserdata
 # Carthage/Checkouts
 Carthage/Build
 
+*.swp
