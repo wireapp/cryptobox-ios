@@ -357,6 +357,7 @@
 				BA7EF95A1B7109B600204A8E /* Sources */,
 				BA7EF95B1B7109B600204A8E /* Frameworks */,
 				BA7EF95C1B7109B600204A8E /* CopyFiles */,
+				F5EC6B0D1B9CBCB400D9487E /* Write version */,
 			);
 			buildRules = (
 			);
@@ -447,7 +448,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\nLIB_TARGET_NAME=CryptoboxiOS\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target ${LIB_TARGET_NAME} ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos -arch armv7 -arch armv7s -arch arm64 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\nxcodebuild -target ${LIB_TARGET_NAME} -configuration ${CONFIGURATION} -sdk iphonesimulator -arch x86_64 -arch i386 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}/lib\"\n\n# Step 2. Create universal binary file using lipo\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/lib/lib${LIB_TARGET_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${LIB_TARGET_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${LIB_TARGET_NAME}.a\"\n\n# Last touch. copy the header files. Just for convenience\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/include\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n# Move things to ../build\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/include\" \"${SOURCE_ROOT}/../build/\"\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/lib/lib${LIB_TARGET_NAME}.a\" \"${SOURCE_ROOT}/../build/lib\"\n\ncd \"${SOURCE_ROOT}/../build\"\nTAR_NAME=\"libcryptobox-all.tar.bz2\"\ntar cvjf \"${TAR_NAME}\" include lib\n\n# Move to dist/\nmkdir -p \"${SOURCE_ROOT}/dist\"\nmv \"${SOURCE_ROOT}/../build/${TAR_NAME}\" \"${SOURCE_ROOT}/dist\"\n";
+			shellScript = "# define output folder environment variable\nLIB_VERSION=$(<\"${SOURCE_ROOT}/.libversion\")\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\nLIB_TARGET_NAME=CryptoboxiOS\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target ${LIB_TARGET_NAME} ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos -arch armv7 -arch armv7s -arch arm64 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\nxcodebuild -target ${LIB_TARGET_NAME} -configuration ${CONFIGURATION} -sdk iphonesimulator -arch x86_64 -arch i386 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}/lib\"\n\n# Step 2. Create universal binary file using lipo\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/lib/lib${LIB_TARGET_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${LIB_TARGET_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${LIB_TARGET_NAME}.a\"\n\n# Last touch. copy the header files. Just for convenience\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/include\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n# Move things to ../build\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/include\" \"${SOURCE_ROOT}/../build/\"\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/lib/lib${LIB_TARGET_NAME}.a\" \"${SOURCE_ROOT}/../build/lib\"\n\ncd \"${SOURCE_ROOT}/../build\"\nTAR_NAME=\"libcryptobox-all.${LIB_VERSION}.tar.bz2\"\ntar cvjf \"${TAR_NAME}\" include lib\n\n# Move to dist/\nmkdir -p \"${SOURCE_ROOT}/dist\"\nmv \"${SOURCE_ROOT}/../build/${TAR_NAME}\" \"${SOURCE_ROOT}/dist\"\n";
 		};
 		BA7F63351B82143D0058B8BE /* Check for dependencies  */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -462,6 +463,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "DIRECTORY=\"${PROJECT_DIR}/../build\"\nif [ ! -d \"$DIRECTORY\" ]; then\n    echo \"Missing dependencies: ${DIRECTORY} folder doesn't exist. Please run 'make cryptobox-<VERSION>'\"\n    exit 1\nelse\n    echo \"Check for dependencies: OK\"\nfi";
+		};
+		F5EC6B0D1B9CBCB400D9487E /* Write version */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Write version";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo ${DYLIB_CURRENT_VERSION} > \"${SOURCE_ROOT}/.libversion\"";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -600,6 +616,8 @@
 		BA7EF9731B7109B600204A8E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DYLIB_CURRENT_VERSION = 0.2.0;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"${SRCROOT}/../build/lib",
@@ -613,6 +631,8 @@
 		BA7EF9741B7109B600204A8E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DYLIB_CURRENT_VERSION = 0.2.0;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"${SRCROOT}/../build/lib",
