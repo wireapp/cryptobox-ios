@@ -27,9 +27,7 @@ For instructions on how to build such a cross-compiler, refer to the [Rust Wiki]
   * library: c
   * library: m
 
-## Building iOS project
-### Prerequisites
-`libcryptobox.a`, `libcryptobox.a` plus all the required headers should be located under the `${PROJECT_DIR}/build/` directory. To archieve this you either can build the `libcryptobox` on your own (See [Building libcryptobox](#building-libcryptobox)) or download and unpack the released binary via the `make cryptobox-<VERSION>` call.
+## Integrating Objective-C Wrapper
+You can integrate Objective-C Wrapper (Cryptobox.framework) using Carthage with `github "romanb/cryptobox-ios"`.
+When Carthage will build it first time it will also build `libcryptobox.a` and `libsodium.a` in `Carthage/Checkouts/cryptobox-ios/build` with `libs` and `include` subfolders. So you can just add these paths to Libraries Search Paths and Headers Search Paths of your project.
 
-### Building the static library
-Open the `Cryptobox/Cryptobox.xcodeproj`, switch to `UniversalLib` Schema and build. The compressed library will get copied to the `${PROJECT_DIR}/dist/` folder.

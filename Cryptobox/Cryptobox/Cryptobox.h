@@ -5,10 +5,19 @@
 
 #import <Foundation/Foundation.h>
 
-#import "CBTypes.h"
-#import "NSError+Cryptobox.h"
-#import "CBSession.h"
-#import "CBCryptoBox.h"
-#import "CBVector.h"
-#import "CBPreKey.h"
-#import "CBSessionMessage.h"
+//! Project version number for Cryptobox.
+FOUNDATION_EXPORT double Cryptobox_VersionNumber;
+
+//! Project version string for Cryptobox.
+FOUNDATION_EXPORT const unsigned char Cryptobox_VersionString[];
+
+// In this header, you should import all the public headers of your framework using statements like #import <Cryptobox/PublicHeader.h>
+
+#import <Cryptobox/CBTypes.h>
+#import <Cryptobox/NSError+Cryptobox.h>
+#import <Cryptobox/CBSession.h>
+#import <Cryptobox/CBCryptoBox.h>
+#import <Cryptobox/CBVector.h>
+#import <Cryptobox/CBPreKey.h>
+#import <Cryptobox/CBSessionMessage.h>
+

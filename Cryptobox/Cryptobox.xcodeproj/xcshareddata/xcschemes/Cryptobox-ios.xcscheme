@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BA7447EA1B7A2C35002D9941"
-               BuildableName = "UniversalLib"
-               BlueprintName = "UniversalLib"
+               BlueprintIdentifier = "0928E2331BA0777A0057232E"
+               BuildableName = "Cryptobox.framework"
+               BlueprintName = "Cryptobox-ios"
                ReferencedContainer = "container:Cryptobox.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,23 +28,42 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BA7EF9681B7109B600204A8E"
+               BuildableName = "CryptoboxTests.xctest"
+               BlueprintName = "CryptoboxTests"
+               ReferencedContainer = "container:Cryptobox.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "0928E2331BA0777A0057232E"
+            BuildableName = "Cryptobox.framework"
+            BlueprintName = "Cryptobox-ios"
+            ReferencedContainer = "container:Cryptobox.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BA7447EA1B7A2C35002D9941"
-            BuildableName = "UniversalLib"
-            BlueprintName = "UniversalLib"
+            BlueprintIdentifier = "0928E2331BA0777A0057232E"
+            BuildableName = "Cryptobox.framework"
+            BlueprintName = "Cryptobox-ios"
             ReferencedContainer = "container:Cryptobox.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -60,9 +79,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BA7447EA1B7A2C35002D9941"
-            BuildableName = "UniversalLib"
-            BlueprintName = "UniversalLib"
+            BlueprintIdentifier = "0928E2331BA0777A0057232E"
+            BuildableName = "Cryptobox.framework"
+            BlueprintName = "Cryptobox-ios"
             ReferencedContainer = "container:Cryptobox.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

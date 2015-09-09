@@ -7,7 +7,7 @@
 #import <XCTest/XCTest.h>
 #import "CBTestCase.h"
 
-#import "Cryptobox.h"
+@import Cryptobox;
 
 
 @interface CBBasicCryptoTest : CBTestCase

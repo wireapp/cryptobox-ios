@@ -6,79 +6,53 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		BA7447EA1B7A2C35002D9941 /* UniversalLib */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = BA7447ED1B7A2C35002D9941 /* Build configuration list for PBXAggregateTarget "UniversalLib" */;
-			buildPhases = (
-				BA7447EE1B7A2C48002D9941 /* Create universal lib */,
-			);
-			dependencies = (
-			);
-			name = UniversalLib;
-			productName = UniversalLib;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
+		0928E2591BA078120057232E /* CBTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = BA025F921B79DAAE00139D15 /* CBTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0928E25A1BA078120057232E /* NSError+Cryptobox.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7EF9B71B710BB000204A8E /* NSError+Cryptobox.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0928E25B1BA078120057232E /* CBCryptoBox.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7EF9BD1B71132000204A8E /* CBCryptoBox.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0928E25C1BA078120057232E /* CBSession.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7EF9BA1B7112FD00204A8E /* CBSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0928E25D1BA078120057232E /* CBVector.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7584051B7CFB120048FD6A /* CBVector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0928E25E1BA078120057232E /* CBPreKey.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7EF9C01B71136600204A8E /* CBPreKey.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0928E25F1BA078120057232E /* CBSessionMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = BA74487B1B7A7F75002D9941 /* CBSessionMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0928E2601BA0785F0057232E /* libcryptobox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F50303291B8CFA2C0053E406 /* libcryptobox.a */; };
+		0928E2611BA0785F0057232E /* libsodium.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F503032A1B8CFA2C0053E406 /* libsodium.a */; };
+		0928E3541BA08E3D0057232E /* NSError+Cryptobox.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7EF9B81B710BB000204A8E /* NSError+Cryptobox.m */; };
+		0928E3551BA08E3D0057232E /* CBCryptoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7EF9BE1B71132000204A8E /* CBCryptoBox.m */; };
+		0928E3561BA08E3D0057232E /* CBSession.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7EF9BB1B7112FD00204A8E /* CBSession.m */; };
+		0928E3571BA08E3D0057232E /* CBVector.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7584061B7CFB120048FD6A /* CBVector.m */; };
+		0928E3581BA08E3D0057232E /* CBPreKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7EF9C11B71136600204A8E /* CBPreKey.m */; };
+		0928E3591BA08E3D0057232E /* CBSessionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = BA74487C1B7A7F75002D9941 /* CBSessionMessage.m */; };
+		0928E36D1BA0908F0057232E /* Cryptobox.h in Headers */ = {isa = PBXBuildFile; fileRef = 0928E36C1BA0908F0057232E /* Cryptobox.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA025F981B79F62A00139D15 /* CBCryptoBoxInitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BA025F971B79F62A00139D15 /* CBCryptoBoxInitTest.m */; };
-		BA7448761B7A3143002D9941 /* CBTypes.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA025F921B79DAAE00139D15 /* CBTypes.h */; };
-		BA74487D1B7A7F75002D9941 /* CBSessionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = BA74487C1B7A7F75002D9941 /* CBSessionMessage.m */; };
-		BA74487E1B7A7FC4002D9941 /* CBSessionMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA74487B1B7A7F75002D9941 /* CBSessionMessage.h */; };
 		BA7583EE1B7B82030048FD6A /* CBCryptoBoxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7583ED1B7B82030048FD6A /* CBCryptoBoxTests.m */; };
-		BA7584071B7CFB120048FD6A /* CBVector.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7584061B7CFB120048FD6A /* CBVector.m */; };
-		BA7EF9621B7109B600204A8E /* Cryptobox.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7EF9611B7109B600204A8E /* Cryptobox.h */; };
-		BA7EF96A1B7109B600204A8E /* libCryptoboxiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7EF95E1B7109B600204A8E /* libCryptoboxiOS.a */; };
-		BA7EF9B91B710BB000204A8E /* NSError+Cryptobox.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7EF9B81B710BB000204A8E /* NSError+Cryptobox.m */; };
-		BA7EF9BC1B7112FD00204A8E /* CBSession.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7EF9BB1B7112FD00204A8E /* CBSession.m */; };
-		BA7EF9BF1B71132000204A8E /* CBCryptoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7EF9BE1B71132000204A8E /* CBCryptoBox.m */; };
-		BA7EF9C21B71136600204A8E /* CBPreKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7EF9C11B71136600204A8E /* CBPreKey.m */; };
-		BA7EFA021B71277F00204A8E /* NSError+Cryptobox.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7EF9B71B710BB000204A8E /* NSError+Cryptobox.h */; };
-		BA7EFA031B71278500204A8E /* CBSession.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7EF9BA1B7112FD00204A8E /* CBSession.h */; };
-		BA7EFA041B71278C00204A8E /* CBPreKey.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7EF9C01B71136600204A8E /* CBPreKey.h */; };
-		BA7EFA051B71279100204A8E /* CBCryptoBox.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7EF9BD1B71132000204A8E /* CBCryptoBox.h */; };
-		BA7F62F21B8128960058B8BE /* CBVector.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7584051B7CFB120048FD6A /* CBVector.h */; };
 		BADF92111B80C35300766380 /* CBBasicCryptoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BADF92101B80C35300766380 /* CBBasicCryptoTest.m */; };
 		BADF92211B80DD9200766380 /* CBLastPreKeyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BADF92201B80DD9200766380 /* CBLastPreKeyTest.m */; };
 		BADF92241B80DDEB00766380 /* CBTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = BADF92231B80DDEB00766380 /* CBTestCase.m */; };
 		BADF92261B80F00700766380 /* CBPreKeyRemovalTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BADF92251B80F00700766380 /* CBPreKeyRemovalTest.m */; };
 		F503032B1B8CFA2C0053E406 /* libcryptobox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F50303291B8CFA2C0053E406 /* libcryptobox.a */; };
 		F503032C1B8CFA2C0053E406 /* libsodium.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F503032A1B8CFA2C0053E406 /* libsodium.a */; };
-		F503032D1B8CFA4D0053E406 /* libcryptobox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F50303291B8CFA2C0053E406 /* libcryptobox.a */; };
-		F503032E1B8CFA4D0053E406 /* libsodium.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F503032A1B8CFA2C0053E406 /* libsodium.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		BA7EF96B1B7109B600204A8E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BA7EF9561B7109B600204A8E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BA7EF95D1B7109B600204A8E;
-			remoteInfo = Cryptobox;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		BA7EF95C1B7109B600204A8E /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-				BA7F62F21B8128960058B8BE /* CBVector.h in CopyFiles */,
-				BA74487E1B7A7FC4002D9941 /* CBSessionMessage.h in CopyFiles */,
-				BA7448761B7A3143002D9941 /* CBTypes.h in CopyFiles */,
-				BA7EFA051B71279100204A8E /* CBCryptoBox.h in CopyFiles */,
-				BA7EFA041B71278C00204A8E /* CBPreKey.h in CopyFiles */,
-				BA7EFA031B71278500204A8E /* CBSession.h in CopyFiles */,
-				BA7EFA021B71277F00204A8E /* NSError+Cryptobox.h in CopyFiles */,
-				BA7EF9621B7109B600204A8E /* Cryptobox.h in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
+		0928E2341BA0777A0057232E /* Cryptobox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cryptobox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0928E36C1BA0908F0057232E /* Cryptobox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cryptobox.h; sourceTree = "<group>"; };
+		0928E36E1BA0909D0057232E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0928E3741BA17E300057232E /* Cryptobox-ios.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Cryptobox-ios.xcconfig"; sourceTree = "<group>"; };
+		0928E3751BA17E300057232E /* Cryptobox.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Cryptobox.xcconfig; sourceTree = "<group>"; };
+		0928E3761BA17E300057232E /* ios-test-host.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "ios-test-host.xcconfig"; sourceTree = "<group>"; };
+		0928E3771BA17E300057232E /* ios-test-target.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "ios-test-target.xcconfig"; sourceTree = "<group>"; };
+		0928E3781BA17E300057232E /* ios.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ios.xcconfig; sourceTree = "<group>"; };
+		0928E3791BA17E300057232E /* osx-test-target.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "osx-test-target.xcconfig"; sourceTree = "<group>"; };
+		0928E37A1BA17E300057232E /* osx.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = osx.xcconfig; sourceTree = "<group>"; };
+		0928E37B1BA17E300057232E /* project-common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "project-common.xcconfig"; sourceTree = "<group>"; };
+		0928E37C1BA17E300057232E /* project-debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "project-debug.xcconfig"; sourceTree = "<group>"; };
+		0928E37D1BA17E300057232E /* project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = project.xcconfig; sourceTree = "<group>"; };
+		0928E37E1BA17E300057232E /* simulator.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = simulator.xcconfig; sourceTree = "<group>"; };
+		0928E37F1BA17E300057232E /* swift.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = swift.xcconfig; sourceTree = "<group>"; };
+		0928E3801BA17E300057232E /* tests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = tests.xcconfig; sourceTree = "<group>"; };
+		0928E3811BA17E300057232E /* version.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = version.xcconfig; sourceTree = "<group>"; };
+		0928E3821BA17E300057232E /* warnings-debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "warnings-debug.xcconfig"; sourceTree = "<group>"; };
+		0928E3831BA17E300057232E /* warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = warnings.xcconfig; sourceTree = "<group>"; };
 		BA025F921B79DAAE00139D15 /* CBTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBTypes.h; sourceTree = "<group>"; };
 		BA025F971B79F62A00139D15 /* CBCryptoBoxInitTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBCryptoBoxInitTest.m; sourceTree = "<group>"; };
 		BA74487A1B7A69D7002D9941 /* CBMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBMacros.h; sourceTree = "<group>"; };
@@ -87,8 +61,6 @@
 		BA7583ED1B7B82030048FD6A /* CBCryptoBoxTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBCryptoBoxTests.m; sourceTree = "<group>"; };
 		BA7584051B7CFB120048FD6A /* CBVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBVector.h; sourceTree = "<group>"; };
 		BA7584061B7CFB120048FD6A /* CBVector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBVector.m; sourceTree = "<group>"; };
-		BA7EF95E1B7109B600204A8E /* libCryptoboxiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCryptoboxiOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		BA7EF9611B7109B600204A8E /* Cryptobox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cryptobox.h; sourceTree = "<group>"; };
 		BA7EF9691B7109B600204A8E /* CryptoboxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoboxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7EF96F1B7109B600204A8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA7EF9B71B710BB000204A8E /* NSError+Cryptobox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Cryptobox.h"; sourceTree = "<group>"; };
@@ -167,12 +139,12 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		BA7EF95B1B7109B600204A8E /* Frameworks */ = {
+		0928E2301BA0777A0057232E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F503032D1B8CFA4D0053E406 /* libcryptobox.a in Frameworks */,
-				F503032E1B8CFA4D0053E406 /* libsodium.a in Frameworks */,
+				0928E2601BA0785F0057232E /* libcryptobox.a in Frameworks */,
+				0928E2611BA0785F0057232E /* libsodium.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,17 +154,57 @@
 			files = (
 				F503032C1B8CFA2C0053E406 /* libsodium.a in Frameworks */,
 				F503032B1B8CFA2C0053E406 /* libcryptobox.a in Frameworks */,
-				BA7EF96A1B7109B600204A8E /* libCryptoboxiOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0928E35A1BA090620057232E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0928E35B1BA090620057232E /* Configurations */,
+			);
+			name = Resources;
+			path = ../Resources;
+			sourceTree = "<group>";
+		};
+		0928E35B1BA090620057232E /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				0928E3741BA17E300057232E /* Cryptobox-ios.xcconfig */,
+				0928E3751BA17E300057232E /* Cryptobox.xcconfig */,
+				0928E3761BA17E300057232E /* ios-test-host.xcconfig */,
+				0928E3771BA17E300057232E /* ios-test-target.xcconfig */,
+				0928E3781BA17E300057232E /* ios.xcconfig */,
+				0928E3791BA17E300057232E /* osx-test-target.xcconfig */,
+				0928E37A1BA17E300057232E /* osx.xcconfig */,
+				0928E37B1BA17E300057232E /* project-common.xcconfig */,
+				0928E37C1BA17E300057232E /* project-debug.xcconfig */,
+				0928E37D1BA17E300057232E /* project.xcconfig */,
+				0928E37E1BA17E300057232E /* simulator.xcconfig */,
+				0928E37F1BA17E300057232E /* swift.xcconfig */,
+				0928E3801BA17E300057232E /* tests.xcconfig */,
+				0928E3811BA17E300057232E /* version.xcconfig */,
+				0928E3821BA17E300057232E /* warnings-debug.xcconfig */,
+				0928E3831BA17E300057232E /* warnings.xcconfig */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
+		0928E36F1BA090A00057232E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0928E36E1BA0909D0057232E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		BA7EF9551B7109B600204A8E = {
 			isa = PBXGroup;
 			children = (
 				BA7EF9601B7109B600204A8E /* Cryptobox */,
+				0928E35A1BA090620057232E /* Resources */,
 				BA7EF9781B710B4D00204A8E /* Libraries */,
 				BA7EF96D1B7109B600204A8E /* CryptoboxTests */,
 				BA7EF95F1B7109B600204A8E /* Products */,
@@ -202,8 +214,8 @@
 		BA7EF95F1B7109B600204A8E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BA7EF95E1B7109B600204A8E /* libCryptoboxiOS.a */,
 				BA7EF9691B7109B600204A8E /* CryptoboxTests.xctest */,
+				0928E2341BA0777A0057232E /* Cryptobox.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -211,7 +223,7 @@
 		BA7EF9601B7109B600204A8E /* Cryptobox */ = {
 			isa = PBXGroup;
 			children = (
-				BA7EF9611B7109B600204A8E /* Cryptobox.h */,
+				0928E36C1BA0908F0057232E /* Cryptobox.h */,
 				BA025F921B79DAAE00139D15 /* CBTypes.h */,
 				BA74487A1B7A69D7002D9941 /* CBMacros.h */,
 				BA7EF9B71B710BB000204A8E /* NSError+Cryptobox.h */,
@@ -230,6 +242,7 @@
 				BADF92171B80D7E400766380 /* CBPreKey+Internal.h */,
 				BA74487B1B7A7F75002D9941 /* CBSessionMessage.h */,
 				BA74487C1B7A7F75002D9941 /* CBSessionMessage.m */,
+				0928E36F1BA090A00057232E /* Supporting Files */,
 			);
 			path = Cryptobox;
 			sourceTree = "<group>";
@@ -348,25 +361,43 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		0928E2311BA0777A0057232E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0928E25D1BA078120057232E /* CBVector.h in Headers */,
+				0928E25E1BA078120057232E /* CBPreKey.h in Headers */,
+				0928E25A1BA078120057232E /* NSError+Cryptobox.h in Headers */,
+				0928E36D1BA0908F0057232E /* Cryptobox.h in Headers */,
+				0928E25B1BA078120057232E /* CBCryptoBox.h in Headers */,
+				0928E25C1BA078120057232E /* CBSession.h in Headers */,
+				0928E25F1BA078120057232E /* CBSessionMessage.h in Headers */,
+				0928E2591BA078120057232E /* CBTypes.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		BA7EF95D1B7109B600204A8E /* CryptoboxiOS */ = {
+		0928E2331BA0777A0057232E /* Cryptobox-ios */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BA7EF9721B7109B600204A8E /* Build configuration list for PBXNativeTarget "CryptoboxiOS" */;
+			buildConfigurationList = 0928E24B1BA0777A0057232E /* Build configuration list for PBXNativeTarget "Cryptobox-ios" */;
 			buildPhases = (
-				BA7F63351B82143D0058B8BE /* Check for dependencies  */,
-				BA7EF95A1B7109B600204A8E /* Sources */,
-				BA7EF95B1B7109B600204A8E /* Frameworks */,
-				BA7EF95C1B7109B600204A8E /* CopyFiles */,
-				F5EC6B0D1B9CBCB400D9487E /* Write version */,
+				0928E2621BA078750057232E /* Check for dependencies  */,
+				0928E22F1BA0777A0057232E /* Sources */,
+				0928E2301BA0777A0057232E /* Frameworks */,
+				0928E2311BA0777A0057232E /* Headers */,
+				0928E2321BA0777A0057232E /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = CryptoboxiOS;
-			productName = Cryptobox;
-			productReference = BA7EF95E1B7109B600204A8E /* libCryptoboxiOS.a */;
-			productType = "com.apple.product-type.library.static";
+			name = "Cryptobox-ios";
+			productName = "Cryptobox-ios";
+			productReference = 0928E2341BA0777A0057232E /* Cryptobox.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 		BA7EF9681B7109B600204A8E /* CryptoboxTests */ = {
 			isa = PBXNativeTarget;
@@ -379,7 +410,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				BA7EF96C1B7109B600204A8E /* PBXTargetDependency */,
 			);
 			name = CryptoboxTests;
 			productName = CryptoboxTests;
@@ -395,10 +425,7 @@
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = Cryptobox;
 				TargetAttributes = {
-					BA7447EA1B7A2C35002D9941 = {
-						CreatedOnToolsVersion = 6.4;
-					};
-					BA7EF95D1B7109B600204A8E = {
+					0928E2331BA0777A0057232E = {
 						CreatedOnToolsVersion = 6.4;
 					};
 					BA7EF9681B7109B600204A8E = {
@@ -418,14 +445,20 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BA7EF95D1B7109B600204A8E /* CryptoboxiOS */,
+				0928E2331BA0777A0057232E /* Cryptobox-ios */,
 				BA7EF9681B7109B600204A8E /* CryptoboxTests */,
-				BA7447EA1B7A2C35002D9941 /* UniversalLib */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0928E2321BA0777A0057232E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BA7EF9671B7109B600204A8E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -436,21 +469,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		BA7447EE1B7A2C48002D9941 /* Create universal lib */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Create universal lib";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# define output folder environment variable\nLIB_VERSION=$(<\"${SOURCE_ROOT}/.libversion\")\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\nLIB_TARGET_NAME=CryptoboxiOS\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target ${LIB_TARGET_NAME} ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos -arch armv7 -arch armv7s -arch arm64 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\nxcodebuild -target ${LIB_TARGET_NAME} -configuration ${CONFIGURATION} -sdk iphonesimulator -arch x86_64 -arch i386 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}/lib\"\n\n# Step 2. Create universal binary file using lipo\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/lib/lib${LIB_TARGET_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${LIB_TARGET_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${LIB_TARGET_NAME}.a\"\n\n# Last touch. copy the header files. Just for convenience\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/include\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n# Move things to ../build\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/include\" \"${SOURCE_ROOT}/../build/\"\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/lib/lib${LIB_TARGET_NAME}.a\" \"${SOURCE_ROOT}/../build/lib\"\n\ncd \"${SOURCE_ROOT}/../build\"\nTAR_NAME=\"libcryptobox-all.${LIB_VERSION}.tar.bz2\"\ntar cvjf \"${TAR_NAME}\" include lib\n\n# Move to dist/\nmkdir -p \"${SOURCE_ROOT}/dist\"\nmv \"${SOURCE_ROOT}/../build/${TAR_NAME}\" \"${SOURCE_ROOT}/dist\"\n";
-		};
-		BA7F63351B82143D0058B8BE /* Check for dependencies  */ = {
+		0928E2621BA078750057232E /* Check for dependencies  */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -462,36 +481,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "DIRECTORY=\"${PROJECT_DIR}/../build\"\nif [ ! -d \"$DIRECTORY\" ]; then\n    echo \"Missing dependencies: ${DIRECTORY} folder doesn't exist. Please run 'make cryptobox-<VERSION>'\"\n    exit 1\nelse\n    echo \"Check for dependencies: OK\"\nfi";
-		};
-		F5EC6B0D1B9CBCB400D9487E /* Write version */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Write version";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo ${DYLIB_CURRENT_VERSION} > \"${SOURCE_ROOT}/.libversion\"";
-			showEnvVarsInLog = 0;
+			shellScript = "DIRECTORY=\"${PROJECT_DIR}/../build\"\nif [ ! -d \"$DIRECTORY\" ]; then\necho \"Missing dependencies: ${DIRECTORY} folder doesn't exist.\"\necho \"Running 'make cryptobox-${CRYPTOBOX_VERSION}'\"\ncd .. && make cryptobox-\"${CRYPTOBOX_VERSION}\" && cd Cryptobox\nelse\necho \"Check for dependencies: OK\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		BA7EF95A1B7109B600204A8E /* Sources */ = {
+		0928E22F1BA0777A0057232E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA7EF9BF1B71132000204A8E /* CBCryptoBox.m in Sources */,
-				BA7584071B7CFB120048FD6A /* CBVector.m in Sources */,
-				BA7EF9B91B710BB000204A8E /* NSError+Cryptobox.m in Sources */,
-				BA7EF9C21B71136600204A8E /* CBPreKey.m in Sources */,
-				BA74487D1B7A7F75002D9941 /* CBSessionMessage.m in Sources */,
-				BA7EF9BC1B7112FD00204A8E /* CBSession.m in Sources */,
+				0928E3541BA08E3D0057232E /* NSError+Cryptobox.m in Sources */,
+				0928E3591BA08E3D0057232E /* CBSessionMessage.m in Sources */,
+				0928E3581BA08E3D0057232E /* CBPreKey.m in Sources */,
+				0928E3571BA08E3D0057232E /* CBVector.m in Sources */,
+				0928E3561BA08E3D0057232E /* CBSession.m in Sources */,
+				0928E3551BA08E3D0057232E /* CBCryptoBox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,33 +514,38 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		BA7EF96C1B7109B600204A8E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BA7EF95D1B7109B600204A8E /* CryptoboxiOS */;
-			targetProxy = BA7EF96B1B7109B600204A8E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
-		BA7447EB1B7A2C35002D9941 /* Debug */ = {
+		0928E2471BA0777A0057232E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0928E3741BA17E300057232E /* Cryptobox-ios.xcconfig */;
 			buildSettings = {
-				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CRYPTOBOX_VERSION = 0.2.0;
+				CURRENT_PROJECT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				INFOPLIST_FILE = Cryptobox/Info.plist;
+				PRODUCT_NAME = Cryptobox;
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		BA7447EC1B7A2C35002D9941 /* Release */ = {
+		0928E2481BA0777A0057232E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0928E3741BA17E300057232E /* Cryptobox-ios.xcconfig */;
 			buildSettings = {
-				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CRYPTOBOX_VERSION = 0.2.0;
+				CURRENT_PROJECT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				INFOPLIST_FILE = Cryptobox/Info.plist;
+				PRODUCT_NAME = Cryptobox;
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
 		BA7EF9701B7109B600204A8E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0928E37C1BA17E300057232E /* project-debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -579,6 +588,7 @@
 		};
 		BA7EF9711B7109B600204A8E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0928E37D1BA17E300057232E /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -613,43 +623,12 @@
 			};
 			name = Release;
 		};
-		BA7EF9731B7109B600204A8E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DYLIB_CURRENT_VERSION = 0.2.0;
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"${SRCROOT}/../build/lib",
-				);
-				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		BA7EF9741B7109B600204A8E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DYLIB_CURRENT_VERSION = 0.2.0;
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"${SRCROOT}/../build/lib",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 		BA7EF9761B7109B600204A8E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0928E3771BA17E300057232E /* ios-test-target.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SDKROOT)/Developer/Library/Frameworks";
 				INFOPLIST_FILE = CryptoboxTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -662,12 +641,10 @@
 		};
 		BA7EF9771B7109B600204A8E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0928E3771BA17E300057232E /* ios-test-target.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SDKROOT)/Developer/Library/Frameworks";
 				INFOPLIST_FILE = CryptoboxTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -681,11 +658,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BA7447ED1B7A2C35002D9941 /* Build configuration list for PBXAggregateTarget "UniversalLib" */ = {
+		0928E24B1BA0777A0057232E /* Build configuration list for PBXNativeTarget "Cryptobox-ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BA7447EB1B7A2C35002D9941 /* Debug */,
-				BA7447EC1B7A2C35002D9941 /* Release */,
+				0928E2471BA0777A0057232E /* Debug */,
+				0928E2481BA0777A0057232E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -695,15 +672,6 @@
 			buildConfigurations = (
 				BA7EF9701B7109B600204A8E /* Debug */,
 				BA7EF9711B7109B600204A8E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BA7EF9721B7109B600204A8E /* Build configuration list for PBXNativeTarget "CryptoboxiOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BA7EF9731B7109B600204A8E /* Debug */,
-				BA7EF9741B7109B600204A8E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

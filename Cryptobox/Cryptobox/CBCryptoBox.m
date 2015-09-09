@@ -86,7 +86,7 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
         
         CBoxResult result;
         CBoxSessionRef sessionBacking = NULL;
-        result = cbox_session_init_from_prekey(_boxBacking, [sessionId UTF8String], preKey.dataArray, preKey.length, &sessionBacking);
+        result = cbox_session_init_from_prekey(self->_boxBacking, [sessionId UTF8String], preKey.dataArray, preKey.length, &sessionBacking);
         CBAssertResultIsSuccess(result);
         CBReturnWithErrorIfNotSuccess(result, error);
         
@@ -118,7 +118,7 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
             CBoxSessionRef sessionBacking = NULL;
             CBoxVecRef plain = NULL;
             const uint8_t *bytes = (const uint8_t*)message.bytes;
-            CBoxResult result = cbox_session_init_from_message(_boxBacking, [sessionId UTF8String], bytes, (uint32_t)message.length, &sessionBacking, &plain);
+            CBoxResult result = cbox_session_init_from_message(self->_boxBacking, [sessionId UTF8String], bytes, (uint32_t)message.length, &sessionBacking, &plain);
             CBAssertResultIsSuccess(result);
 
             CBReturnWithErrorIfNotSuccess(result, error);
@@ -134,7 +134,7 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
             }
             
             // Create the new session
-            CBSession *session = [[CBSession alloc] initWithCBoxSessionRef:sessionBacking sessionId:sessionId];
+            session = [[CBSession alloc] initWithCBoxSessionRef:sessionBacking sessionId:sessionId];
             [self.sessions setObject:session forKey:sessionId];
             
             sessionMessage = [[CBSessionMessage alloc] initWithSession:session data:vector.data];
@@ -156,7 +156,7 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
         NSAssert(! [session isClosed], @"Session is closed");
         if (! session) {
             CBoxSessionRef sessionBacking = NULL;
-            CBoxResult result = cbox_session_get(_boxBacking, [sessionId UTF8String], &sessionBacking);
+            CBoxResult result = cbox_session_get(self->_boxBacking, [sessionId UTF8String], &sessionBacking);
             CBAssertResultIsSuccess(result);
             CBReturnWithErrorIfNotSuccess(result, error);
             
@@ -182,7 +182,7 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
             [self.sessions removeObjectForKey:sessionId];
         }
         
-        CBoxResult result = cbox_session_delete(_boxBacking, [sessionId UTF8String]);
+        CBoxResult result = cbox_session_delete(self->_boxBacking, [sessionId UTF8String]);
         CBAssertResultIsSuccess(result);
         CBReturnWithErrorIfNotSuccess(result, error);
         
@@ -192,14 +192,14 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
     return success;
 }
 
-- (nullable NSData *)localFingerprint:(NSError *__nullable * __nullable)error
+- (nullable NSData *)localFingerprint:(NSError *__nullable * __nullable __unused)error
 {
     __block NSData *data = nil;
     dispatch_sync(self.cryptoBoxQueue, ^{
         CBThrowIllegalStageExceptionIfClosed([self isClosedInternally]);
         
         CBoxVecRef vectorBacking = NULL;
-        cbox_fingerprint_local(_boxBacking, &vectorBacking);
+        cbox_fingerprint_local(self->_boxBacking, &vectorBacking);
         CBVector *vector = [[CBVector alloc] initWithCBoxVecRef:vectorBacking];
         data = vector.data;
     });
@@ -213,7 +213,7 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
     dispatch_sync(self.cryptoBoxQueue, ^{
         CBThrowIllegalStageExceptionIfClosed([self isClosedInternally]);
         
-        key = [CBPreKey preKeyWithId:CBOX_LAST_PREKEY_ID boxRef:_boxBacking error:error];
+        key = [CBPreKey preKeyWithId:CBOX_LAST_PREKEY_ID boxRef:self->_boxBacking error:error];
     });
     
     return key;
@@ -236,7 +236,7 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
         for (NSUInteger i = 0; i < range.length; ++i) {
             uint16_t newId = (range.location + i) % 0xFFFF;
             
-            CBPreKey *preKey = [CBPreKey preKeyWithId:newId boxRef:_boxBacking error:error];
+            CBPreKey *preKey = [CBPreKey preKeyWithId:newId boxRef:self->_boxBacking error:error];
             if (*error != NULL || preKey == nil) {
                 return;
             }
@@ -260,7 +260,7 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
     });
 }
 
-- (BOOL)closeAllSessions:(NSError *__nullable * __nullable)error;
+- (BOOL)closeAllSessions:(NSError *__nullable * __nullable __unused)error;
 {
     __block BOOL success = NO;
     dispatch_sync(self.cryptoBoxQueue, ^{

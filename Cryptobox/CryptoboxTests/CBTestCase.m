@@ -7,9 +7,9 @@
 
 #import "Cryptobox.h"
 
+NSURL *__nullable CBCreateTemporaryDirectoryAndReturnURL(void);
 
-
-NSURL *__nullable CBCreateTemporaryDirectoryAndReturnURL()
+NSURL *__nullable CBCreateTemporaryDirectoryAndReturnURL(void)
 {
     NSError *error = nil;
     NSURL *directoryURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:[[NSProcessInfo processInfo] globallyUniqueString]] isDirectory:YES];

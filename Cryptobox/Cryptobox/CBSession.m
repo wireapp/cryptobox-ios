@@ -38,7 +38,7 @@
     dispatch_sync(self.sessionQueue, ^{
         CBThrowIllegalStageExceptionIfClosed([self isClosedInternally]);
         
-        CBoxResult result = cbox_session_save(_sessionBacking);
+        CBoxResult result = cbox_session_save(self->_sessionBacking);
         CBAssertResultIsSuccess(result);
         CBReturnWithErrorIfNotSuccess(result, error);
         
@@ -71,7 +71,7 @@
             @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"plain not set" userInfo:nil];
         }
         
-        CBoxResult result = cbox_encrypt(_sessionBacking, bytes, (uint32_t)plain.length, &cipher);
+        CBoxResult result = cbox_encrypt(self->_sessionBacking, bytes, (uint32_t)plain.length, &cipher);
         CBAssertResultIsSuccess(result);
         CBReturnWithErrorIfNotSuccess(result, error);
 
@@ -95,7 +95,7 @@
             @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"cipher not set" userInfo:nil];
         }
         CBoxVecRef plain = NULL;
-        CBoxResult result = cbox_decrypt(_sessionBacking, bytes, (uint32_t)cipher.length, &plain);
+        CBoxResult result = cbox_decrypt(self->_sessionBacking, bytes, (uint32_t)cipher.length, &plain);
         CBAssertResultIsSuccess(result);
         CBReturnWithErrorIfNotSuccess(result, error);
         
@@ -114,7 +114,7 @@
             return;
         }
         CBoxVecRef vectorBacking = NULL;
-        cbox_fingerprint_remote(_sessionBacking, &vectorBacking);
+        cbox_fingerprint_remote(self->_sessionBacking, &vectorBacking);
         fingerprint = [CBVector vectorWithCBoxVecRef:vectorBacking].data;
     });
     return fingerprint;
