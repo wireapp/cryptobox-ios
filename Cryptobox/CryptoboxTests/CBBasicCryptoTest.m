@@ -34,7 +34,7 @@
     [aliceSession save:&error];
     XCTAssertNil(error, @"Error is not nil");
     
-    // Encrypt a message from bob
+    // Encrypt a message from alice to bob
     NSString *const plain = @"Hello Bob!";
     NSData *plainData = [plain dataUsingEncoding:NSUTF8StringEncoding];
     NSData *cipherData = [aliceSession encrypt:plainData error:&error];

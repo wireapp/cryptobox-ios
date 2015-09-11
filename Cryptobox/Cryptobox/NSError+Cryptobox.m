@@ -4,7 +4,8 @@
 // can obtain one at http://mozilla.org/MPL/2.0/.
 
 #import "NSError+Cryptobox.h"
-
+#import "cbox.h"
+#import "CBMacros.h"
 
 
 NSString *const CBErrorDomain = @"CryptoboxErrorDomain";

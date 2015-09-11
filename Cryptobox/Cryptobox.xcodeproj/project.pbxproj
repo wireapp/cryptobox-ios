@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0928E2591BA078120057232E /* CBTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = BA025F921B79DAAE00139D15 /* CBTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0928E25A1BA078120057232E /* NSError+Cryptobox.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7EF9B71B710BB000204A8E /* NSError+Cryptobox.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0928E25B1BA078120057232E /* CBCryptoBox.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7EF9BD1B71132000204A8E /* CBCryptoBox.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0928E25C1BA078120057232E /* CBSession.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7EF9BA1B7112FD00204A8E /* CBSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -373,7 +372,6 @@
 				0928E25B1BA078120057232E /* CBCryptoBox.h in Headers */,
 				0928E25C1BA078120057232E /* CBSession.h in Headers */,
 				0928E25F1BA078120057232E /* CBSessionMessage.h in Headers */,
-				0928E2591BA078120057232E /* CBTypes.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

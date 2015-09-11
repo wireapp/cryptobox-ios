@@ -4,6 +4,7 @@
 // can obtain one at http://mozilla.org/MPL/2.0/.
 
 #import "CBSession.h"
+#import "CBTypes.h"
 
 #import "cbox.h"
 #import "CBTypes.h"

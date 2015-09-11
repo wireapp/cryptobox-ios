@@ -4,11 +4,7 @@
 // can obtain one at http://mozilla.org/MPL/2.0/.
 
 #import <Foundation/Foundation.h>
-
-#import "CBTypes.h"
-#import "CBVector.h"
-
-
+#import <Cryptobox/CBVector.h>
 
 @interface CBPreKey : CBVector
 

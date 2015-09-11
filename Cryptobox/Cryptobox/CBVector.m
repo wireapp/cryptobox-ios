@@ -4,6 +4,7 @@
 // can obtain one at http://mozilla.org/MPL/2.0/.
 
 #import "CBVector.h"
+#import "CBTypes.h"
 
 #import "CBVector+Internal.h"
 #import "cbox.h"

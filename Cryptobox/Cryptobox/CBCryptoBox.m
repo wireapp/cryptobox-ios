@@ -4,6 +4,7 @@
 // can obtain one at http://mozilla.org/MPL/2.0/.
 
 #import "CBCryptoBox.h"
+#import "CBTypes.h"
 
 #import "CBSession+Internal.h"
 #import "CBVector+Internal.h"

@@ -13,7 +13,6 @@ FOUNDATION_EXPORT const unsigned char Cryptobox_VersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <Cryptobox/PublicHeader.h>
 
-#import <Cryptobox/CBTypes.h>
 #import <Cryptobox/NSError+Cryptobox.h>
 #import <Cryptobox/CBSession.h>
 #import <Cryptobox/CBCryptoBox.h>

@@ -4,6 +4,7 @@
 // can obtain one at http://mozilla.org/MPL/2.0/.
 
 #import "CBPreKey.h"
+#import "CBTypes.h"
 
 #import "NSError+Cryptobox.h"
 #import "CBMacros.h"

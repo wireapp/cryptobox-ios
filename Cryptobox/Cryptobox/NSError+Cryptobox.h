@@ -5,10 +5,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "cbox.h"
-
-
-
 typedef NS_ENUM(NSInteger, CBErrorCode) {
     CBErrorCodeUndefined,
     CBErrorCodeStorageError,
@@ -26,7 +22,6 @@ typedef NS_ENUM(NSInteger, CBErrorCode) {
 };
 
 FOUNDATION_EXPORT NSString *const CBErrorDomain;
-FOUNDATION_EXPORT CBErrorCode CBErrorCodeFromCBoxResult(CBoxResult result);
 FOUNDATION_EXPORT NSString *const CBCodeIllegalStateException;
 
 
