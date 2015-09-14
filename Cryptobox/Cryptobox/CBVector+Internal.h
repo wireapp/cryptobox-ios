@@ -15,6 +15,6 @@
 
 - (nonnull uint8_t *)dataArray;
 
-- (size_t)length;
+- (unsigned long)length;
 
 @end

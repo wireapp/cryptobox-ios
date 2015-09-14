@@ -5,10 +5,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "CBTypes.h"
-
-
-
 /// Wrapps CBoxVec
 @interface CBVector : NSObject
 

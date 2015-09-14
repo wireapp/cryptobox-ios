@@ -5,7 +5,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "CBTypes.h"
 @class CBSession;
 @class CBPreKey;
 @class CBSessionMessage;

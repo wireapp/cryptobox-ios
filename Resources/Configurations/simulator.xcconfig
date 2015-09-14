@@ -3,9 +3,16 @@
 // the MPL was not distributed with this file, You
 // can obtain one at http://mozilla.org/MPL/2.0/.
 
-#import <Foundation/Foundation.h>
-#import <Cryptobox/CBVector.h>
 
-@interface CBPreKey : CBVector
 
-@end
+//
+// This file is used to build a version for the iOS simulator
+// from the command line.
+//
+
+
+
+// Architectures
+//
+SDKROOT = iphonesimulator
+ARCHS = i386 x86_64

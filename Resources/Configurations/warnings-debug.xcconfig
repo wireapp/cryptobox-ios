@@ -3,9 +3,9 @@
 // the MPL was not distributed with this file, You
 // can obtain one at http://mozilla.org/MPL/2.0/.
 
-#import <Foundation/Foundation.h>
-#import <Cryptobox/CBVector.h>
+#include "warnings.xcconfig"
 
-@interface CBPreKey : CBVector
 
-@end
+// LLVM - Warning Policies
+//
+GCC_TREAT_WARNINGS_AS_ERRORS = YES

@@ -5,10 +5,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "CBTypes.h"
-
-
-
 @interface CBSession : NSObject
 
 @property (nonatomic, readonly, copy, nonnull) NSString *sessionId;

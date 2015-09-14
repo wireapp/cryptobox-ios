@@ -6,7 +6,8 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import "CBTestCase.h"
-#import "Cryptobox.h"
+
+@import Cryptobox;
 
 
 

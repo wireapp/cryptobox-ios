@@ -5,6 +5,7 @@
 
 #import "NSError+Cryptobox.h"
 
+FOUNDATION_EXPORT CBErrorCode CBErrorCodeFromCBoxResult(CBoxResult result);
 
 
 #define CBThrowIllegalStageExceptionIfClosed(closed) \

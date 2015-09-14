@@ -3,9 +3,5 @@
 // the MPL was not distributed with this file, You
 // can obtain one at http://mozilla.org/MPL/2.0/.
 
-#import <Foundation/Foundation.h>
-#import <Cryptobox/CBVector.h>
 
-@interface CBPreKey : CBVector
-
-@end
+MAJOR_VERSION = 1

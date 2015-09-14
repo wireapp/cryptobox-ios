@@ -4,6 +4,7 @@
 // can obtain one at http://mozilla.org/MPL/2.0/.
 
 #import "CBVector.h"
+#import "CBTypes.h"
 
 #import "CBVector+Internal.h"
 #import "cbox.h"
@@ -39,7 +40,7 @@
     self = [super init];
     if (self) {
         _vectorBacking = vector;
-        size_t length = cbox_vec_len(vector);
+        unsigned long length = cbox_vec_len(vector);
         uint8_t *data = cbox_vec_data(vector);
         self.data = [NSData dataWithBytes:data length:length];
     }
@@ -56,7 +57,7 @@
     return cbox_vec_data(_vectorBacking);
 }
 
-- (size_t)length
+- (unsigned long)length
 {
     return cbox_vec_len(_vectorBacking);
 }

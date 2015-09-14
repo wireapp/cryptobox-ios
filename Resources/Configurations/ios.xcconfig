@@ -1,0 +1,39 @@
+// This Source Code Form is subject to the terms of
+// the Mozilla Public License, v. 2.0. If a copy of
+// the MPL was not distributed with this file, You
+// can obtain one at http://mozilla.org/MPL/2.0/.
+
+
+
+//
+// This is the main file used by Framework targets on iOS.
+// It gets included by {target}-ios.xcconfig
+//
+
+
+
+
+// Architectures
+//
+SDKROOT = iphoneos
+ARCHS = armv7 arm64
+
+
+// Code Signing
+//
+CODE_SIGN_IDENTITY = iPhone Developer
+
+
+// Deployment
+//
+IPHONEOS_DEPLOYMENT_TARGET = 8.0
+TARGETED_DEVICE_FAMILY = 1,2
+DYLIB_INSTALL_NAME_BASE = @rpath
+FRAMEWORK_VERSION = A
+
+
+
+// Linking
+//
+OTHER_LDFLAGS = -ObjC
+FRAMEWORK_SEARCH_PATHS = $(inherited) $(PROJECT_DIR)/Carthage/Build/iOS $(PLATFORM_DIR)/Developer/Library/Frameworks

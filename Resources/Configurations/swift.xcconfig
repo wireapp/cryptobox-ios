@@ -3,9 +3,8 @@
 // the MPL was not distributed with this file, You
 // can obtain one at http://mozilla.org/MPL/2.0/.
 
-#import <Foundation/Foundation.h>
-#import <Cryptobox/CBVector.h>
+// Swift
+//
 
-@interface CBPreKey : CBVector
-
-@end
+EMBEDDED_CONTENT_CONTAINS_SWIFT = YES
+LD_RUNPATH_SEARCH_PATHS = $(inherited) @loader_path/Frameworks @loader_path/../Frameworks @executable_path/Frameworks @executable_path/../Frameworks
