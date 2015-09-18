@@ -7,12 +7,12 @@
 
 #import "Cryptobox.h"
 
-NSURL *__nullable CBCreateTemporaryDirectoryAndReturnURL(void);
+NSURL *__nullable CBCreateTemporaryDirectoryAndReturnURL(NSString *name);
 
-NSURL *__nullable CBCreateTemporaryDirectoryAndReturnURL(void)
+NSURL *__nullable CBCreateTemporaryDirectoryAndReturnURL(NSString *name)
 {
     NSError *error = nil;
-    NSURL *directoryURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:[[NSProcessInfo processInfo] globallyUniqueString]] isDirectory:YES];
+    NSURL *directoryURL = [NSURL fileURLWithPath:[[NSTemporaryDirectory() stringByAppendingPathComponent:[[NSProcessInfo processInfo] globallyUniqueString]] stringByAppendingPathComponent:name] isDirectory:YES];
     [[NSFileManager defaultManager] createDirectoryAtURL:directoryURL withIntermediateDirectories:YES attributes:nil error:&error];
     if (error) {
         return nil;
@@ -25,9 +25,9 @@ NSURL *__nullable CBCreateTemporaryDirectoryAndReturnURL(void)
 
 @implementation CBTestCase
 
-- (CBCryptoBox *)createBoxAndCheckAsserts
+- (nullable CBCryptoBox *)createBoxAndCheckAsserts:(NSString *__nonnull)userName
 {
-    NSURL *url = CBCreateTemporaryDirectoryAndReturnURL();
+    NSURL *url = CBCreateTemporaryDirectoryAndReturnURL(userName);
     NSError *error = nil;
     CBCryptoBox *box = [CBCryptoBox cryptoBoxWithPathURL:url error:&error];
     XCTAssertNil(error, @"");

@@ -6,8 +6,9 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-#import "Cryptobox.h"
 #import "CBTestCase.h"
+
+@import Cryptobox;
 
 @interface CBCryptoBoxTests : CBTestCase
 
@@ -21,7 +22,7 @@
 {
     [super setUp];
     
-    NSURL *directory = CBCreateTemporaryDirectoryAndReturnURL();
+    NSURL *directory = CBCreateTemporaryDirectoryAndReturnURL(self.name);
     self.box = [CBCryptoBox cryptoBoxWithPathURL:directory error:nil];
 }
 

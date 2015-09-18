@@ -6,9 +6,10 @@
 #import <Foundation/Foundation.h>
 #import <XCTest/XCTest.h>
 
-#import "Cryptobox.h"
 #import "CBTestCase.h"
 
+
+@import Cryptobox;
 
 
 /// Very simple box init test
@@ -20,7 +21,7 @@
 
 - (void)testThatCryptoBoxInitWithPathWorks
 {
-    NSURL *directory = CBCreateTemporaryDirectoryAndReturnURL();
+    NSURL *directory = CBCreateTemporaryDirectoryAndReturnURL(self.name);
     NSError *error = nil;
     CBCryptoBox *box = [CBCryptoBox cryptoBoxWithPathURL:directory error:&error];
     XCTAssertNil(error);

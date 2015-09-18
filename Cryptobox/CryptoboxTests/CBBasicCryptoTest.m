@@ -21,46 +21,47 @@
 
 - (void)testThatBasicTestCanRun
 {
-    self.aliceBox = [self createBoxAndCheckAsserts];
-    self.bobBox = [self createBoxAndCheckAsserts];
+    self.aliceBox = [self createBoxAndCheckAsserts:@"alice"];
+    self.bobBox = [self createBoxAndCheckAsserts:@"bob"];
     
     CBPreKey *bobPreKey = [self generatePreKeyAndCheckAssertsWithLocation:1 box:self.bobBox];
     
+    //Alice side
     NSError *error = nil;
-    CBSession *aliceSession = [self.aliceBox sessionWithId:@"alice" fromPreKey:bobPreKey error:&error];
+    CBSession *aliceToBobSession = [self.aliceBox sessionWithId:@"sessionWithBob" fromPreKey:bobPreKey error:&error];
     XCTAssertNil(error, @"Error is not nil");
-    XCTAssertNotNil(aliceSession, @"Session creation from prekey failed");
+    XCTAssertNotNil(aliceToBobSession, @"Session creation from prekey failed");
     
-    [aliceSession save:&error];
+    [aliceToBobSession save:&error];
     XCTAssertNil(error, @"Error is not nil");
     
     // Encrypt a message from alice to bob
     NSString *const plain = @"Hello Bob!";
     NSData *plainData = [plain dataUsingEncoding:NSUTF8StringEncoding];
-    NSData *cipherData = [aliceSession encrypt:plainData error:&error];
+    NSData *cipherData = [aliceToBobSession encrypt:plainData error:&error];
     XCTAssertNil(error);
     XCTAssertNotNil(cipherData);
     XCTAssertNotEqual(plainData, cipherData);
     
-    CBSession *bobSession = nil;
-    CBSessionMessage *bobSessionMessage = [self.bobBox sessionMessageWithId:@"bob" fromMessage:cipherData error:&error];
+    //Bob's side
+    CBSessionMessage *bobToAliceSessionMessage = [self.bobBox sessionMessageWithId:@"sessionToAllice" fromMessage:cipherData error:&error];
     XCTAssertNil(error);
-    XCTAssertNotNil(bobSessionMessage);
-    XCTAssertNotNil(bobSessionMessage.session);
-    XCTAssertNotNil(bobSessionMessage.data);
+    XCTAssertNotNil(bobToAliceSessionMessage);
+    XCTAssertNotNil(bobToAliceSessionMessage.session);
+    XCTAssertNotNil(bobToAliceSessionMessage.data);
     
-    bobSession = bobSessionMessage.session;
+    CBSession *bobToAliceSession = bobToAliceSessionMessage.session;
 
-    [bobSession save:&error];
+    [bobToAliceSession save:&error];
     XCTAssertNil(error);
     
-    NSString *decrypted = [[NSString alloc] initWithData:bobSessionMessage.data encoding:NSUTF8StringEncoding];
+    NSString *decrypted = [[NSString alloc] initWithData:bobToAliceSessionMessage.data encoding:NSUTF8StringEncoding];
     XCTAssertTrue([plain isEqualToString:decrypted]);
 
     // Compare fingerprints
     NSData *localFingerprint = [self.aliceBox localFingerprint:&error];
     XCTAssertNil(error);
-    NSData *remoteFingerprint = [bobSession remoteFingerprint];
+    NSData *remoteFingerprint = [bobToAliceSession remoteFingerprint];
     XCTAssertNotNil(localFingerprint);
     XCTAssertNotNil(remoteFingerprint);
     XCTAssertEqualObjects(localFingerprint, remoteFingerprint);
@@ -70,21 +71,21 @@
     
     localFingerprint = [self.bobBox localFingerprint:&error];
     XCTAssertNil(error);
-    remoteFingerprint = [aliceSession remoteFingerprint];
+    remoteFingerprint = [aliceToBobSession remoteFingerprint];
     XCTAssertNotNil(localFingerprint);
     XCTAssertNotNil(remoteFingerprint);
     XCTAssertEqualObjects(localFingerprint, remoteFingerprint);
     
-    [self.aliceBox closeSession:aliceSession];
-    [self.bobBox closeSession:bobSession];
+    [self.aliceBox closeSession:aliceToBobSession];
+    [self.bobBox closeSession:bobToAliceSession];
     
-    aliceSession = [self.aliceBox sessionById:@"alice" error:&error];
+    aliceToBobSession = [self.aliceBox sessionById:@"sessionWithBob" error:&error];
     XCTAssertNil(error);
-    XCTAssertNotNil(aliceSession);
+    XCTAssertNotNil(aliceToBobSession);
     
-    bobSession = [self.bobBox sessionById:@"bob" error:&error];
+    bobToAliceSession = [self.bobBox sessionById:@"sessionToAllice" error:&error];
     XCTAssertNil(error);
-    XCTAssertNotNil(bobSession);
+    XCTAssertNotNil(bobToAliceSession);
 }
 
 @end

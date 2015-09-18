@@ -20,8 +20,8 @@
 
 - (void)testExample
 {
-    CBCryptoBox *aliceBox = [self createBoxAndCheckAsserts];
-    CBCryptoBox *bobBox = [self createBoxAndCheckAsserts];
+    CBCryptoBox *aliceBox = [self createBoxAndCheckAsserts:@"alice"];
+    CBCryptoBox *bobBox = [self createBoxAndCheckAsserts:@"bob"];
     
     
     CBPreKey *bobPreKey = [self generatePreKeyAndCheckAssertsWithLocation:1 box:bobBox];

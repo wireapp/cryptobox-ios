@@ -22,6 +22,7 @@
 		0928E3581BA08E3D0057232E /* CBPreKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7EF9C11B71136600204A8E /* CBPreKey.m */; };
 		0928E3591BA08E3D0057232E /* CBSessionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = BA74487C1B7A7F75002D9941 /* CBSessionMessage.m */; };
 		0928E36D1BA0908F0057232E /* Cryptobox.h in Headers */ = {isa = PBXBuildFile; fileRef = 0928E36C1BA0908F0057232E /* Cryptobox.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		09E393C31BAC2E5600F3EA1B /* Cryptobox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0928E2341BA0777A0057232E /* Cryptobox.framework */; };
 		BA025F981B79F62A00139D15 /* CBCryptoBoxInitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BA025F971B79F62A00139D15 /* CBCryptoBoxInitTest.m */; };
 		BA7583EE1B7B82030048FD6A /* CBCryptoBoxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7583ED1B7B82030048FD6A /* CBCryptoBoxTests.m */; };
 		BADF92111B80C35300766380 /* CBBasicCryptoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BADF92101B80C35300766380 /* CBBasicCryptoTest.m */; };
@@ -151,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09E393C31BAC2E5600F3EA1B /* Cryptobox.framework in Frameworks */,
 				F503032C1B8CFA2C0053E406 /* libsodium.a in Frameworks */,
 				F503032B1B8CFA2C0053E406 /* libcryptobox.a in Frameworks */,
 			);

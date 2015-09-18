@@ -10,13 +10,13 @@
 
 
 
-FOUNDATION_EXPORT NSURL *__nullable CBCreateTemporaryDirectoryAndReturnURL();
+FOUNDATION_EXPORT NSURL *__nullable CBCreateTemporaryDirectoryAndReturnURL(NSString * __nonnull name);
 
 
 
 @interface CBTestCase : XCTestCase
 
-- (nullable CBCryptoBox *)createBoxAndCheckAsserts;
+- (nullable CBCryptoBox *)createBoxAndCheckAsserts:(NSString * __nonnull)userName;
 
 - (nullable NSArray *)generatePreKeysAndCheckAssertsWithRange:(NSRange)range box:(nonnull CBCryptoBox *)box;
 
