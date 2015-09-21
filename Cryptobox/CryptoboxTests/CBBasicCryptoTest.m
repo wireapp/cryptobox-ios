@@ -44,7 +44,7 @@
     XCTAssertNotEqual(plainData, cipherData);
     
     //Bob's side
-    CBSessionMessage *bobToAliceSessionMessage = [self.bobBox sessionMessageWithId:@"sessionToAllice" fromMessage:cipherData error:&error];
+    CBSessionMessage *bobToAliceSessionMessage = [self.bobBox sessionMessageWithId:@"sessionToAlice" fromMessage:cipherData error:&error];
     XCTAssertNil(error);
     XCTAssertNotNil(bobToAliceSessionMessage);
     XCTAssertNotNil(bobToAliceSessionMessage.session);
@@ -83,7 +83,7 @@
     XCTAssertNil(error);
     XCTAssertNotNil(aliceToBobSession);
     
-    bobToAliceSession = [self.bobBox sessionById:@"sessionToAllice" error:&error];
+    bobToAliceSession = [self.bobBox sessionById:@"sessionToAlice" error:&error];
     XCTAssertNil(error);
     XCTAssertNotNil(bobToAliceSession);
 }
