@@ -18,8 +18,8 @@
 
 - (void)testThatLastPrekeyTestCanRun
 {
-    CBCryptoBox *aliceBox = [self createBoxAndCheckAsserts];
-    CBCryptoBox *bobBox = [self createBoxAndCheckAsserts];
+    CBCryptoBox *aliceBox = [self createBoxAndCheckAsserts:@"alice"];
+    CBCryptoBox *bobBox = [self createBoxAndCheckAsserts:@"bob"];
 
     NSError *error = nil;
     CBPreKey *bobLastPreKey = [bobBox lastPreKey:&error];
