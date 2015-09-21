@@ -63,12 +63,12 @@ FOUNDATION_EXPORT const NSUInteger CBMaxPreKeyID;
 
 /// Close all open sessions
 /// @throws CBCodeIllegalStateException in case @c CBCryptoBox is closed already
-- (BOOL)closeAllSessions:(NSError *__nullable * __nullable)error;
+- (void)closeAllSessions;
 
 /// Close the CryptoBox
-/// Note: After a box has been closed, any operations other than @c close are considered programmer error and result in @c NSError returns on other methods
-/// @return
-- (BOOL)close:(NSError *__nullable * __nullable)error;
+/// Note: After a box has been closed, any operations other than @c close are considered programmer error and result in @c CBCodeIllegalStateException
+/// @throws CBCodeIllegalStateException in case @c CBCryptoBox is closed already
+- (void)close;
 
 - (BOOL)isClosed;
 

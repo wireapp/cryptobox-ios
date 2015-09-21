@@ -261,35 +261,24 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
     });
 }
 
-- (BOOL)closeAllSessions:(NSError *__nullable * __nullable __unused)error;
+- (void)closeAllSessions
 {
-    __block BOOL success = NO;
     dispatch_sync(self.cryptoBoxQueue, ^{
         CBThrowIllegalStageExceptionIfClosed([self isClosedInternally]);
         
-        for (CBSession *session in self.sessions) {
-            [session close];
-        }
-        [self.sessions removeAllObjects];
-        success = YES;
+        [self closeAllSessionsInternally];
     });
-    return success;
 }
 
-- (BOOL)close:(NSError *__nullable * __nullable)error
+
+- (void)close
 {
-    __block BOOL success = YES;
     dispatch_sync(self.cryptoBoxQueue, ^{
-        if ([self isClosedInternally]) {
-            return;
-        }
-        if (! [self closeAllSessions:error]) {
-            success = NO;
-            return;
-        }
+        CBThrowIllegalStageExceptionIfClosed([self isClosedInternally]);
+        
+        [self closeAllSessionsInternally];
         [self closeInternally];
     });
-    return success;
 }
 
 - (BOOL)isClosed
@@ -301,6 +290,8 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
     return closed;
 }
 
+#pragma mark - Internal, not dispatch_sync protected methods
+
 - (BOOL)isClosedInternally
 {
     return (_boxBacking == NULL);
@@ -310,6 +301,17 @@ const NSUInteger CBMaxPreKeyID = 0xFFFE;
 {
     cbox_close(_boxBacking);
     _boxBacking = NULL;
+}
+
+- (void)closeAllSessionsInternally
+{
+    if ([self isClosedInternally]) {
+        return;
+    }
+    for (CBSession *session in self.sessions) {
+        [session close];
+    }
+    [self.sessions removeAllObjects];
 }
 
 @end
