@@ -422,7 +422,7 @@
 		BA7EF9561B7109B600204A8E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Cryptobox;
 				TargetAttributes = {
 					0928E2331BA0777A0057232E = {
@@ -524,6 +524,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
 				INFOPLIST_FILE = Cryptobox/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = org.pkaboo.cryptobox;
 				PRODUCT_NAME = Cryptobox;
 				VERSION_INFO_PREFIX = "";
 			};
@@ -538,6 +539,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
 				INFOPLIST_FILE = Cryptobox/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = org.pkaboo.cryptobox;
 				PRODUCT_NAME = Cryptobox;
 				VERSION_INFO_PREFIX = "";
 			};
@@ -564,6 +566,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
