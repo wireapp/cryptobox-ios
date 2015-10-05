@@ -1,8 +1,10 @@
 # Cryptobox for iOS [![Build Status](https://travis-ci.org/romanb/cryptobox-ios.svg?branch=master)](https://travis-ci.org/romanb/cryptobox-ios)
 
-This project provides for cross-compilation of [cryptobox](https://github.com/romanb/cryptobox) for iOS, currently only in the form of static libraries. It may also provide higher-level Objective-C bindings to the C interface in the future, as well as dynamic libraries.
+This project provides cross-compiled binaries of [cryptobox](https://github.com/romanb/cryptobox) for iOS, currently only in the form of static libraries.
 
-## Building libcryptobox
+Objective-C bindings based on these binaries are developed and maintained [on a fork](https://github.com/ilyapuchka/cryptobox-ios).
+
+## Building
 
 A rust cross-compiler is needed that supports the following iOS architectures:
 
@@ -13,6 +15,10 @@ A rust cross-compiler is needed that supports the following iOS architectures:
   * x86_64-apple-ios
 
 For instructions on how to build such a cross-compiler, refer to the [Rust Wiki](https://github.com/rust-lang/rust-wiki-backup/blob/master/Doc-building-for-ios.md).
+
+To perform the build:
+
+    make dist
 
 **Note**: Link against the following native artifacts when linking against the `libcryptobox.a` static library. The order and any duplication can be significant on some platforms, and so may need to be preserved:
 
@@ -26,8 +32,3 @@ For instructions on how to build such a cross-compiler, refer to the [Rust Wiki]
   * library: pthread
   * library: c
   * library: m
-
-## Integrating Objective-C Wrapper
-You can integrate Objective-C Wrapper (Cryptobox.framework) using Carthage with `github "romanb/cryptobox-ios"`.
-When Carthage will build it first time it will also build `libcryptobox.a` and `libsodium.a` in `Carthage/Checkouts/cryptobox-ios/build` with `libs` and `include` subfolders. So you can just add these paths to Libraries Search Paths and Headers Search Paths of your project.
-
