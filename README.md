@@ -1,4 +1,4 @@
-# Cryptobox for iOS [![Build Status](https://travis-ci.org/romanb/cryptobox-ios.svg?branch=master)](https://travis-ci.org/romanb/cryptobox-ios)
+# Cryptobox for iOS
 
 This project provides cross-compiled binaries of [cryptobox](https://github.com/romanb/cryptobox) for iOS, currently only in the form of static libraries.
 
