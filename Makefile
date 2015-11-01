@@ -1,5 +1,5 @@
 SHELL   := /usr/bin/env bash
-VERSION := 0.4.0
+VERSION := 0.5.0
 
 TARGETS := armv7-apple-ios \
            armv7s-apple-ios \
@@ -11,12 +11,15 @@ TARGETS := armv7-apple-ios \
 # cf. https://github.com/alexcrichton/pkg-config-rs/blob/master/src/lib.rs#L12
 export PKG_CONFIG_ALLOW_CROSS=1
 
+.PHONY: all
 all: dist
 
+.PHONY: distclean
 distclean:
 	rm -rf build
 	rm -rf dist
 
+.PHONY: dist-libs
 dist-libs: cryptobox
 	mkdir -p dist/lib
 	mkdir -p dist/include
@@ -30,8 +33,10 @@ dist/cryptobox-ios-$(VERSION).tar.gz: dist-libs
 		-czf dist/cryptobox-ios-$(VERSION).tar.gz \
 		lib include
 
+.PHONY: dist-tar
 dist-tar: dist/cryptobox-ios-$(VERSION).tar.gz
 
+.PHONY: dist
 dist: dist-tar
 
 #############################################################################
@@ -39,25 +44,29 @@ dist: dist-tar
 
 include mk/cryptobox-src.mk
 
-build/lib/libcryptobox.a: libsodium $(CRYPTOBOX_SRC)
-	cd $(CRYPTOBOX_SRC) && \
+.PHONY: cryptobox
+cryptobox: build/lib/libcryptobox.a build/include/cbox.h
+
+build/lib/libcryptobox.a: libsodium | $(CRYPTOBOX_SRC)
+	cd $(CRYPTOBOX_SRC)/cryptobox-c && \
 	sed -i.bak s/crate\-type.*/crate\-type\ =\ \[\"staticlib\"\]/g Cargo.toml && \
 	$(foreach tgt,$(TARGETS),cargo rustc --lib --release --target=$(tgt);)
 	mkdir -p build/lib
-	$(foreach tgt,$(TARGETS),cp $(CRYPTOBOX_SRC)/target/$(tgt)/release/libcryptobox.a build/lib/libcryptobox-$(tgt).a;)
+	$(foreach tgt,$(TARGETS),cp $(CRYPTOBOX_SRC)/cryptobox-c/target/$(tgt)/release/libcryptobox.a build/lib/libcryptobox-$(tgt).a;)
 
-build/include/cbox.h: $(CRYPTOBOX_SRC)
+build/include/cbox.h: | $(CRYPTOBOX_SRC)
 	mkdir -p build/include
-	cp $(CRYPTOBOX_SRC)/cbox.h build/include/
-
-cryptobox: build/lib/libcryptobox.a build/include/cbox.h
+	cp $(CRYPTOBOX_SRC)/cryptobox-c/src/cbox.h build/include/
 
 #############################################################################
 # libsodium
 
 include mk/libsodium-src.mk
 
-build/lib/libsodium.a: $(LIBSODIUM_SRC)
+.PHONY: libsodium
+libsodium: build/lib/libsodium.a build/include/sodium.h
+
+build/lib/libsodium.a: | $(LIBSODIUM_SRC)
 	cp mk/ios-full.sh $(LIBSODIUM_SRC)/dist-build && \
 		chmod +x $(LIBSODIUM_SRC)/dist-build/ios-full.sh && \
 		cd $(LIBSODIUM_SRC) && \
@@ -69,5 +78,3 @@ build/include/sodium.h: build/lib/libsodium.a
 	mkdir -p build/include
 	cp $(LIBSODIUM_SRC)/libsodium-ios/include/sodium.h build/include/sodium.h
 	cp -r $(LIBSODIUM_SRC)/libsodium-ios/include/sodium build/include/sodium
-
-libsodium: build/lib/libsodium.a build/include/sodium.h
