@@ -1,5 +1,5 @@
 SHELL   := /usr/bin/env bash
-VERSION := 0.5.0
+VERSION := 0.6.0
 
 TARGETS := armv7-apple-ios \
            armv7s-apple-ios \
@@ -48,15 +48,15 @@ include mk/cryptobox-src.mk
 cryptobox: build/lib/libcryptobox.a build/include/cbox.h
 
 build/lib/libcryptobox.a: libsodium | $(CRYPTOBOX_SRC)
-	cd $(CRYPTOBOX_SRC)/cryptobox-c && \
+	cd $(CRYPTOBOX_SRC) && \
 	sed -i.bak s/crate\-type.*/crate\-type\ =\ \[\"staticlib\"\]/g Cargo.toml && \
 	$(foreach tgt,$(TARGETS),cargo rustc --lib --release --target=$(tgt);)
 	mkdir -p build/lib
-	$(foreach tgt,$(TARGETS),cp $(CRYPTOBOX_SRC)/cryptobox-c/target/$(tgt)/release/libcryptobox.a build/lib/libcryptobox-$(tgt).a;)
+	$(foreach tgt,$(TARGETS),cp $(CRYPTOBOX_SRC)/target/$(tgt)/release/libcryptobox.a build/lib/libcryptobox-$(tgt).a;)
 
 build/include/cbox.h: | $(CRYPTOBOX_SRC)
 	mkdir -p build/include
-	cp $(CRYPTOBOX_SRC)/cryptobox-c/src/cbox.h build/include/
+	cp $(CRYPTOBOX_SRC)/src/cbox.h build/include/
 
 #############################################################################
 # libsodium
