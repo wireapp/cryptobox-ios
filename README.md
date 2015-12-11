@@ -1,8 +1,6 @@
 # Cryptobox for iOS
 
-This project provides cross-compiled binaries of [cryptobox](https://github.com/romanb/cryptobox) for iOS, currently only in the form of static libraries.
-
-Objective-C bindings based on these binaries are developed and maintained [on a fork](https://github.com/ilyapuchka/cryptobox-ios).
+This project provides cross-compiled binaries of [cryptobox](https://github.com/wireapp/cryptobox) for iOS, currently only in the form of static libraries.
 
 ## Building
 
