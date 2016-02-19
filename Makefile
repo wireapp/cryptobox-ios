@@ -1,5 +1,5 @@
 SHELL   := /usr/bin/env bash
-VERSION := 0.8.0
+VERSION := 0.8.1
 
 TARGETS := armv7-apple-ios \
            armv7s-apple-ios \
