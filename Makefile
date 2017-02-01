@@ -1,8 +1,7 @@
 SHELL   := /usr/bin/env bash
-VERSION := 0.8.1
+VERSION := 1.0.0
 
 TARGETS := armv7-apple-ios \
-           armv7s-apple-ios \
            i386-apple-ios \
            aarch64-apple-ios \
            x86_64-apple-ios
