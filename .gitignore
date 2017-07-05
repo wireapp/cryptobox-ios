@@ -48,3 +48,4 @@ xcuserdata
 Carthage/Build
 
 *.swp
+dist
