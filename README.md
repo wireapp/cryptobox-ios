@@ -14,7 +14,7 @@ This project provides cross-compiled binaries of [cryptobox-c](https://github.co
 
 ## Building
 
-A Rust cross-compiler (1.12.1 or later) is needed that supports the following iOS architectures:
+A Rust cross-compiler (1.25.X or later) is needed that supports the following iOS architectures:
 
   * armv7-apple-ios
   * armv7s-apple-ios
