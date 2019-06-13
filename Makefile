@@ -1,5 +1,5 @@
 SHELL   := /usr/bin/env bash
-VERSION := 1.0.1
+VERSION := 1.1.0
 
 TARGETS := armv7-apple-ios \
            i386-apple-ios \
