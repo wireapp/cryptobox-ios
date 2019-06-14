@@ -1,6 +1,6 @@
-LIBSODIUM_VERSION := 1.0.16
+LIBSODIUM_VERSION := 1.0.14
 LIBSODIUM         := libsodium-$(LIBSODIUM_VERSION)
-LIBSODIUM_URL     := http://download.libsodium.org/libsodium/releases/$(LIBSODIUM).tar.gz
+LIBSODIUM_URL     := https://github.com/jedisct1/libsodium/releases/download/$(LIBSODIUM_VERSION)/$(LIBSODIUM).tar.gz
 LIBSODIUM_SRC     := build/src/$(LIBSODIUM)
 
 $(LIBSODIUM_SRC):
