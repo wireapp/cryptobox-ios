@@ -16,9 +16,6 @@ This project provides cross-compiled binaries of [cryptobox-c](https://github.co
 
 A Rust cross-compiler (1.25.X or later) is needed that supports the following iOS architectures:
 
-  * armv7-apple-ios
-  * armv7s-apple-ios
-  * i386-apple-ios
   * aarch64-apple-ios
   * x86_64-apple-ios
 
@@ -26,9 +23,6 @@ It is recommended to use [rustup](https://github.com/rust-lang-nursery/rustup.rs
 compiler toolchains. Using rustup, the following commands will install the necessary binaries for
 cross-compiling to above architectures:
 
-    rustup target add armv7-apple-ios
-    rustup target add armv7s-apple-ios
-    rustup target add i386-apple-ios
     rustup target add aarch64-apple-ios
     rustup target add x86_64-apple-ios
 
