@@ -18,6 +18,7 @@ A Rust cross-compiler (1.25.X or later) is needed that supports the following iO
 
   * aarch64-apple-ios
   * x86_64-apple-ios
+  * aarch64-apple-ios-sim
 
 It is recommended to use [rustup](https://github.com/rust-lang-nursery/rustup.rs) to manage the necessary
 compiler toolchains. Using rustup, the following commands will install the necessary binaries for
@@ -25,7 +26,8 @@ cross-compiling to above architectures:
 
     rustup target add aarch64-apple-ios
     rustup target add x86_64-apple-ios
-
+    rustup target add aarch64-apple-ios-sim
+    
 Alternatively, for instructions on how to build a compiler from source that supports
 all the necessary architectures, please refer to the [Rust Wiki](https://github.com/rust-lang/rust-wiki-backup/blob/master/Doc-building-for-ios.md).
 
