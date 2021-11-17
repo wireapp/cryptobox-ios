@@ -30,7 +30,7 @@
 #  Merge libs into final version for xcode import
 
 export PREFIX="$(pwd)/libsodium-ios"
-export IOS64_PREFIX="$PREFIX/tmp/ios64"
+#export IOS64_PREFIX="$PREFIX/tmp/ios64"
 export SIMULATOR64_PREFIX="$PREFIX/tmp/simulator64"
 export SIMULATORARM64_PREFIX="$PREFIX/tmp/simulatorArm64"
 export XCODEDIR=$(xcode-select -p)
@@ -63,7 +63,7 @@ make distclean > /dev/null
 
 make -j3 install || exit 1
 
-## x86_64 simulator
+# x86_64 simulator
 export CFLAGS="-O2 -arch x86_64 -isysroot ${SDK} -mios-simulator-version-min=${IOS_SIMULATOR_VERSION_MIN} -flto"
 export LDFLAGS="-arch x86_64 -isysroot ${SDK} -mios-simulator-version-min=${IOS_SIMULATOR_VERSION_MIN} -flto"
 
@@ -76,21 +76,21 @@ make distclean > /dev/null
 make -j3 install || exit 1
 
 # Build for iOS
-export BASEDIR="${XCODEDIR}/Platforms/iPhoneOS.platform/Developer"
-export PATH="${BASEDIR}/usr/bin:$BASEDIR/usr/sbin:$PATH"
-export SDK="${BASEDIR}/SDKs/iPhoneOS.sdk"
-
-## 64-bit iOS
-export CFLAGS="-O2 -arch arm64 -isysroot ${SDK} -mios-version-min=${IOS_VERSION_MIN} -flto"
-export LDFLAGS="-arch arm64 -isysroot ${SDK} -mios-version-min=${IOS_VERSION_MIN} -flto"
-
-make distclean > /dev/null
-
-./configure --host=arm-apple-darwin10 \
-            --disable-shared \
-            --prefix="$IOS64_PREFIX" || exit 1
-
-make -j3 install || exit 1
+#export BASEDIR="${XCODEDIR}/Platforms/iPhoneOS.platform/Developer"
+#export PATH="${BASEDIR}/usr/bin:$BASEDIR/usr/sbin:$PATH"
+#export SDK="${BASEDIR}/SDKs/iPhoneOS.sdk"
+#
+### 64-bit iOS
+#export CFLAGS="-O2 -arch arm64 -isysroot ${SDK} -mios-version-min=${IOS_VERSION_MIN} -flto"
+#export LDFLAGS="-arch arm64 -isysroot ${SDK} -mios-version-min=${IOS_VERSION_MIN} -flto"
+#
+#make distclean > /dev/null
+#
+#./configure --host=arm-apple-darwin10 \
+#            --disable-shared \
+#            --prefix="$IOS64_PREFIX" || exit 1
+#
+#make -j3 install || exit 1
 
 # Create universal binary and include folder
 rm -fr -- "$PREFIX/include" "$PREFIX/libsodium.a" 2> /dev/null
@@ -98,7 +98,6 @@ mkdir -p -- "$PREFIX"
 lipo -create \
   "$SIMULATOR64_PREFIX/lib/libsodium.a" \
   "$SIMULATORARM64_PREFIX/lib/libsodium.a" \
-  "$IOS64_PREFIX/lib/libsodium.a" \
   -output "$PREFIX/libsodium.a"
 
 echo
