@@ -44,7 +44,7 @@ else
   export IOS_VERSION_MIN=${IOS_VERSION_MIN-"5.1.1"}
 fi
 
-mkdir -p $SIMULATOR64_PREFIX $IOS64_PREFIX || exit 1
+mkdir -p $SIMULATOR64_PREFIX $SIMULATORARM64_PREFIX || exit 1
 
 # Build for the simulator
 export BASEDIR="${XCODEDIR}/Platforms/iPhoneSimulator.platform/Developer"
