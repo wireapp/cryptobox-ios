@@ -1,5 +1,4 @@
 LIBSODIUM_TAG	  := 1.0.18-RELEASE
-LIBSODIUM_VERSION := 1.0.18
 LIBSODIUM         := libsodium-$(LIBSODIUM_VERSION)
 LIBSODIUM_URL     := https://github.com/jedisct1/libsodium/releases/download/$(LIBSODIUM_TAG)/$(LIBSODIUM).tar.gz
 LIBSODIUM_SRC     := build/src/$(LIBSODIUM)
