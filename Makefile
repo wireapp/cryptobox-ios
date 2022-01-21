@@ -1,9 +1,7 @@
 SHELL   := /usr/bin/env bash
 VERSION := 1.1.0
 
-TARGETS := armv7-apple-ios \
-           i386-apple-ios \
-           aarch64-apple-ios \
+TARGETS := aarch64-apple-ios \
            x86_64-apple-ios
 
 # pkg-config is invoked by libsodium-sys
@@ -71,9 +69,9 @@ build/lib/libsodium.a: | $(LIBSODIUM_SRC)
 		cd $(LIBSODIUM_SRC) && \
 		dist-build/ios-full.sh
 	mkdir -p build/lib
-	cp $(LIBSODIUM_SRC)/libsodium-ios/libsodium.a build/lib/libsodium.a
+	cp $(LIBSODIUM_SRC)/libsodium/libsodium.a build/lib/libsodium.a
 
 build/include/sodium.h: build/lib/libsodium.a
 	mkdir -p build/include
-	cp $(LIBSODIUM_SRC)/libsodium-ios/include/sodium.h build/include/sodium.h
-	cp -r $(LIBSODIUM_SRC)/libsodium-ios/include/sodium build/include/sodium
+	cp $(LIBSODIUM_SRC)/src/libsodium/include/sodium.h build/include/sodium.h
+	cp -r $(LIBSODIUM_SRC)/libsodium/include/sodium build/include/sodium
